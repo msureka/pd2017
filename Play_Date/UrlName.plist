@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>signupwithfb</key>
+	<string>http://play-date.ae/app/signupwithfb.php</string>
+	<key>signupstep5</key>
+	<string>http://play-date.ae/app/signupstep5.php</string>
+	<key>lookingprofiles</key>
+	<string>http://play-date.ae/app/lookingprofiles.php</string>
+	<key>urlname</key>
+	<string>http://play-date.ae/app/profileimages/</string>
+	<key>deleteaccount</key>
+	<string>http://play-date.ae/app/deleteaccount.php</string>
+	<key>updateprofile</key>
+	<string>http://play-date.ae/app/updateprofile.php</string>
+	<key>savepicture</key>
+	<string>http://play-date.ae/app/savepicture.php</string>
+	<key>swipe</key>
+	<string>http://play-date.ae/app/swipe.php</string>
+	<key>flagprofile</key>
+	<string>http://play-date.ae/app/flagprofile.php</string>
+	<key>friends</key>
+	<string>http://play-date.ae/app/friendsv2.php</string>
+	<key>chat</key>
+	<string>http://play-date.ae/app/chat.php</string>
+	<key>addchat</key>
+	<string>http://play-date.ae/app/addchat.php</string>
+	<key>saveemoji</key>
+	<string>http://play-date.ae/app/saveemoji.php</string>
+	<key>friendsticker</key>
+	<string>http://play-date.ae/app/friendsticker.php</string>
+	<key>restoreprofile</key>
+	<string>http://play-date.ae/app/restore.php</string>
+	<key>acceptdecline</key>
+	<string>http://play-date.ae/app/acceptdecline.php</string>
+</dict>
+</plist>
