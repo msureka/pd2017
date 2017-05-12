@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="nL5-gV-tp9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="nL5-gV-tp9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1375,51 +1374,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aL0-iV-NwC" id="M2X-Aq-Vcm">
                                             <frame key="frameInset" width="375" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMV-aw-TEE">
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zni-Wy-VLL"/>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-e2-qGe">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cY4-Qf-L8P">
-                                                            <color key="backgroundColor" red="0.83529411760000005" green="0.92941176469999998" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="TuD-wT-1LQ"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="Zni-Wy-VLL" secondAttribute="bottom" constant="7" id="0Vh-bj-WLa"/>
-                                                        <constraint firstItem="cY4-Qf-L8P" firstAttribute="top" secondItem="oMV-aw-TEE" secondAttribute="topMargin" id="1hu-6Y-6iM"/>
-                                                        <constraint firstItem="cY4-Qf-L8P" firstAttribute="top" secondItem="HhH-e2-qGe" secondAttribute="top" id="DgU-c3-Nbs"/>
-                                                        <constraint firstAttribute="trailing" secondItem="HhH-e2-qGe" secondAttribute="trailing" constant="20" id="LtW-kv-8v9"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Zni-Wy-VLL" secondAttribute="bottom" constant="6" id="Ton-aG-E8c"/>
-                                                        <constraint firstAttribute="bottom" secondItem="cY4-Qf-L8P" secondAttribute="bottom" constant="47" id="Xyg-Ql-wtT"/>
-                                                        <constraint firstItem="HhH-e2-qGe" firstAttribute="trailing" secondItem="Zni-Wy-VLL" secondAttribute="trailing" id="a7r-iS-3WM"/>
-                                                        <constraint firstItem="Zni-Wy-VLL" firstAttribute="top" secondItem="HhH-e2-qGe" secondAttribute="bottom" constant="8" symbolic="YES" id="hfp-xF-pyB"/>
-                                                        <constraint firstItem="HhH-e2-qGe" firstAttribute="leading" secondItem="Zni-Wy-VLL" secondAttribute="leading" id="oqG-zb-Mrj"/>
-                                                        <constraint firstItem="cY4-Qf-L8P" firstAttribute="leading" secondItem="oMV-aw-TEE" secondAttribute="leadingMargin" id="qlI-0W-SHE"/>
-                                                        <constraint firstItem="HhH-e2-qGe" firstAttribute="leading" secondItem="cY4-Qf-L8P" secondAttribute="trailing" constant="39" id="zRe-MF-7wO"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="oMV-aw-TEE" firstAttribute="top" secondItem="M2X-Aq-Vcm" secondAttribute="top" id="4vx-5o-e9O"/>
-                                                <constraint firstAttribute="bottom" secondItem="oMV-aw-TEE" secondAttribute="bottom" id="8lC-f5-aD6"/>
-                                                <constraint firstItem="oMV-aw-TEE" firstAttribute="leading" secondItem="M2X-Aq-Vcm" secondAttribute="leading" id="B3z-97-Vji"/>
-                                                <constraint firstAttribute="trailing" secondItem="oMV-aw-TEE" secondAttribute="trailing" id="XOe-9S-9Ls"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="CellBackView" destination="oMV-aw-TEE" id="X4Y-iB-RmE"/>
-                                            <outlet property="Img1" destination="Zni-Wy-VLL" id="xMK-b8-BmH"/>
-                                            <outlet property="Label" destination="HhH-e2-qGe" id="ycc-UT-O4K"/>
-                                            <outlet property="ProfileImg" destination="cY4-Qf-L8P" id="XpC-hG-ao3"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

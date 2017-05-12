@@ -41,7 +41,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     CGRect TextViewCord,BackTextViewCord;
     UIButton * tapHederImage_Button;
     CGFloat lastScale;
-    NSString *subImgname,* TagId_plist,*imageUserheight,*imageUserWidth;
+    NSString *subImgname,* TagId_plist,*imageUserheight,*imageUserWidth,*Flag_TimeOneUser,*Flag_Timeseconduser;
     NSMutableArray * newCommentsArray_plist,*Array_Comment1;
     
     NSArray *previousArray;
@@ -282,9 +282,6 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     NSLog(@"paid data====%@",[[AllDataArray objectAtIndex:0]valueForKey:@"tagtype"] );
   
     
-
-    
-    
     Array_Comment1=[[NSMutableArray alloc]init];
    
     
@@ -347,9 +344,11 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     [defaults setObject:@"yes" forKey:@"notification"];
     [defaults synchronize];
     
+    Flag_TimeOneUser=@"yes";
+    Flag_Timeseconduser=@"yes";
     [self CommentCommmunication];
     
-#pragma mark - timer vdl uday
+#pragma mark - timer
     
 //  HomeTimer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(CommentCommmunication) userInfo:nil  repeats:YES];
     
@@ -462,7 +461,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     UIImageView * desc_Imagepro=nil;
     UIImageView * Chat_ImageRight=nil;
     UIImageView * Chat_UserImage=nil;
-    
+     NSLog(@"Indexpath===%d",indexPath.row);
     Cell_one1 = [Table_Friend_chat dequeueReusableCellWithIdentifier:@"Cell"];
     Cell_one1.selectionStyle=UITableViewCellSelectionStyleNone;
     if (Cell_one1 == nil)
@@ -471,57 +470,46 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         Cell_one1 = [[CustomTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:Cellid1] ;
         label1 = [[UILabel alloc] initWithFrame:CGRectZero];
         [label1 setLineBreakMode:UILineBreakModeWordWrap];
-        //        [label1 setMinimumFontSize:FONT_SIZE];
         [label1 setNumberOfLines:0];
-        //        [label1 setFont:[UIFont systemFontOfSize:FONT_SIZE]];
         [label1 setTag:1];
-        // [[label layer] setBorderWidth:2.0f];
         [label1 setBackgroundColor:[UIColor clearColor]];
-        
-        
-        
-        
-        
         [[Cell_one1 contentView] addSubview:label1];
+        
+        
         
         label = [[UILabel alloc] initWithFrame:CGRectZero];
         [label setLineBreakMode:UILineBreakModeWordWrap];
-//        [label setMinimumFontSize:FONT_SIZE];
         [label setNumberOfLines:0];
         [label setFont:[UIFont fontWithName:@"Helvetica-Light" size:FONT_SIZE]];
         [label setTag:5];
-        // [[label layer] setBorderWidth:2.0f];
         [label setBackgroundColor:[UIColor clearColor]];
-        
-        
-        
-        
-        
         [[Cell_one1 contentView] addSubview:label];
         
+        
+        
+        label_time = [[UILabel alloc] initWithFrame:CGRectZero];
+        [label_time setLineBreakMode:UILineBreakModeWordWrap];
+        [label_time setNumberOfLines:0];
+        [label_time setFont:[UIFont fontWithName:@"Helvetica-Light" size:12]];
+       
+        [label_time setBackgroundColor:[UIColor clearColor]];
+        [[Cell_one1 contentView] addSubview:label_time];
+        
+        
         desc_Imagepro = [[UIImageView alloc] initWithFrame:CGRectZero];
-        
         [desc_Imagepro setTag:4];
-        
         [desc_Imagepro setBackgroundColor:[UIColor lightGrayColor]];
-        
         [[Cell_one1 contentView] addSubview:desc_Imagepro];
         
         
         Chat_ImageRight = [[UIImageView alloc] initWithFrame:CGRectZero];
-        
         [Chat_ImageRight setTag:4];
-        
         [Chat_ImageRight setBackgroundColor:[UIColor lightGrayColor]];
-        
         [[Cell_one1 contentView] addSubview:Chat_ImageRight];
         
         Chat_UserImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        
         [Chat_UserImage setTag:5];
-        
         [Chat_UserImage setBackgroundColor:[UIColor lightGrayColor]];
-        
         [[Cell_one1 contentView] addSubview:Chat_UserImage];
         
         
@@ -537,34 +525,93 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
     if (!label1)
         label1 = (UILabel*)[Cell_one1 viewWithTag:2];
-    
    
-    //                NSTextAlignmentLeft      = 0,
-    //                NSTextAlignmentCenter    = 1,
-    //                NSTextAlignmentRight     = 2,
-    //                NSTextAlignmentJustified = 3,
+   
     [label setBackgroundColor:[UIColor clearColor]];
     
-//    label.font=[UIFont fontWithName:@"Helvetica" size:16.0f];
+
     label.textColor=[UIColor blackColor];
+    
+   
     if (indexPath.row==0)
     {
        
 [label setText:[NSString stringWithFormat:@"%@%@%@%@",@"You matched with ",[[AllDataArray objectAtIndex:0] valueForKey:@"fname"],@" on ",[[AllDataArray objectAtIndex:0] valueForKey:@"matchdate"]]];
-        [label setFrame:CGRectMake(0,0,self.view.frame.size.width, Cell_one1.frame.size.height)];
+        [label setFrame:CGRectMake(0,label_time.frame.size.height,self.view.frame.size.width, Cell_one1.frame.size.height)];
          label.textColor=[UIColor lightGrayColor];
         label.textAlignment=NSTextAlignmentCenter;
+        label_time.hidden=YES;
     }
   else
   {
-    
+      
+      label_time.tag=indexPath.row-1;
+      
+      label_time.textColor=[UIColor lightGrayColor];
+      label_time.textAlignment=NSTextAlignmentCenter;
+      label_time.hidden=NO;
+      
+      
+
+      NSString *str = [[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"msgdate"];;
+      NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+      [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+       NSDate *dte = [dateFormat dateFromString:str];
+      [dateFormat setDateFormat:@"dd/MM/yyyy"];
+      
+    NSLog(@"Date format saecond %@",[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte]]);
+      NSString *str_Date=[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte]];
+   
+     label_time.text=str_Date;
+      label_time.hidden=NO;
+      if (indexPath.row==1)
+      {
+        
+           Flag_TimeOneUser=@"no";
+           label_time.hidden=NO;
+       [label_time setFrame:CGRectMake(0,0,self.view.frame.size.width, 20)];
+           NSLog(@"Date format row11 %d",indexPath.row-1);
+      }
+      else
+      {
+        label_time.hidden=NO;
+          if (indexPath.row >=2)
+          {
+              NSString *str1 = [[Array_Comment1 objectAtIndex:indexPath.row-2]valueForKey:@"msgdate"];;         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+              [dateFormat1 setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+              NSDate *dte1 = [dateFormat1 dateFromString:str1];
+              [dateFormat1 setDateFormat:@"dd/MM/yyyy"];
+              label_time.text=[NSString stringWithFormat:@"%@",[dateFormat1 stringFromDate:dte1]];
+              NSLog(@"Date format saecond1111 %@",[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte1]]);
+              NSString *str_Date1=[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte1]];
+              if ([str_Date isEqualToString:str_Date1])
+              {
+                  [label_time setFrame:CGRectMake(0,0,0,0)];
+                  label_time.text=@"";;
+              }
+              else
+              {
+                  [label_time setFrame:CGRectMake(0,0,self.view.frame.size.width, 20)];
+                  label_time.text=str_Date;
+              }
+ 
+          }
+          
+          
+      }
+
+      
+      
+      
+      
+      
       if ([[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"chattype"] isEqualToString:@"TEXT"])
       {
       
+          
+          
     NSString *text =[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"message"];
-      
-      
-      CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+               CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
       
       CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:FONT_SIZE] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
       
@@ -599,6 +646,9 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
     if ([[defaults valueForKey:@"fid"] isEqualToString:[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"receiverfbid"]])
     {
+        
+        
+        
         NSURL * url=[[AllDataArray objectAtIndex:0]valueForKey:@"profilepic"];
         [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
         
@@ -610,7 +660,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         {
             
 //            [label1 setFrame:CGRectMake(50,0, size.width+34, MAX(size.height, 30.0f)+4)];
-            [label setFrame:CGRectMake(50,0, size.width+22, MAX(size.height, 30.0f)+8)];
+            [label setFrame:CGRectMake(50,label_time.frame.size.height, size.width+22, MAX(size.height, 30.0f)+8)];
            
           
         }
@@ -618,7 +668,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         else
         {
 //            [label1 setFrame:CGRectMake(50,0, self.view.frame.size.width-132, MAX(size.height, 30.0f)+4)];
-            [label setFrame:CGRectMake(50,0, self.view.frame.size.width-140,MAX(size.height, 30.0f)+8)];
+            [label setFrame:CGRectMake(50,label_time.frame.size.height, self.view.frame.size.width-140,MAX(size.height, 30.0f)+8)];
          
             
         }
@@ -653,7 +703,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         {
             
 //            [label1 setFrame:CGRectMake(self.view.frame.size.width-(size.width+89),0, size.width+30, MAX(size.height, 30.0f)+8)];
-            [label setFrame:CGRectMake(self.view.frame.size.width-(size.width+83),0, size.width+22, MAX(size.height, 30.0f)+8)];
+            [label setFrame:CGRectMake(self.view.frame.size.width-(size.width+83),label_time.frame.size.height, size.width+22, MAX(size.height, 30.0f)+8)];
         }
         
         else
@@ -661,7 +711,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             
 //            [label1 setFrame:CGRectMake(self.view.frame.size.width-(size.width+81),0, self.view.frame.size.width-132, MAX(size.height, 30.0f)+8)];
-            [label setFrame:CGRectMake(self.view.frame.size.width-(size.width+83),0, self.view.frame.size.width-140, MAX(size.height, 30.0f)+8)];
+            [label setFrame:CGRectMake(self.view.frame.size.width-(size.width+83),label_time.frame.size.height, self.view.frame.size.width-140, MAX(size.height, 30.0f)+8)];
             
             
             
@@ -709,7 +759,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             NSURL * url=[[AllDataArray objectAtIndex:0]valueForKey:@"profilepic"];
             [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
            
-            [Chat_UserImage setFrame:CGRectMake(52,4,imgwidth,imgheight)];
+            [Chat_UserImage setFrame:CGRectMake(52,4+label_time.frame.size.height,imgwidth,imgheight)];
             Chat_UserImage.clipsToBounds=YES;
             Chat_UserImage.layer.cornerRadius=9.0f;
             Chat_UserImage.contentMode=UIViewContentModeScaleAspectFit;
@@ -728,7 +778,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
             
             
-            [Chat_UserImage setFrame:CGRectMake((self.view.frame.size.width-64)-imgwidth,4,imgwidth,imgheight)];
+            [Chat_UserImage setFrame:CGRectMake((self.view.frame.size.width-64)-imgwidth,4+label_time.frame.size.height,imgwidth,imgheight)];
             Chat_UserImage.clipsToBounds=YES;
             Chat_UserImage.layer.cornerRadius=9.0f;
             Chat_UserImage.contentMode=UIViewContentModeScaleAspectFit;
@@ -799,6 +849,49 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     }
     else
     {
+        CGFloat heightAdd = 0;
+        NSString *str = [[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"msgdate"];;
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+        NSDate *dte = [dateFormat dateFromString:str];
+        [dateFormat setDateFormat:@"dd/MM/yyyy"];
+        
+        NSLog(@"Date format saecond %@",[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte]]);
+        NSString *str_Date=[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte]];
+ 
+        if (indexPath.row==1)
+        {
+            heightAdd=20;
+            
+        }
+        else
+        {
+          
+            if (indexPath.row >=2)
+            {
+                NSString *str1 = [[Array_Comment1 objectAtIndex:indexPath.row-2]valueForKey:@"msgdate"];;         NSDateFormatter *dateFormat1 = [[NSDateFormatter alloc] init];
+                [dateFormat1 setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                NSDate *dte1 = [dateFormat1 dateFromString:str1];
+                [dateFormat1 setDateFormat:@"dd/MM/yyyy"];
+              
+                NSLog(@"Date format saecond1111 %@",[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte1]]);
+                NSString *str_Date1=[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:dte1]];
+                if ([str_Date isEqualToString:str_Date1])
+                {
+
+                  heightAdd=0;
+                }
+                else
+                {
+                    
+                heightAdd=20;
+                }
+                
+            }
+            
+            
+        }
+        
         if ([[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"chattype"] isEqualToString:@"TEXT"])
         {
         NSString *text = [[Array_Comment1 objectAtIndex:indexPath.row-1] valueForKey:@"message"];
@@ -808,12 +901,12 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
         CGFloat height = MAX(size.height, 30.0f);
-        return height + (CELL_CONTENT_MARGIN * 2)+15;
+        return height + (CELL_CONTENT_MARGIN * 2)+15+heightAdd;
         }
         else
         {
             CGFloat imgheight=[[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"imageheight"] floatValue];
-            return imgheight+14;
+            return imgheight+15+heightAdd;
         }
  
    
