@@ -459,7 +459,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     UILabel *label1 = nil;
     UILabel *label_time = nil;
     UIImageView * desc_Imagepro=nil;
-    UIImageView * Chat_ImageRight=nil;
+//    UIImageView * Chat_ImageRight=nil;
     UIImageView * Chat_UserImage=nil;
      NSLog(@"Indexpath===%d",indexPath.row);
     Cell_one1 = [Table_Friend_chat dequeueReusableCellWithIdentifier:@"Cell"];
@@ -502,10 +502,10 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         [[Cell_one1 contentView] addSubview:desc_Imagepro];
         
         
-        Chat_ImageRight = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [Chat_ImageRight setTag:4];
-        [Chat_ImageRight setBackgroundColor:[UIColor lightGrayColor]];
-        [[Cell_one1 contentView] addSubview:Chat_ImageRight];
+//        Chat_ImageRight = [[UIImageView alloc] initWithFrame:CGRectZero];
+//        [Chat_ImageRight setTag:4];
+//        [Chat_ImageRight setBackgroundColor:[UIColor lightGrayColor]];
+//        [[Cell_one1 contentView] addSubview:Chat_ImageRight];
         
         Chat_UserImage = [[UIImageView alloc] initWithFrame:CGRectZero];
         [Chat_UserImage setTag:5];
@@ -673,9 +673,9 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
         }
        
-        Chat_ImageRight.backgroundColor=[UIColor clearColor];
-        [Chat_ImageRight setFrame:CGRectMake(label.frame.origin.x-14,label.frame.size.height-27, 16,16)];
-        [Chat_ImageRight setImage:[UIImage imageNamed:@"Chat_arrow_left.png"]];
+//        Chat_ImageRight.backgroundColor=[UIColor clearColor];
+//        [Chat_ImageRight setFrame:CGRectMake(label.frame.origin.x-14,label.frame.size.height-27, 16,16)];
+//        [Chat_ImageRight setImage:[UIImage imageNamed:@"Chat_arrow_left.png"]];
         
         //chat_arrow_right.png
         [desc_Imagepro setFrame:CGRectMake(8,label.frame.origin.y+(label.frame.size.height-32),32,32)];
@@ -689,13 +689,17 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
         {
            label.backgroundColor=[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1];
+            label.layer.borderColor=[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
+            label.layer.borderWidth=1.0f;
             
         }
         else
         {
  label.backgroundColor=[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1];
+    label.layer.borderColor=[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
+            label.layer.borderWidth=1.0f;
         }
-      
+        
 //        label.textColor=[UIColor colorWithRed:108/255.0 green:157/255.0 blue:180/255.0 alpha:1];
           label.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
         
@@ -703,7 +707,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         {
             
 //            [label1 setFrame:CGRectMake(self.view.frame.size.width-(size.width+89),0, size.width+30, MAX(size.height, 30.0f)+8)];
-            [label setFrame:CGRectMake(self.view.frame.size.width-(size.width+83),label_time.frame.size.height, size.width+22, MAX(size.height, 30.0f)+8)];
+    [label setFrame:CGRectMake(self.view.frame.size.width-(size.width+83),label_time.frame.size.height, size.width+22, MAX(size.height, 30.0f)+8)];
         }
         
         else
@@ -716,12 +720,12 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             
         }
-        Chat_ImageRight.backgroundColor=[UIColor clearColor];
-        [Chat_ImageRight setFrame:CGRectMake(label.frame.size.width+label.frame.origin.x-2,label1.frame.size.height-27, 16,16)];
+//        Chat_ImageRight.backgroundColor=[UIColor clearColor];
+//        [Chat_ImageRight setFrame:CGRectMake(label.frame.size.width+label.frame.origin.x-2,label1.frame.size.height-27, 16,16)];
         
-        NSLog(@"Label1Frame11==%f",label1.frame.size.width);
-        NSLog(@"Labe221Frame22==%f",label.frame.size.width);
-        [Chat_ImageRight setImage:[UIImage imageNamed:@"Chat_arrow_right.png"]];
+
+//        [Chat_ImageRight setImage:[UIImage imageNamed:@"Chat_arrow_right.png"]];
+        
         
         [desc_Imagepro setFrame:CGRectMake(self.view.frame.size.width-48,label.frame.origin.y+(label.frame.size.height-32),32,32)];
         desc_Imagepro.clipsToBounds=YES;
