@@ -117,6 +117,9 @@
 		9A4ACB351E24C26900CD6D17 /* boypictureframe 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4ACB331E24C26900CD6D17 /* boypictureframe 1.png */; };
 		9A4ACB361E24C26900CD6D17 /* boypictureframe 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4ACB341E24C26900CD6D17 /* boypictureframe 2.png */; };
 		9A4ACB381E24C5C900CD6D17 /* girlpictureframe 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4ACB371E24C5C900CD6D17 /* girlpictureframe 1.png */; };
+		9A54038E1ECB06D90026BDAE /* 3dotsgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */; };
+		9A54038F1ECB06D90026BDAE /* 3dotsgrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */; };
+		9A5403901ECB06D90026BDAE /* 3dotsgrey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */; };
 		9A54E5551E236A7F00623412 /* DiscoverInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A54E5541E236A7F00623412 /* DiscoverInfoViewController.m */; };
 		9A593AC81E322848009DF6BA /* nope1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A593AC71E322848009DF6BA /* nope1.png */; };
 		9A5BB3401E1E76EA00265DBB /* RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BB33D1E1E76EA00265DBB /* RNActivityView.m */; };
@@ -447,6 +450,9 @@
 		9A4ACB331E24C26900CD6D17 /* boypictureframe 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boypictureframe 1.png"; path = "Play_Date/boypictureframe 1.png"; sourceTree = "<group>"; };
 		9A4ACB341E24C26900CD6D17 /* boypictureframe 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boypictureframe 2.png"; path = "Play_Date/boypictureframe 2.png"; sourceTree = "<group>"; };
 		9A4ACB371E24C5C900CD6D17 /* girlpictureframe 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "girlpictureframe 1.png"; path = "Play_Date/girlpictureframe 1.png"; sourceTree = "<group>"; };
+		9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3dotsgrey.png; path = Play_Date/3dotsgrey.png; sourceTree = "<group>"; };
+		9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3dotsgrey@2x.png"; path = "Play_Date/3dotsgrey@2x.png"; sourceTree = "<group>"; };
+		9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3dotsgrey@3x.png"; path = "Play_Date/3dotsgrey@3x.png"; sourceTree = "<group>"; };
 		9A54E5531E236A7F00623412 /* DiscoverInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverInfoViewController.h; sourceTree = "<group>"; };
 		9A54E5541E236A7F00623412 /* DiscoverInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverInfoViewController.m; sourceTree = "<group>"; };
 		9A570A221E1690EC001EB7B0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1128,6 +1134,9 @@
 		9AAF10E41E1B8DA50065CA75 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */,
+				9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */,
+				9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */,
 				9AC30BD81E54333E00920D8D /* ribbon.png */,
 				9AC30BD91E54333E00920D8D /* ribbon@2x.png */,
 				9AC30BDA1E54333E00920D8D /* ribbon@3x.png */,
@@ -1618,6 +1627,7 @@
 				9AF0ECB41E24FB5D001A6B47 /* friends@2x.png in Resources */,
 				9A160C681E26292F00300BE7 /* profile@3x.png in Resources */,
 				9AFEF4081E4DEBAB00292760 /* downarrow.png in Resources */,
+				9A54038E1ECB06D90026BDAE /* 3dotsgrey.png in Resources */,
 				61B761931E72818F0017E215 /* MyView2.xib in Resources */,
 				9AE19E2A1E278BB2006143E5 /* arrow@3x.png in Resources */,
 				9A5F332F1E30E5D400C29894 /* SpeechBubble1.png in Resources */,
@@ -1627,6 +1637,7 @@
 				9AFEF4091E4DEBAB00292760 /* downarrow@2x.png in Resources */,
 				9A4ACB271E24A51C00CD6D17 /* mornings.png in Resources */,
 				9AE13F591E44B3AA00C747E6 /* Info.plist in Resources */,
+				9A54038F1ECB06D90026BDAE /* 3dotsgrey@2x.png in Resources */,
 				9A40A2721E13E913007E7C37 /* Forward-50.png in Resources */,
 				9A40A1DD1E138657007E7C37 /* LaunchScreen.storyboard in Resources */,
 				9A160C661E26292F00300BE7 /* discover1@3x.png in Resources */,
@@ -1676,6 +1687,7 @@
 				61B761951E72818F0017E215 /* MyView3.xib in Resources */,
 				9A4ACB231E24A51C00CD6D17 /* friends.png in Resources */,
 				9A4ACB281E24A51C00CD6D17 /* outdoor.png in Resources */,
+				9A5403901ECB06D90026BDAE /* 3dotsgrey@3x.png in Resources */,
 				9A4ACB1E1E24A51C00CD6D17 /* circle2.png in Resources */,
 				9A40A22F1E1393D8007E7C37 /* Images in Resources */,
 				9AB37B311E2E199400CBD599 /* Screenshot-50 (1).png in Resources */,

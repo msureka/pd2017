@@ -34,5 +34,7 @@
 	<string>http://play-date.ae/app/restore.php</string>
 	<key>acceptdecline</key>
 	<string>http://play-date.ae/app/acceptdecline.php</string>
+	<key>unfriend</key>
+	<string>http://play-date.ae/app/unfriend.php</string>
 </dict>
 </plist>

@@ -39,9 +39,9 @@
 ;
 
 
+@property(weak,nonatomic)IBOutlet UIButton * Button_Flag_Button;
 
-
-
+-(IBAction)FlagButton_Acion:(id)sender;
 
 -(IBAction)Send_Comments:(id)sender;
 

@@ -1408,6 +1408,17 @@
                                         <frame key="frameInset" minX="40.80%" minY="33.33%" width="8.53%" height="53.33%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bpz-JL-f0j">
+                                        <frame key="frameInset" minX="86.40%" minY="36.67%" width="11.47%" height="63.33%"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="3dotsgrey.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="FlagButton_Acion:" destination="3sT-rd-V0V" eventType="touchUpInside" id="UZ1-XL-Ynm"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1482,6 +1493,7 @@
                     <navigationItem key="navigationItem" id="azd-4b-h9t"/>
                     <connections>
                         <outlet property="BlackViewOne" destination="nI8-uE-sf9" id="9Vs-rg-avb"/>
+                        <outlet property="Button_Flag_Button" destination="Bpz-JL-f0j" id="Rlr-qj-lbK"/>
                         <outlet property="HeadTopView" destination="3LJ-an-czw" id="89G-Fk-9wj"/>
                         <outlet property="ImageGalButton" destination="LJ0-xK-Fei" id="hvI-S0-fJO"/>
                         <outlet property="Image_UserProfile" destination="v8V-TF-ztV" id="vo2-35-w1X"/>
@@ -1500,7 +1512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hq0-GY-4Kh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1853" y="-829"/>
+            <point key="canvasLocation" x="1852.5" y="-829.5"/>
         </scene>
         <!--Sinup Step Two View Controller-->
         <scene sceneID="qKU-2l-sC5">
@@ -3604,6 +3616,7 @@ World of Play:Date!</string>
     </scenes>
     <resources>
         <image name="10154143609282724.jpg" width="1936" height="1936"/>
+        <image name="3dotsgrey.png" width="29" height="6"/>
         <image name="Help.png" width="50" height="50"/>
         <image name="Screenshot Filled-50.png" width="50" height="50"/>
         <image name="Settings.png" width="50" height="50"/>
@@ -3631,6 +3644,6 @@ World of Play:Date!</string>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="s6D-LK-AIJ"/>
+        <segue reference="Z5h-ha-emd"/>
     </inferredMetricsTieBreakers>
 </document>
