@@ -1858,7 +1858,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
    
-        _Button_Flag_Button.hidden=YES;
+    
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfriend" otherButtonTitles:@"Flag as inappropriate",nil];
         popup.tag = 777;
         [popup showInView:self.view];
