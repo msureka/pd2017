@@ -12,6 +12,9 @@
 #import "UIImageView+WebCache.h"
 #import "FriendCahtingViewController.h"
 #import "FriendRequestViewController.h"
+#import "ContactListViewController.h"
+#import "FacebookListViewController.h"
+
 @interface FriendsViewController ()<UISearchBarDelegate>
 {
      NSTimer *HomechatTimer;
@@ -1798,5 +1801,30 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 {
     [self NewMatchServerComm];
 }
-
+- (IBAction)Button_Plus:(id)sender
+{
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Invite facebook friend",@"Add contacts",nil];
+    popup.tag = 777;
+    [popup showInView:self.view];
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ((long)actionSheet.tag == 777)
+    {
+        NSLog(@"INDEXAcrtionShhet==%ld",(long)buttonIndex);
+        
+        if (buttonIndex== 0)
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FacebookListViewController * set=[mainStoryboard instantiateViewControllerWithIdentifier:@"FacebookListViewController"];
+            [self.navigationController pushViewController:set animated:YES];
+        }
+        else  if (buttonIndex== 1)
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            ContactListViewController * set=[mainStoryboard instantiateViewControllerWithIdentifier:@"ContactListViewController"];
+            [self.navigationController pushViewController:set animated:YES];
+        }
+    }
+}
 @end

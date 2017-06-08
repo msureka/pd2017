@@ -17,5 +17,6 @@
 @property(nonatomic,strong)FriendsSecTwoTableViewCell * Cell_Two;
 @property(nonatomic,strong)FriendsSeconeTableViewCell * Cell_One;
 @property (nonatomic, retain) UIRefreshControl *refreshControl;
+- (IBAction)Button_Plus:(id)sender;
 -(void)calculate;
 @end

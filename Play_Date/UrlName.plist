@@ -36,5 +36,11 @@
 	<string>http://play-date.ae/app/acceptdecline.php</string>
 	<key>unfriend</key>
 	<string>http://play-date.ae/app/unfriend.php</string>
+	<key>invite_addfriend</key>
+	<string>http://play-date.ae/app/invite_addfriend.php</string>
+	<key>invite_contacts</key>
+	<string>http://play-date.ae/app/invite_contacts.php</string>
+	<key>invite_fb</key>
+	<string>http://play-date.ae/app/invite_fb.php</string>
 </dict>
 </plist>

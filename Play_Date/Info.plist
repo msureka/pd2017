@@ -55,6 +55,8 @@
 	<string>Choose a photo for your profile picture</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take a selfie for your profile picture!</string>
+	<key>NSContactsUsageDescription</key>
+	<string>You need to Allow Contact Permission to use Play Date</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>You need to Allow Location Permission to use Play Date</string>
 	<key>NSPhotoLibraryUsageDescription</key>

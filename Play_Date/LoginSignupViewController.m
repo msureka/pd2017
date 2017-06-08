@@ -26,8 +26,8 @@
     NSDictionary *urlplist;
     NSURLConnection *Connection_sinupFb;
     NSMutableData *webData_sinupFb;
-    NSMutableArray *Array_sinupFb;
-    NSString * ptypeString,*EmailIdString,*FbmailId,*FbuserID,*FbFirstname,*Fblastname,*FbuserFullname,*FbprofileImg,*GenderFb,*CityNamestr,*CountryNameStr;
+    NSMutableArray *Array_sinupFb,*fb_friend_id;
+    NSString * ptypeString,*EmailIdString,*FbmailId,*FbuserID,*FbFirstname,*Fblastname,*FbuserFullname,*FbprofileImg,*GenderFb,*CityNamestr,*CountryNameStr,*Str_fb_friend_id,*Str_fb_friend_id_Count;
     NSUserDefaults * LoginSession_Check,*defaults;
     UIView * confirmView;
     UIActivityIndicatorView *indicatorAlert;
@@ -56,7 +56,7 @@
     
     LoginSession_Check=[[NSUserDefaults alloc]init];
     defaults=[[NSUserDefaults alloc]init];
-    
+    fb_friend_id=[[NSMutableArray alloc]init];
     
     locationManager = [[CLLocationManager alloc] init] ;
     geocoder = [[CLGeocoder alloc] init];
@@ -502,7 +502,7 @@
     
   
   
-    [login logInWithReadPermissions: @[@"public_profile", @"email"]
+    [login logInWithReadPermissions: @[@"public_profile", @"email",@"user_friends"]
                  fromViewController:self
                             handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
      {
@@ -526,7 +526,7 @@
             
              NSLog(@"Logged in");
              NSLog(@"Process result123123=%@",result);
-             [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,first_name,last_name,gender,email,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,friends,name,first_name,last_name,gender,email,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                  if (!error) {
                      if ([result isKindOfClass:[NSDictionary class]])
                      {
@@ -547,7 +547,20 @@
                              [Flurry setGender:@"f"];
                          }
 
-                        
+                        NSArray * allKeys = [[result valueForKey:@"friends"]objectForKey:@"data"];
+                         
+                         fb_friend_id  =  [[NSMutableArray alloc]init];
+                         
+                         for (int i=0; i<[allKeys count]; i++)
+                         {
+                             //   [fb_friend_Name addObject:[[[[result valueForKey:@"friends"]objectForKey:@"data"] objectAtIndex:i] valueForKey:@"name"]];
+                             
+                             [fb_friend_id addObject:[[[[result valueForKey:@"friends"]objectForKey:@"data"] objectAtIndex:i] valueForKey:@"id"]];
+                             
+                         }
+                         Str_fb_friend_id_Count=[NSString stringWithFormat:@"%d",fb_friend_id.count];
+                         Str_fb_friend_id=[fb_friend_id componentsJoinedByString:@","];
+                         NSLog(@"Friends ID : %@",Str_fb_friend_id);
                          FbprofileImg= [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large", FbuserID];
                        
                          NSLog(@"my url DataFBB=%@",result);
@@ -713,11 +726,13 @@
 //            ChanelIdVAl=[UAirship push].channelID;
 //        }
        
+        NSString *friendlist= @"friendlist";
+        NSString *friendlistval =[NSString stringWithFormat:@"%@",Str_fb_friend_id];
         
         NSString *Platform= @"platform";
         NSString *PlatformVal =@"ios";
     
-    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",Emailstr,EmailstrValue,fnamestr,fnamestrValue,lnamestr,lnamestrValue,fbId,fbIdValue,Gender,GenderValues,ImageUrl,ImageUrlValues,ChanelId,channelIDglobal,Platform,PlatformVal];
+    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",Emailstr,EmailstrValue,fnamestr,fnamestrValue,lnamestr,lnamestrValue,fbId,fbIdValue,Gender,GenderValues,ImageUrl,ImageUrlValues,ChanelId,channelIDglobal,friendlist,friendlistval,Platform,PlatformVal];
     
     
     //converting  string into data bytes and finding the lenght of the string.
