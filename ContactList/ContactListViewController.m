@@ -278,6 +278,8 @@
             }
 
             
+        
+            
             cell_contact.button_invite.tag=indexPath.row;
             NSDictionary * dictVal=[ArryMerge_twitterlistSection1 objectAtIndex:indexPath.row];
             cell_contact.label_one.text=[dictVal valueForKey:@"name"];

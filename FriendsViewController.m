@@ -1803,7 +1803,7 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 }
 - (IBAction)Button_Plus:(id)sender
 {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Invite facebook friend",@"Add contacts",nil];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Facebook friends",@"Invite contacts",nil];
     popup.tag = 777;
     [popup showInView:self.view];
 }
