@@ -259,24 +259,24 @@
         {
             cell_contact = (ContactTableViewCell *)[tableview_contact dequeueReusableCellWithIdentifier:cellone forIndexPath:indexPath];
             
-            if (ArryMerge_twitterlistSection1.count-1==indexPath.row)
-            {
-                Bottomborder_Cell2 = [CALayer layer];
-                Bottomborder_Cell2.backgroundColor = [UIColor clearColor].CGColor;
-                Bottomborder_Cell2.frame = CGRectMake(0, cell_contact.frame.size.height-1, cell_contact.frame.size.width, 1);
-                [cell_contact.layer addSublayer:Bottomborder_Cell2];
-            }
-            else
-            {
-                
-                Bottomborder_Cell2 = [CALayer layer];
-                Bottomborder_Cell2.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0].CGColor;
-                Bottomborder_Cell2.frame = CGRectMake(0, cell_contact.frame.size.height-1,cell_contact.frame.size.width, 1);
-                [cell_contact.layer addSublayer:Bottomborder_Cell2];
-                
-                
-            }
-
+//            if (ArryMerge_twitterlistSection1.count-1==indexPath.row)
+//            {
+//                Bottomborder_Cell2 = [CALayer layer];
+//                Bottomborder_Cell2.backgroundColor = [UIColor clearColor].CGColor;
+//                Bottomborder_Cell2.frame = CGRectMake(0, cell_contact.frame.size.height-1, cell_contact.frame.size.width, 1);
+//                [cell_contact.layer addSublayer:Bottomborder_Cell2];
+//            }
+//            else
+//            {
+//                
+//                Bottomborder_Cell2 = [CALayer layer];
+//                Bottomborder_Cell2.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0].CGColor;
+//                Bottomborder_Cell2.frame = CGRectMake(0, cell_contact.frame.size.height-1,cell_contact.frame.size.width, 1);
+//                [cell_contact.layer addSublayer:Bottomborder_Cell2];
+//
+//                
+//            }
+//
             
         
             
@@ -285,18 +285,29 @@
             cell_contact.label_one.text=[dictVal valueForKey:@"name"];
             if ([[dictVal valueForKey:@"friendmobileno"] isEqualToString:@""] && ![[dictVal valueForKey:@"friendemail"] isEqualToString:@""])
             {
-                 [cell_contact.button_invite addTarget:self action:@selector(sendEmail:) forControlEvents:UIControlEventTouchUpInside];
+               //  [cell_contact.button_invite addTarget:self action:@selector(sendEmail:) forControlEvents:UIControlEventTouchUpInside];
             cell_contact.label_two.text=[dictVal valueForKey:@"friendemail"];
                 cell_contact.label_three.hidden=YES;
             }
             if (![[dictVal valueForKey:@"friendmobileno"] isEqualToString:@""] && [[dictVal valueForKey:@"friendemail"] isEqualToString:@""])
             {
-                 [cell_contact.button_invite addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
+                if ([[dictVal valueForKey:@"friendemail"] isEqualToString:@"sankalpu@gmail.com"]|| [[dictVal valueForKey:@"friendmobileno"] isEqualToString:@" 919920458626"])
+                {
+                    
+                    NSLog(@"toppppppppp");
+                }
+//                 [cell_contact.button_invite addTarget:self action:@selector(sendMessage:) forControlEvents:UIControlEventTouchUpInside];
                 cell_contact.label_two.text=[dictVal valueForKey:@"friendmobileno"];
                 cell_contact.label_three.hidden=YES;
             }
             if (![[dictVal valueForKey:@"friendmobileno"] isEqualToString:@""] && ![[dictVal valueForKey:@"friendemail"] isEqualToString:@""])
             {
+                if ([[dictVal valueForKey:@"friendemail"] isEqualToString:@"sankalpu@gmail.com"]|| [[dictVal valueForKey:@"friendmobileno"] isEqualToString:@" 919920458626"])
+                {
+                    
+                    NSLog(@"botttommmmmmmmm");
+                }
+                
                  [cell_contact.button_invite addTarget:self action:@selector(InviteUser:) forControlEvents:UIControlEventTouchUpInside];
                  cell_contact.label_two.text=[dictVal valueForKey:@"friendmobileno"];
                 cell_contact.label_three.text=[dictVal valueForKey:@"friendemail"];
@@ -304,6 +315,8 @@
             }
             //cell_contact.label_two.text=[dictVal valueForKey:@"friendemail"];
            // cell_contact.label_three.text=[dictVal valueForKey:@"friendmobileno"];
+            
+            [cell_contact.button_invite addTarget:self action:@selector(InviteUser:) forControlEvents:UIControlEventTouchUpInside];
             
             cell_contact.button_invite.clipsToBounds=YES;
             cell_contact.button_invite.layer.cornerRadius=7.0f;
@@ -560,28 +573,138 @@
 -(void)InviteUser:(UIButton *)sender
 {
     
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email Address",@"Phone Number",nil];
-    popup.tag = 707;
-    [popup showInView:self.view];
+    
+   
+    NSDictionary * dictVal=[ArryMerge_twitterlistSection1 objectAtIndex:sender.tag];
+    
+    if ([[dictVal valueForKey:@"friendmobileno"] isEqualToString:@""] && ![[dictVal valueForKey:@"friendemail"] isEqualToString:@""])
+    {
+        
+            if (![MFMailComposeViewController canSendMail])
+            {
+                NSLog(@"Mail services are not available");
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Please configure your mailbox in order to invite a friend." preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:nil];
+                [alertController addAction:actionOk];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+                return;
+            }
+            else
+            {
+                MFMailComposeViewController *mailCont = [[MFMailComposeViewController alloc] init];
+                mailCont.mailComposeDelegate = self;
+                [mailCont setToRecipients:[NSArray arrayWithObject:[[ArryMerge_twitterlistSection1 objectAtIndex:sender.tag]valueForKey:@"friendemail"]]];
+                
+                [mailCont setSubject:@"Download Play:Date"];
+                [mailCont setMessageBody:@"Hey, \n\n Play:Date is a great app to find friends for your children. I have been using it since a while, and it would be great if you could download it! \n\n Visit http://www.play-date.ae to download it on your mobile phone! \n\n Thanks!" isHTML:NO];
+                
+                [self presentViewController:mailCont animated:YES completion:nil];
+                
+            }
+            
+            
+        
+    }
+    if (![[dictVal valueForKey:@"friendmobileno"] isEqualToString:@""] && [[dictVal valueForKey:@"friendemail"] isEqualToString:@""])
+    
+        {
+            if([MFMessageComposeViewController canSendText]) {
+                MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init]; // Create message VC
+                messageController.messageComposeDelegate = self; // Set delegate to current instance
+                
+                NSMutableArray *recipients = [[NSMutableArray alloc] init]; // Create an array to hold the recipients
+                [recipients addObject:[[ArryMerge_twitterlistSection1 objectAtIndex:sender.tag]valueForKey:@"friendmobileno"]]; // Append example phone number to array
+                messageController.recipients = recipients; // Set the recipients of the message to the created array
+                
+                
+                
+                messageController.body = @"Play:Date is a great app to find friends for your children. I have been using it since a while, and it would be great if you could download it! \n\n Visit http://www.play-date.ae to download it on your mobile phone!"; // Set initial text to example message
+                
+                dispatch_async(dispatch_get_main_queue(), ^{ // Present VC when possible
+                    [self presentViewController:messageController animated:YES completion:NULL];
+                });
+            }
+        }
+    
+    if (![[dictVal valueForKey:@"friendmobileno"] isEqualToString:@""] && ![[dictVal valueForKey:@"friendemail"] isEqualToString:@""])
+    {
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email Address",@"Phone Number",nil];
+        popup.tag = sender.tag;
+        [popup showInView:self.view];
+        
+       
+    }
+
+    
+   
     
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ((long)actionSheet.tag == 707)
-    {
+//    if ((long)actionSheet.tag == 707)
+//    {
         NSLog(@"INDEX==%ld",(long)buttonIndex);
         
         if (buttonIndex== 0)
         {
-            [self sendEmail:nil];
+            if (![MFMailComposeViewController canSendMail])
+            {
+                NSLog(@"Mail services are not available");
+                
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Please configure your mailbox in order to invite a friend." preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:nil];
+                [alertController addAction:actionOk];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+                return;
+            }
+            else
+            {
+                MFMailComposeViewController *mailCont = [[MFMailComposeViewController alloc] init];
+                mailCont.mailComposeDelegate = self;
+                [mailCont setToRecipients:[NSArray arrayWithObject:[[ArryMerge_twitterlistSection1 objectAtIndex:(long)actionSheet.tag]valueForKey:@"friendemail"]]];
+                
+                [mailCont setSubject:@"Download Play:Date"];
+                [mailCont setMessageBody:@"Hey, \n\n Play:Date is a great app to find friends for your children. I have been using it since a while, and it would be great if you could download it! \n\n Visit http://www.play-date.ae to download it on your mobile phone! \n\n Thanks!" isHTML:NO];
+                
+                [self presentViewController:mailCont animated:YES completion:nil];
+                
+            }
+            
+            
         }
         else  if (buttonIndex== 1)
         {
-           [self sendMessage:nil];
+            if([MFMessageComposeViewController canSendText]) {
+                MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init]; // Create message VC
+                messageController.messageComposeDelegate = self; // Set delegate to current instance
+                
+                NSMutableArray *recipients = [[NSMutableArray alloc] init]; // Create an array to hold the recipients
+                [recipients addObject:[[ArryMerge_twitterlistSection1 objectAtIndex:(long)actionSheet.tag]valueForKey:@"friendmobileno"]]; // Append example phone number to array
+                messageController.recipients = recipients; // Set the recipients of the message to the created array
+                
+                
+                
+                messageController.body = @"Play:Date is a great app to find friends for your children. I have been using it since a while, and it would be great if you could download it! \n\n Visit http://www.play-date.ae to download it on your mobile phone!"; // Set initial text to example message
+                
+                dispatch_async(dispatch_get_main_queue(), ^{ // Present VC when possible
+                    [self presentViewController:messageController animated:YES completion:NULL];
+                });
+            }
         }
     }
     
-}
+//}
 
 -(void)sendEmail:(UIButton *)sender
 {
