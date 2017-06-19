@@ -460,8 +460,11 @@ static const CGFloat kButtonSpaceHided = 24.0f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return Array_Comment1.count+1;
+    if (Array_Comment1.count !=0)
+    {
+        return Array_Comment1.count+1;
+    }
+    return 0;
     
     
     
@@ -550,7 +553,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         calnderView = [[UIView alloc] initWithFrame:CGRectZero];
         calnderView.clipsToBounds=YES;
         calnderView.layer.cornerRadius=15.0f;
-        [calnderView setBackgroundColor:[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1]];
+        [calnderView setBackgroundColor:[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:1]];
         [[Cell_one1 contentView] addSubview:calnderView];
         
         
@@ -564,8 +567,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         Button_AddCalnder = [[UIButton alloc] initWithFrame:CGRectZero];
         [Button_AddCalnder setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:Button_AddCalnder];
-        [Button_AddCalnder setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16]];
-        [Button_AddCalnder setTitle:@"ADD TO MY CALANDER" forState:UIControlStateNormal];
+        [Button_AddCalnder setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
+        [Button_AddCalnder setTitle:@"ADD TO MY CALENDAR" forState:UIControlStateNormal];
         
         Button_AddCalnder.titleLabel.minimumScaleFactor = 0.5f;
         Button_AddCalnder.titleLabel.numberOfLines = 1;
@@ -576,41 +579,45 @@ static const CGFloat kButtonSpaceHided = 24.0f;
 //        Button_AddCalnder.titleLabel.lineBreakMode = NSLineBreakByClipping;
 //        
         
-        [Button_AddCalnder setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [Button_AddCalnder setTitleColor:[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1] forState:UIControlStateNormal];
         Button_IM = [[UIButton alloc] initWithFrame:CGRectZero];
         [Button_IM setBackgroundColor:[UIColor whiteColor]];
         [calnderView  addSubview:Button_IM];
-        [Button_IM setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]];
+        [Button_IM setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
         [Button_IM setTitle:@"I'M IN" forState:UIControlStateNormal];
-        [Button_IM setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [Button_IM setTitleColor:[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1] forState:UIControlStateNormal];
         
         Button_cantgo = [[UIButton alloc] initWithFrame:CGRectZero];
         [Button_cantgo setBackgroundColor:[UIColor whiteColor]];
         [calnderView  addSubview:Button_cantgo];
-        [Button_cantgo setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14]];
-        [Button_cantgo setTitle:@"CANT'T GO" forState:UIControlStateNormal];
-        [Button_cantgo setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [Button_cantgo setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
+        [Button_cantgo setTitle:@"CAN'T GO" forState:UIControlStateNormal];
+        [Button_cantgo setTitleColor:[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1] forState:UIControlStateNormal];
         
         label_caltitle = [[UILabel alloc] initWithFrame:CGRectZero];
         [label_caltitle setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:label_caltitle];
         label_caltitle.textAlignment=NSTextAlignmentCenter;
-        label_caltitle.font=[UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
+        label_caltitle.font=[UIFont fontWithName:@"Helvetica-Bold" size:16];
         label_caltitle.text=@"Let's to the beach!";
+        label_caltitle.textColor=[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
         
         label_callocation = [[UILabel alloc] initWithFrame:CGRectZero];
         [label_callocation setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:label_callocation];
         label_callocation.textAlignment=NSTextAlignmentCenter;
-        label_callocation.font=[UIFont fontWithName:@"HelveticaNeue" size:14];
+        label_callocation.font=[UIFont fontWithName:@"Helvetica" size:13];
         label_callocation.text=@"Let's to the beach!";
+          label_callocation.textColor=[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
         
         label_caltime = [[UILabel alloc] initWithFrame:CGRectZero];
         [label_caltime setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:label_caltime];
-        label_caltime.font=[UIFont fontWithName:@"HelveticaNeue" size:14];
+        label_caltime.font=[UIFont fontWithName:@"Helvetica" size:13];
         label_caltime.textAlignment=NSTextAlignmentCenter;
         label_caltime.text=@"Let's to the beach!";
+        label_time.textColor=[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1];
+        
         
         
         
@@ -859,15 +866,20 @@ static const CGFloat kButtonSpaceHided = 24.0f;
            
             
             desc_Imagepro.hidden=NO;
-          [calnderView setFrame:CGRectMake(55,25,self.view.frame.size.width-110, 200)];
+          [calnderView setFrame:CGRectMake(55,25,self.view.frame.size.width-110, 256)];
             
-            [Image_calnder setFrame:CGRectMake(89,20,25,25)];
-            [label_caltitle setFrame:CGRectMake(12,53,183,20)];
-            [label_callocation setFrame:CGRectMake(12,72,183, 20)];
-            [label_caltime setFrame:CGRectMake(12,90,183, 20)];
-            [Button_IM setFrame:CGRectMake(12,120,87, 27)];
-            [Button_cantgo setFrame:CGRectMake(111,120,87, 27)];
-            [Button_AddCalnder setFrame:CGRectMake(12,157,183, 29)];
+            [Image_calnder setFrame:CGRectMake((calnderView.frame.size.width/2)-13,20,26,26)];
+            
+            [label_caltitle setFrame:CGRectMake(12,Image_calnder.frame.size.height+Image_calnder.frame.origin.y+10,calnderView.frame.size.width-24,20)];
+            
+            [label_callocation setFrame:CGRectMake(12,label_caltitle.frame.size.height+label_caltitle.frame.origin.y+5,calnderView.frame.size.width-24, 20)];
+            
+            [label_caltime setFrame:CGRectMake(12,label_callocation.frame.size.height+label_callocation.frame.origin.y,calnderView.frame.size.width-24, 20)];
+            
+            [Button_IM setFrame:CGRectMake(label_caltime.frame.origin.x,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,100,34)];
+            [Button_cantgo setFrame:CGRectMake((label_caltime.frame.origin.x+label_caltime.frame.size.width)-100,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,100, 34)];
+            
+            [Button_AddCalnder setFrame:CGRectMake(12,Button_IM.frame.size.height+Button_IM.frame.origin.y+30,calnderView.frame.size.width-24, 34)];
             
             [Button_IM setTag:indexPath.row-1];
             [Button_cantgo setTag:indexPath.row-1];
@@ -1153,7 +1165,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         }
         else if ([[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"chattype"] isEqualToString:@"EVENT"])
         {
-            return 235;
+            return 291;
         }
         else
         {
