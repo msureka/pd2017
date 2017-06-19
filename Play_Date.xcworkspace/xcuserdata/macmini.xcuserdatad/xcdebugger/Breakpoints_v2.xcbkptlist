@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FriendsViewController.m"
-            timestampString = "518597639.29764"
+            filePath = "SelectUsers/InviteSprintTagUserViewController.m"
+            timestampString = "519306910.112104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
+            landmarkName = "-connectionDidFinishLoading:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

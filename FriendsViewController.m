@@ -14,7 +14,8 @@
 #import "FriendRequestViewController.h"
 #import "ContactListViewController.h"
 #import "FacebookListViewController.h"
-
+#import "NavigationNewPlayDateViewController.h"
+#import "FriendCahtingViewControlleroneViewController.h"
 @interface FriendsViewController ()<UISearchBarDelegate>
 {
      NSTimer *HomechatTimer;
@@ -26,7 +27,7 @@
     NSDictionary *urlplist;
     NSURLConnection *Connection_Match,*Connection_Messages;
     NSMutableData *webData_Match,*webData_Messages;
-    NSMutableArray * Array_MatchMessages,*Array_Match,*Array_Messages,*Array_Comment1,*Array_Messages22,*Array_Request,*Array_RequestMessages;
+    NSMutableArray * Array_MatchMessages,*Array_Match,*Array_Messages,*Array_Comment1,*Array_Messages22,*Array_Request,*Array_RequestMessages,*array_createEvent,*Array_Meetups;
     NSArray *SearchCrickArray,*Array_Match1,*Array_Messages1,*Array_Request1;
     UIScrollView * scrollView;
    
@@ -35,11 +36,13 @@
     UISearchBar * searchbar;
     NSMutableArray * myarr;
     NSMutableDictionary *dictionary;
+     CALayer *borderBottom_chat,*borderBottom_playdate;
+    NSString * Str_ChangeScreen;
 }
 @end
 
 @implementation FriendsViewController
-@synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two;
+@synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two,Button_chats,Button_playdates,Label_HeadTop,Button_Plustap,Cell_Two2;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -47,8 +50,18 @@
     defaults=[[NSUserDefaults alloc]init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLabel) name:@"UpdatenotificationChat" object:nil];
+    borderBottom_chat = [CALayer layer];
+    borderBottom_playdate = [CALayer layer];
+    Label_HeadTop.text=@"Friends";
+    Button_Plustap.tag=1;
+    [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
     
-    Array_Comment1=[[NSMutableArray alloc]init];
+    
+//    Button_chats.clipsToBounds=YES;
+//    Button_playdates.clipsToBounds=YES;
+    
+    
+        Array_Comment1=[[NSMutableArray alloc]init];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -258,10 +271,51 @@
                   forControlEvents:UIControlEventValueChanged];
     
    // [Table_Friend addSubview:self.refreshControl]; //uday
+    if ( [[defaults valueForKey:@"tapindex"] isEqualToString:@"yes"])
+    {
+        [defaults setObject:@"no" forKey:@"tapindex"];
+        [defaults synchronize];
+        Button_Plustap.tag=2;
+        Str_ChangeScreen=@"playdate";
+        Label_HeadTop.text=@"Create a Play:Date";
+        [Button_chats setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [Button_playdates setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
+        borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+        borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-2.5, Button_playdates.frame.size.width, 2.5);
+        [Button_playdates.layer addSublayer:borderBottom_playdate];
+        
+        
+        
+        borderBottom_chat.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+        borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-1, Button_chats.frame.size.width, 1);
+        [Button_chats.layer addSublayer:borderBottom_chat];
+          [self communication_Eventsmeetups];
+        [Table_Friend reloadData];
+
+    }
+    else
+    {
+        Button_Plustap.tag=1;
+        Str_ChangeScreen=@"chats";
+        Label_HeadTop.text=@"Friends";
+        [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
+        [Button_playdates setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        
+        borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+        borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
+        [Button_chats.layer addSublayer:borderBottom_chat];
+        
+        borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+        borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
+        [Button_playdates.layer addSublayer:borderBottom_playdate];
+        
+        [self NewMatchServerComm];
+        [Table_Friend reloadData];
+        
+       
+    }
     
-    
-    [self NewMatchServerComm];
-    
+    // [self NewMatchServerComm];
     
     
 //     HomechatTimer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(NewMatchServerComm) userInfo:nil  repeats:YES];
@@ -272,9 +326,27 @@
     
     
 }
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+//    borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+//    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
+//    [Button_chats.layer addSublayer:borderBottom_chat];
+//    
+//    
+//    
+//    
+//    
+//    
+//    borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+//    borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
+//    [Button_playdates.layer addSublayer:borderBottom_playdate];
 
+}
 -(void)homeTimer
 {
+    
     
     HomechatTimer =  [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(NewMatchServerComm) userInfo:nil  repeats:YES];
     
@@ -349,39 +421,46 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (section==0)
-//    {
-//        return 0;
-//    }
-//    if (section==1)
-//    {
-//        return 1;
-//    }
-//    if (section==2)
-//    {
-//        return Array_Messages.count;
-//    }
-//       return 0;
+
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
+        if (section==0)
+        {
+            return 0;
+        }
+        if (section==1)
+        {
+            return 1;
+        }
+        if (section==2)
+        {
+            return 1;
+        }
+        if (section==3)
+        {
+            return Array_Messages.count;
+        }
+    }
+    if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    {
+        
+        if (section==0)
+        {
+            return 0;
+        }
+        if (section==1)
+        {
+            return 1;
+        }
+       
+        if (section==2)
+        {
+            return Array_Meetups.count;
+        }
+        
+    }
     
-    
-    //-----------uday-----------------
-    
-    if (section==0)
-    {
-        return 0;
-    }
-    if (section==1)
-    {
-        return 1;
-    }
-    if (section==2)
-    {
-        return 1;
-    }
-    if (section==3)
-    {
-        return Array_Messages.count;
-    }
+   
     return 0;
     
     
@@ -389,42 +468,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section==0)
-//    {
-//        return 0;
-//    }
-//    
-//    if (indexPath.section==1)
-//    {
-//        if (Array_Match.count==0)
-//        {
-//            return 0;
-//        }
-//        else
-//        {
-//           return 138;
-//        }
-//        
-//    
-//    }
-//    if (indexPath.section==2)
-//    {
-//        
-//        if (Array_Messages.count==0)
-//        {
-//            return 0;
-//        }
-//        else
-//        {
-//           return 98;
-//        }
-//        
-//   
-//    }
-//     return 0;
-    
-    //-----------uday-----------------
 
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
     if (indexPath.section==0)
     {
         return 0;
@@ -471,6 +517,44 @@
         
         
     }
+    }
+    
+    if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    {
+        if (indexPath.section==0)
+        {
+            return 0;
+        }
+        
+        if (indexPath.section==1)
+        {
+            if (Array_Match.count==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 138;
+            }
+            
+            
+        }
+        
+        if (indexPath.section==2)
+        {
+            
+            if (Array_Meetups.count==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 98;
+            }
+            
+            
+        }
+    }
     return 0;
     
     
@@ -482,9 +566,10 @@
     
     
     static NSString *cellId2=@"CellTwo";
-
+static NSString * Cellid111=@"Cellmeet";
     
-    
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
     switch (indexPath.section)
     {
          
@@ -980,19 +1065,366 @@
           
     
 }
+}
+    
+  if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    
+    {
+        switch (indexPath.section)
+        {
+                
+            case 0:
+            {
+                return 0;
+            }
+                break;
+            case 1:
+            {
+                
+                Cell_One = (FriendsSeconeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:Cellid1 forIndexPath:indexPath];
+                
+                for(UIImageView* view in Cell_One.myscrollView.subviews)
+                {
+                    
+                    [view removeFromSuperview];
+                    
+                }
+                
+                
+                
+                
+                CALayer *borderBottomViewTap6 = [CALayer layer];
+                borderBottomViewTap6.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+                borderBottomViewTap6.frame = CGRectMake(0, Cell_One.myscrollView.frame.size.height - 1, Cell_One.myscrollView.frame.size.width, 1);
+                [Cell_One.myscrollView.layer addSublayer:borderBottomViewTap6];
+                
+                for (int i=0; i<Array_Match.count; i++)
+                {
+                    
+                    UIImageView * Imagepro = [[UIImageView alloc] initWithFrame:CGRectMake(Xpostion, Ypostion, Xwidth, Yheight)];
+                    UILabel * Label_name = [[UILabel alloc] initWithFrame:CGRectMake(Xpostion, Ypostion_label, Xwidth, Yheight_label)];
+                    
+                    
+                    Imagepro.userInteractionEnabled=YES;
+                    
+                    [Imagepro setTag:i];
+                    
+                    
+                    UITapGestureRecognizer * ImageTap =[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(ImageTapped_profile:)];
+                    [Imagepro addGestureRecognizer:ImageTap];
+                    
+                    
+                    Imagepro.clipsToBounds=YES;
+                    Imagepro.layer.cornerRadius=Imagepro.frame.size.height/2;
+                    [Imagepro setBackgroundColor:[UIColor clearColor]];
+                    Label_name.backgroundColor=[UIColor clearColor];
+                    Label_name.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+                    //                [Imagepro setImage:[UIImage imageNamed:[Array_Match objectAtIndex:i]]];
+                    
+                    Label_name.text=[[Array_Match objectAtIndex:i]valueForKey:@"fname"];
+                    
+                    
+                    
+                    
+                    Label_name.font = [UIFont fontWithName:@"Helvetica-Bold" size:14]; //custom font
+                    Label_name.numberOfLines = 1;
+                    Label_name.adjustsFontSizeToFitWidth=YES;
+                    Label_name.minimumScaleFactor=0.5;
+                    //                Label_name.baselineAdjustment = YES;
+                    //                Label_name.adjustsFontSizeToFitWidth = YES;
+                    //                Label_name.adjustsLetterSpacingToFitWidth = YES;
+                    
+                    Label_name.textAlignment=NSTextAlignmentCenter;
+                    
+                    //----------------------------------latest edit 1 apr ---------------------------------------------------
+                    
+                    NSString *textfname=[[Array_Match objectAtIndex:i]valueForKey:@"fname"];
+                    
+                    if (searchString.length==0)
+                        
+                    {
+                        
+                        Label_name.text=[[Array_Match objectAtIndex:i]valueForKey:@"fname"];
+                        Label_name.backgroundColor=[UIColor clearColor];
+                        Label_name.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+                        
+                    }
+                    
+                    else
+                        
+                    {
+                        
+                        //commented by uday
+                        
+                        
+                        NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];
+                        
+                        
+                        NSRegularExpression *regexfname = [NSRegularExpression regularExpressionWithPattern:searchString options:NSRegularExpressionCaseInsensitive error:nil];
+                        
+                        
+                        NSRange rangefname = NSMakeRange(0 ,textfname.length);
+                        
+                        
+                        [regexfname enumerateMatchesInString:textfname options:kNilOptions range:rangefname usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                            
+                            NSRange subStringRange = [result rangeAtIndex:0];
+                            [mutableAttributedStringfname addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:subStringRange];
+                        }];
+                        
+                        if ([FlagSearchBar isEqualToString:@"yes"])
+                        {
+                            
+                            Label_name.attributedText=mutableAttributedStringfname;
+                        }
+                        else
+                        {
+                            
+                            Label_name.text=[[Array_Match objectAtIndex:i]valueForKey:@"fname"];
+                            
+                            FlagSearchBar=@"no";
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    //-------------------------------------------------------------------------------------------------------------
+                    
+                    
+                    
+                    
+                    [Cell_One.myscrollView addSubview:Label_name];
+                    [Cell_One.myscrollView addSubview:Imagepro];
+                    
+                    
+                    
+                    NSURL * url=[[Array_Match objectAtIndex:i]valueForKey:@"profilepic"];
+                    
+                    if ([[[Array_Match objectAtIndex:i]valueForKey:@"gender"] isEqualToString:@"Boy"])
+                    {
+                        
+                        
+                        
+                        [Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"defaultboy.jpg"]options:SDWebImageRefreshCached];
+                        
+                    }
+                    else
+                    {
+                        [Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"girlpictureframe 1.png"]options:SDWebImageRefreshCached];
+                    }
+                    
+                    
+                    
+                    Xpostion+=Xwidth+20;
+                    //Xpostion_label+=Xwidth_label+12;
+                    
+                    ScrollContentSize+=Xwidth;
+                    Cell_One.myscrollView.contentSize=CGSizeMake(Xpostion, 125);
+                }
+                
+                
+                
+                Xpostion=12;
+                Ypostion=16;
+                Xwidth=72;
+                Yheight=72;
+                ScrollContentSize=0;
+                Xpostion_label=12;
+                Ypostion_label=87;
+                Xwidth_label=72;
+                Yheight_label=22;
+                if (Array_Match.count==0)
+                {
+                    Cell_One.Label_Noresult.hidden=NO;
+                }
+                else
+                {
+                    Cell_One.Label_Noresult.hidden=YES;
+                }
+                return Cell_One;
+                
+                
+            }
+                break;
+              
+               
+            case 2:
+                
+            {
+                
+                
+//                chattype = EVENT;
+//                createdate = "2017-06-16 11:44:33";
+//                creatorfbid = 1224819434269672;
+//                eventdate =     {
+//                    date = "2017-06-18 13:45:22.000000";
+//                    timezone = UTC;
+//                    "timezone_type" = 3;
+//                };
+//                eventdateformat = "18th June 2017, 1:45pm";
+//                eventdescription = Nznznznnz;
+//                eventid = QYLL0;
+//                eventtitle = Nznznzn;
+//                fname = test;
+//                gender = Boy;
+//                invitedate = "2017-06-16 11:44:33";
+//                location = "M M Mmz";
+//                message = Nznznzn;
+//                msgdate = "2017-06-16 11:44:33";
+//                msgread = self;
+                
+   
+                
+                
+                Cell_Two2 = (MymeetupsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:Cellid111 forIndexPath:indexPath];
+                NSURL * url=[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"profilepic"];
+           
+                
+                NSString *text;
+                if ([[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"chattype"] isEqualToString:@"TEXT"])
+                {
+                    text =[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"message"];
+                }
+                else
+                {
+                    text=@"Image";
+                }
+                
+                NSString *textfname=[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"eventtitle"];
+                
+                Cell_Two2.Label_Date.text=[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"eventdateformat"];
+                
+                
+                if (searchString.length==0)
+                {
+                    
+                    Cell_Two2.Label_name.text=[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"eventtitle"];
+                    Cell_Two2.Label_chatInfo.text=text;
+                    Cell_Two2.Label_chatInfo.textColor=[UIColor lightGrayColor];
+                    
+                }
+                else
+                {
+                    
+                    //commented by uday
+                    
+                    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:text];
+                    NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];
+                    
+                    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:searchString options:NSRegularExpressionCaseInsensitive error:nil];
+                    NSRegularExpression *regexfname = [NSRegularExpression regularExpressionWithPattern:searchString options:NSRegularExpressionCaseInsensitive error:nil];
+                    
+                    NSRange range = NSMakeRange(0 ,text.length);
+                    NSRange rangefname = NSMakeRange(0 ,textfname.length);
+                    
+                    [regex enumerateMatchesInString:text options:kNilOptions range:range usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                        
+                        NSRange subStringRange = [result rangeAtIndex:0];
+                        [mutableAttributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:subStringRange];
+                    }];
+                    
+                    [regexfname enumerateMatchesInString:textfname options:kNilOptions range:rangefname usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                        
+                        NSRange subStringRange = [result rangeAtIndex:0];
+                        [mutableAttributedStringfname addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:subStringRange];
+                    }];
+                    
+                    if ([FlagSearchBar isEqualToString:@"yes"])
+                    {
+                        Cell_Two2.Label_chatInfo.attributedText = mutableAttributedString;
+                        Cell_Two2.Label_name.attributedText=mutableAttributedStringfname;
+                    }
+                    else
+                    {
+                        
+                        
+                        
+                        Cell_Two2.Label_name.text=[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"eventtitle"];
+                        Cell_Two2.Label_chatInfo.text=text;
+                        Cell_Two2.Label_chatInfo.textColor=[UIColor lightGrayColor];
+                        
+                        FlagSearchBar=@"no";
+                        
+                    }
+                    
+                    
+                    
+                    //                   Cell_Two.Label_chatInfo.attributedText = mutableAttributedString;
+                    //                   Cell_Two.Label_name.attributedText=mutableAttributedStringfname;
+                    
+                    
+                }
+                
+                
+                if ([[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"gender"] isEqual:[NSNull null ]] || [[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"gender"] == nil)
+                    
+                {
+                    [Cell_Two2.Image_proview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:nil] options:SDWebImageRefreshCached];
+                }
+                
+                else
+                    
+                {
+                    if ([[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"gender"] isEqualToString:@"Boy"])
+                    {
+                        
+                        [Cell_Two2.Image_proview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"defaultboy.jpg"] options:SDWebImageRefreshCached];
+                        
+                        
+                        
+                    }
+                    else
+                    {
+                        [Cell_Two2.Image_proview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"girlpictureframe.png"] options:SDWebImageRefreshCached];
+                        
+                    }
+                }
+                
+                
+                
+                
+              
+                
+                return Cell_Two2;
+                
+            }
+                break;
+                
+                
+                
+        }
+    }
+    
      return nil;
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
-    return 4;//3
-    
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
+    return 4;
+    }
+    if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    {
+         return 3;
+    }
+    return 0;
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
     if (section==0)
     {
         sectionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,44)];
@@ -1019,7 +1451,7 @@
         sectionView.tag=section;
         
     }
-    //------------------------------------------UDAY---------------------------------------------------------
+  
     if (section==1)
     {
         sectionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,36)];
@@ -1047,7 +1479,7 @@
     }
 
    
-    //--------------------------------------------------------------------------------------------------------------
+    
     if (section==2)//1
     {
         sectionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,36)];
@@ -1110,16 +1542,111 @@
     
     return  sectionView;
     
+}
     
+    if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    {
+        if (section==0)
+        {
+            sectionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,44)];
+            //        [sectionView setBackgroundColor:[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:1]];
+            [sectionView setBackgroundColor:[UIColor whiteColor]];
+            searchbar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, sectionView.frame.size.height)];
+            searchbar.translucent=YES;
+            searchbar.delegate=self;
+            searchbar.searchBarStyle=UISearchBarStyleMinimal;
+            
+            [searchbar setShowsCancelButton:NO animated:YES];
+            [self searchBarCancelButtonClicked:searchbar];
+            
+            
+            //        [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor],UITextAttributeTextColor,[UIColor whiteColor],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, 2)],UITextAttributeTextShadowOffset,nil]forState:UIControlStateNormal];
+            
+            [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9], NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:16]} forState:UIControlStateNormal];
+            
+            
+            
+            [searchbar setTintColor:[UIColor lightGrayColor]];
+            //
+            [sectionView addSubview:searchbar];
+            sectionView.tag=section;
+            
+        }
+        
+        if (section==1)
+        {
+            sectionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,36)];
+            [sectionView setBackgroundColor:[UIColor whiteColor]]; //[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:1]];
+            UILabel * Label1=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width-40, sectionView.frame.size.height)];
+            Label1.backgroundColor=[UIColor clearColor];
+            Label1.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+            Label1.font=[UIFont fontWithName:@"Helvetica-Bold" size:16.0f];
+            Label1.text=@"New Invites";
+            
+            UILabel * Label2=[[UILabel alloc]initWithFrame:CGRectMake(130,6,24,24)];
+            Label2.backgroundColor=[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:1];//[UIColor lightGrayColor];
+            Label2.clipsToBounds=YES;
+            Label2.layer.cornerRadius=Label2.frame.size.height/2;
+            Label2.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+            Label2.font=[UIFont fontWithName:@"Helvetica-Bold" size:14.0f];
+            Label2.text=[NSString stringWithFormat:@"%lu",(unsigned long)Array_Match.count];
+            Label2.textAlignment=NSTextAlignmentCenter;
+            [sectionView addSubview:Label2];
+            
+            
+            [sectionView addSubview:Label1];
+            sectionView.tag=section;
+            
+        }
+        
+        if (section==2)
+        {
+            
+            sectionView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width,36)];
+            [sectionView setBackgroundColor:[UIColor whiteColor]];//[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:1]];
+            
+            
+            UILabel * Label1=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, self.view.frame.size.width-40, sectionView.frame.size.height)];
+            Label1.backgroundColor=[UIColor clearColor];
+            Label1.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+            Label1.font=[UIFont fontWithName:@"Helvetica-Bold" size:16.0f];
+            Label1.text=@"My Meetups";
+            
+            [sectionView addSubview:Label1];
+            UILabel * Label2=[[UILabel alloc]initWithFrame:CGRectMake(105,6,24,24)];
+            Label2.backgroundColor=[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:1];//[UIColor lightGrayColor];
+            Label2.clipsToBounds=YES;
+            Label2.layer.cornerRadius=Label2.frame.size.height/2;
+            Label2.textColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+            Label2.font=[UIFont fontWithName:@"Helvetica-Bold" size:14.0f];
+            Label2.text=[NSString stringWithFormat:@"%lu",(unsigned long)Array_Messages.count];
+            Label2.textAlignment=NSTextAlignmentCenter;
+            
+#pragma mark - message count hidden
+            
+            Label2.hidden = YES;
+            
+            [sectionView addSubview:Label2];
+            
+            sectionView.tag=section;
+            
+        }
+        
+        return  sectionView;
+        
+    }
     
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
     if (section==0)
     {
         return 44;
     }
-//---------------------------------------uday--------------------------------------------------------------------
+
     if (section==1)
     {
         if (Array_Request.count==0)
@@ -1133,7 +1660,7 @@
     }
 
     
-//---------------------------------------------------------------------------------------------------------------
+
     
     
     
@@ -1160,11 +1687,49 @@
         }
       
     }
+    }
+     if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    {
+        if (section==0)
+        {
+            return 44;
+        }
+        
+        if (section==1)
+        {
+            if (Array_Match.count==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 36;
+            }
+        }
+        
+        
+        if (section==2)
+        {
+            if (Array_Messages.count==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 36;
+            }
+            
+        }
+    }
+    
+    
     return 0;
   
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
     [self.view endEditing:YES];
 
     transparancyTuchView.hidden=YES;
@@ -1189,7 +1754,34 @@
 
         [self.navigationController pushViewController:set animated:YES];
     }
-    
+    }
+     if ([Str_ChangeScreen isEqualToString:@"playdate"])
+     {
+         [self.view endEditing:YES];
+         
+         transparancyTuchView.hidden=YES;
+         
+         
+         if (indexPath.section==2)//2
+         {
+             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+             
+             FriendCahtingViewControlleroneViewController * set=[mainStoryboard instantiateViewControllerWithIdentifier:@"FriendCahtingViewControlleroneViewController"];
+             if (indexPath.section==0)
+             {
+               
+             }
+             if (indexPath.section==2)
+             {
+                 NSDictionary * dic=[Array_Meetups objectAtIndex:indexPath.row];
+                 NSMutableArray * array_new=[[NSMutableArray alloc]init];
+                 [array_new addObject:dic];
+                 set.AllDataArray=array_new;
+             }
+             
+             [self.navigationController pushViewController:set animated:YES];
+         }
+     }
 }
 
 
@@ -1239,8 +1831,144 @@
     
     [self.navigationController pushViewController:set animated:YES];
 }
-
-
+-(void)communication_Eventsmeetups
+{
+    
+    
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        //        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        //        message.tag=100;
+        //        [message show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action)
+                                   {
+                                       exit(0);
+                                   }];
+        
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+    }
+    else
+    {
+    
+    NSString *fbid1= @"fbid";
+    NSString *fbid1Val=[defaults valueForKey:@"fid"];
+    
+    
+    
+    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@",fbid1,fbid1Val];
+    
+    
+    
+#pragma mark - swipe sesion
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    
+    NSURL *url;
+    NSString *  urlStrLivecount=[urlplist valueForKey:@"events"];;
+    url =[NSURL URLWithString:urlStrLivecount];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];//Web API Method
+    
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    
+    NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                     {
+                                         
+                                         if(data)
+                                         {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                             NSInteger statusCode = httpResponse.statusCode;
+                                             if(statusCode == 200)
+                                             {
+                                                 
+                array_createEvent=[[NSMutableArray alloc]init];
+             Array_Meetups=[[NSMutableArray alloc]init];
+                SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
+        array_createEvent=[objSBJsonParser objectWithData:data];
+            NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                 ;
+                                                 
+            ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                                                 
+                    NSLog(@"array_createEvent %@",array_createEvent);
+                                                 
+                NSLog(@"array_createEvent ResultString %@",ResultString);
+                                    if ([ResultString isEqualToString:@"inserterror"])
+                                                 {
+                              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"The server encountered an error and your Play:Date could not be created. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+                              UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                                                     [alertController addAction:actionOk];
+                            [self presentViewController:alertController animated:YES completion:nil];
+                                                     
+                                                     
+                                                 }
+                            if (array_createEvent.count !=0)
+                            {
+                                for (int i=0; i<array_createEvent.count; i++)
+                                {
+                                if (Array_Meetups.count==0)
+                                {
+                            [Array_Meetups addObject:[array_createEvent objectAtIndex:i]];
+                                }
+                                else
+                            {
+                                                         
+                                    for (NSInteger J=Array_Meetups.count-1; J<Array_Meetups.count; J++)
+                            {
+                        NSString * fbMatch=[[array_createEvent objectAtIndex:i]valueForKey:@"eventid"];
+                            NSString * fbMatch2=[[Array_Meetups objectAtIndex:J]valueForKey:@"eventid"];
+                                                             
+                                    if (![fbMatch2 isEqualToString:fbMatch])
+                                                             {
+                                                                 
+                            [Array_Meetups addObject:[array_createEvent objectAtIndex:i]];
+                                                                 break;
+                                                             }
+                                                             
+                                                         }
+                                                     }
+                                                 }
+                            }
+                                             }
+                                             
+                                             else
+                                             {
+                                                 NSLog(@" error login1 ---%ld",(long)statusCode);
+                                                
+                                                 
+                                             }
+                                             
+                                             
+                                         }
+                                         else if(error)
+                                         {
+ 
+                                             NSLog(@"error login2.......%@",error.description);
+                                         }
+                                         
+                                         
+                                     }];
+    [dataTask resume];
+    }
+}
 
 
 
@@ -1316,6 +2044,7 @@
     }
     
 }
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     
@@ -1614,6 +2343,7 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    
     [HomechatTimer invalidate];
     HomechatTimer=nil;
     
@@ -1803,9 +2533,19 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 }
 - (IBAction)Button_Plus:(id)sender
 {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Facebook friends",@"Invite contacts",nil];
-    popup.tag = 777;
-    [popup showInView:self.view];
+    if ([sender tag]==1)
+    {
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Facebook friends",@"Invite contacts",nil];
+        popup.tag = 777;
+        [popup showInView:self.view];
+    }
+    if ([sender tag]==2)
+    {
+        NSLog(@"button oplus tag is ==2");
+        NavigationNewPlayDateViewController *tvc=[self.storyboard instantiateViewControllerWithIdentifier:@"NavigationNewPlayDateViewController"];
+        [self.navigationController presentModalViewController:tvc animated:YES];
+    }
+   
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -1827,4 +2567,43 @@ for (int i=0; i<Array_MatchMessages.count; i++)
         }
     }
 }
+- (IBAction)Button_Chatscreen:(id)sender
+{
+      Button_Plustap.tag=1;
+       Str_ChangeScreen=@"chats";
+     Label_HeadTop.text=@"Friends";
+    [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
+    [Button_playdates setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    
+    borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
+    [Button_chats.layer addSublayer:borderBottom_chat];
+    
+        borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+    borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
+    [Button_playdates.layer addSublayer:borderBottom_playdate];
+    
+      [self NewMatchServerComm];
+    [Table_Friend reloadData];
+}
+- (IBAction)Button_PlayDatescreen:(id)sender
+{
+      Button_Plustap.tag=2;
+       Str_ChangeScreen=@"playdate";
+     Label_HeadTop.text=@"Create a Play:Date";
+   [Button_chats setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [Button_playdates setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
+    borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+    borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-2.5, Button_playdates.frame.size.width, 2.5);
+    [Button_playdates.layer addSublayer:borderBottom_playdate];
+    
+    
+    
+    borderBottom_chat.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-1, Button_chats.frame.size.width, 1);
+    [Button_chats.layer addSublayer:borderBottom_chat];
+    [Table_Friend reloadData];
+    [self communication_Eventsmeetups];
+}
+
 @end

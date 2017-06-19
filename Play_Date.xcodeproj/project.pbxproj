@@ -58,6 +58,19 @@
 		9A1C590A1E1A77E5009EA17C /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A1C59091E1A77E5009EA17C /* frame.png */; };
 		9A1C590C1E1A787E009EA17C /* 10154143609282724.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A1C590B1E1A787E009EA17C /* 10154143609282724.jpg */; };
 		9A1C590F1E1A7B0F009EA17C /* MainProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1C590E1E1A7B0F009EA17C /* MainProfileViewController.m */; };
+		9A1FFF3E1EF3B06C00CA9677 /* CLBackspaceDetectingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF261EF3B06C00CA9677 /* CLBackspaceDetectingTextField.m */; };
+		9A1FFF3F1EF3B06C00CA9677 /* CLToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF281EF3B06C00CA9677 /* CLToken.m */; };
+		9A1FFF401EF3B06C00CA9677 /* CLTokenInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF2A1EF3B06C00CA9677 /* CLTokenInputView.m */; };
+		9A1FFF411EF3B06C00CA9677 /* CLTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF2C1EF3B06C00CA9677 /* CLTokenView.m */; };
+		9A1FFF421EF3B06C00CA9677 /* InviteSprintTagUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF2E1EF3B06C00CA9677 /* InviteSprintTagUserViewController.m */; };
+		9A1FFF431EF3B06C00CA9677 /* InviteSprintUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF301EF3B06C00CA9677 /* InviteSprintUserTableViewCell.m */; };
+		9A1FFF441EF3B06C00CA9677 /* LCNContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF331EF3B06C00CA9677 /* LCNContactPickerView.m */; };
+		9A1FFF451EF3B06C00CA9677 /* LCNContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF361EF3B06C00CA9677 /* LCNContactModel.m */; };
+		9A1FFF461EF3B06C00CA9677 /* LCNContactViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF381EF3B06C00CA9677 /* LCNContactViewStyle.m */; };
+		9A1FFF471EF3B06C00CA9677 /* LCNContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF3B1EF3B06C00CA9677 /* LCNContactView.m */; };
+		9A1FFF481EF3B06C00CA9677 /* LCNTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF3D1EF3B06C00CA9677 /* LCNTextField.m */; };
+		9A1FFF4C1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF4B1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m */; };
+		9A1FFF4F1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF4E1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m */; };
 		9A31A2A91E3237B700974261 /* Teddy.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A31A2A81E3237B700974261 /* Teddy.png */; };
 		9A35101E1E43619300B3BA32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A35101D1E43619300B3BA32 /* CoreGraphics.framework */; };
 		9A3D2CF91E5569F3002E19A1 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A3D2CF61E5569F3002E19A1 /* tutorial.png */; };
@@ -201,6 +214,11 @@
 		9AC3923F1E1CED8800A63487 /* MainMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC3923E1E1CED8800A63487 /* MainMenuNavigationController.m */; };
 		9AC392421E1D030B00A63487 /* HowOldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC392411E1D030B00A63487 /* HowOldViewController.m */; };
 		9AC7211E1E52E08F00E88E6A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC7211D1E52E08F00E88E6A /* MessageUI.framework */; };
+		9AD3F1AF1EF2AE56005A215D /* MymeetupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */; };
+		9AD3F1B51EF2B165005A215D /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B21EF2B165005A215D /* calendar.png */; };
+		9AD3F1B61EF2B165005A215D /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B31EF2B165005A215D /* calendar@2x.png */; };
+		9AD3F1B71EF2B165005A215D /* calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B41EF2B165005A215D /* calendar@3x.png */; };
+		9AD3F1BA1EF2B98F005A215D /* NewPlayDateCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B91EF2B98F005A215D /* NewPlayDateCreateViewController.m */; };
 		9ADA72CB1E4DCE7C0061D820 /* AdProfileMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA72CA1E4DCE7C0061D820 /* AdProfileMatchViewController.m */; };
 		9AE13DDE1E44ACC500C747E6 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AE13DDD1E44ACC500C747E6 /* AirshipConfig.plist */; };
 		9AE13F561E44B3AA00C747E6 /* AirshipResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9AE13EE51E44B3A900C747E6 /* AirshipResources.bundle */; };
@@ -223,6 +241,9 @@
 		9AF0ECB51E24FB5D001A6B47 /* friends@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF0ECB11E24FB5D001A6B47 /* friends@3x.png */; };
 		9AF4EF451E335A5900F87794 /* ChatText1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF4EF441E335A5900F87794 /* ChatText1.plist */; };
 		9AFA74D21E17CE370032FD39 /* YSHYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA74D11E17CE370032FD39 /* YSHYClipViewController.m */; };
+		9AFD624B1EF4F856000D5A20 /* ChatTextPlayDate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AFD624A1EF4F856000D5A20 /* ChatTextPlayDate.plist */; };
+		9AFD629C1EF552D8000D5A20 /* Viewmeetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD629A1EF552D8000D5A20 /* Viewmeetup.m */; };
+		9AFD629D1EF552D8000D5A20 /* Viewmeetup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AFD629B1EF552D8000D5A20 /* Viewmeetup.xib */; };
 		9AFEF4081E4DEBAB00292760 /* downarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEF4051E4DEBAB00292760 /* downarrow.png */; };
 		9AFEF4091E4DEBAB00292760 /* downarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEF4061E4DEBAB00292760 /* downarrow@2x.png */; };
 		9AFEF40A1E4DEBAB00292760 /* downarrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEF4071E4DEBAB00292760 /* downarrow@3x.png */; };
@@ -373,6 +394,32 @@
 		9A1C590B1E1A787E009EA17C /* 10154143609282724.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10154143609282724.jpg; sourceTree = "<group>"; };
 		9A1C590D1E1A7B0F009EA17C /* MainProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainProfileViewController.h; sourceTree = "<group>"; };
 		9A1C590E1E1A7B0F009EA17C /* MainProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainProfileViewController.m; sourceTree = "<group>"; };
+		9A1FFF251EF3B06C00CA9677 /* CLBackspaceDetectingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBackspaceDetectingTextField.h; sourceTree = "<group>"; };
+		9A1FFF261EF3B06C00CA9677 /* CLBackspaceDetectingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBackspaceDetectingTextField.m; sourceTree = "<group>"; };
+		9A1FFF271EF3B06C00CA9677 /* CLToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLToken.h; sourceTree = "<group>"; };
+		9A1FFF281EF3B06C00CA9677 /* CLToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLToken.m; sourceTree = "<group>"; };
+		9A1FFF291EF3B06C00CA9677 /* CLTokenInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTokenInputView.h; sourceTree = "<group>"; };
+		9A1FFF2A1EF3B06C00CA9677 /* CLTokenInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTokenInputView.m; sourceTree = "<group>"; };
+		9A1FFF2B1EF3B06C00CA9677 /* CLTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTokenView.h; sourceTree = "<group>"; };
+		9A1FFF2C1EF3B06C00CA9677 /* CLTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTokenView.m; sourceTree = "<group>"; };
+		9A1FFF2D1EF3B06C00CA9677 /* InviteSprintTagUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteSprintTagUserViewController.h; sourceTree = "<group>"; };
+		9A1FFF2E1EF3B06C00CA9677 /* InviteSprintTagUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteSprintTagUserViewController.m; sourceTree = "<group>"; };
+		9A1FFF2F1EF3B06C00CA9677 /* InviteSprintUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteSprintUserTableViewCell.h; sourceTree = "<group>"; };
+		9A1FFF301EF3B06C00CA9677 /* InviteSprintUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteSprintUserTableViewCell.m; sourceTree = "<group>"; };
+		9A1FFF321EF3B06C00CA9677 /* LCNContactPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNContactPickerView.h; sourceTree = "<group>"; };
+		9A1FFF331EF3B06C00CA9677 /* LCNContactPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCNContactPickerView.m; sourceTree = "<group>"; };
+		9A1FFF351EF3B06C00CA9677 /* LCNContactModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNContactModel.h; sourceTree = "<group>"; };
+		9A1FFF361EF3B06C00CA9677 /* LCNContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCNContactModel.m; sourceTree = "<group>"; };
+		9A1FFF371EF3B06C00CA9677 /* LCNContactViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNContactViewStyle.h; sourceTree = "<group>"; };
+		9A1FFF381EF3B06C00CA9677 /* LCNContactViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCNContactViewStyle.m; sourceTree = "<group>"; };
+		9A1FFF3A1EF3B06C00CA9677 /* LCNContactView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNContactView.h; sourceTree = "<group>"; };
+		9A1FFF3B1EF3B06C00CA9677 /* LCNContactView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCNContactView.m; sourceTree = "<group>"; };
+		9A1FFF3C1EF3B06C00CA9677 /* LCNTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNTextField.h; sourceTree = "<group>"; };
+		9A1FFF3D1EF3B06C00CA9677 /* LCNTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCNTextField.m; sourceTree = "<group>"; };
+		9A1FFF4A1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationNewPlayDateViewController.h; sourceTree = "<group>"; };
+		9A1FFF4B1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationNewPlayDateViewController.m; sourceTree = "<group>"; };
+		9A1FFF4D1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCahtingViewControlleroneViewController.h; sourceTree = "<group>"; };
+		9A1FFF4E1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCahtingViewControlleroneViewController.m; sourceTree = "<group>"; };
 		9A31A2A81E3237B700974261 /* Teddy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Teddy.png; path = Play_Date/Teddy.png; sourceTree = "<group>"; };
 		9A35101D1E43619300B3BA32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9A3D2CF61E5569F3002E19A1 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
@@ -591,6 +638,13 @@
 		9AC392401E1D030B00A63487 /* HowOldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowOldViewController.h; sourceTree = "<group>"; };
 		9AC392411E1D030B00A63487 /* HowOldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowOldViewController.m; sourceTree = "<group>"; };
 		9AC7211D1E52E08F00E88E6A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9AD3F1AD1EF2AE56005A215D /* MymeetupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MymeetupsTableViewCell.h; sourceTree = "<group>"; };
+		9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MymeetupsTableViewCell.m; sourceTree = "<group>"; };
+		9AD3F1B21EF2B165005A215D /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		9AD3F1B31EF2B165005A215D /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		9AD3F1B41EF2B165005A215D /* calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@3x.png"; sourceTree = "<group>"; };
+		9AD3F1B81EF2B98F005A215D /* NewPlayDateCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlayDateCreateViewController.h; sourceTree = "<group>"; };
+		9AD3F1B91EF2B98F005A215D /* NewPlayDateCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlayDateCreateViewController.m; sourceTree = "<group>"; };
 		9ADA72C91E4DCE7C0061D820 /* AdProfileMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdProfileMatchViewController.h; sourceTree = "<group>"; };
 		9ADA72CA1E4DCE7C0061D820 /* AdProfileMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdProfileMatchViewController.m; sourceTree = "<group>"; };
 		9AE13DDD1E44ACC500C747E6 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
@@ -718,6 +772,10 @@
 		9AF4EF441E335A5900F87794 /* ChatText1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChatText1.plist; sourceTree = "<group>"; };
 		9AFA74D01E17CE370032FD39 /* YSHYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSHYClipViewController.h; sourceTree = "<group>"; };
 		9AFA74D11E17CE370032FD39 /* YSHYClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSHYClipViewController.m; sourceTree = "<group>"; };
+		9AFD624A1EF4F856000D5A20 /* ChatTextPlayDate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChatTextPlayDate.plist; sourceTree = "<group>"; };
+		9AFD62991EF552D8000D5A20 /* Viewmeetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewmeetup.h; sourceTree = "<group>"; };
+		9AFD629A1EF552D8000D5A20 /* Viewmeetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Viewmeetup.m; sourceTree = "<group>"; };
+		9AFD629B1EF552D8000D5A20 /* Viewmeetup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Viewmeetup.xib; sourceTree = "<group>"; };
 		9AFEF4051E4DEBAB00292760 /* downarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downarrow.png; sourceTree = "<group>"; };
 		9AFEF4061E4DEBAB00292760 /* downarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downarrow@2x.png"; sourceTree = "<group>"; };
 		9AFEF4071E4DEBAB00292760 /* downarrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downarrow@3x.png"; sourceTree = "<group>"; };
@@ -851,6 +909,67 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		9A1FFF231EF3B06C00CA9677 /* SelectUsers */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FFF241EF3B06C00CA9677 /* CLTokenInputView */,
+				9A1FFF2D1EF3B06C00CA9677 /* InviteSprintTagUserViewController.h */,
+				9A1FFF2E1EF3B06C00CA9677 /* InviteSprintTagUserViewController.m */,
+				9A1FFF2F1EF3B06C00CA9677 /* InviteSprintUserTableViewCell.h */,
+				9A1FFF301EF3B06C00CA9677 /* InviteSprintUserTableViewCell.m */,
+				9A1FFF311EF3B06C00CA9677 /* LCNContactPicker */,
+			);
+			path = SelectUsers;
+			sourceTree = "<group>";
+		};
+		9A1FFF241EF3B06C00CA9677 /* CLTokenInputView */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FFF251EF3B06C00CA9677 /* CLBackspaceDetectingTextField.h */,
+				9A1FFF261EF3B06C00CA9677 /* CLBackspaceDetectingTextField.m */,
+				9A1FFF271EF3B06C00CA9677 /* CLToken.h */,
+				9A1FFF281EF3B06C00CA9677 /* CLToken.m */,
+				9A1FFF291EF3B06C00CA9677 /* CLTokenInputView.h */,
+				9A1FFF2A1EF3B06C00CA9677 /* CLTokenInputView.m */,
+				9A1FFF2B1EF3B06C00CA9677 /* CLTokenView.h */,
+				9A1FFF2C1EF3B06C00CA9677 /* CLTokenView.m */,
+			);
+			path = CLTokenInputView;
+			sourceTree = "<group>";
+		};
+		9A1FFF311EF3B06C00CA9677 /* LCNContactPicker */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FFF321EF3B06C00CA9677 /* LCNContactPickerView.h */,
+				9A1FFF331EF3B06C00CA9677 /* LCNContactPickerView.m */,
+				9A1FFF341EF3B06C00CA9677 /* Model */,
+				9A1FFF391EF3B06C00CA9677 /* View */,
+			);
+			path = LCNContactPicker;
+			sourceTree = "<group>";
+		};
+		9A1FFF341EF3B06C00CA9677 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FFF351EF3B06C00CA9677 /* LCNContactModel.h */,
+				9A1FFF361EF3B06C00CA9677 /* LCNContactModel.m */,
+				9A1FFF371EF3B06C00CA9677 /* LCNContactViewStyle.h */,
+				9A1FFF381EF3B06C00CA9677 /* LCNContactViewStyle.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9A1FFF391EF3B06C00CA9677 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A1FFF3A1EF3B06C00CA9677 /* LCNContactView.h */,
+				9A1FFF3B1EF3B06C00CA9677 /* LCNContactView.m */,
+				9A1FFF3C1EF3B06C00CA9677 /* LCNTextField.h */,
+				9A1FFF3D1EF3B06C00CA9677 /* LCNTextField.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9A3E9D0F1EE94F1D008BDA3B /* plusandbackpd */ = {
 			isa = PBXGroup;
 			children = (
@@ -922,6 +1041,7 @@
 				9A40A1DE1E138657007E7C37 /* Info.plist */,
 				9A9CF00E1E2F37F4007885BE /* ChatText.plist */,
 				9AF4EF441E335A5900F87794 /* ChatText1.plist */,
+				9AFD624A1EF4F856000D5A20 /* ChatTextPlayDate.plist */,
 				9A40A1CD1E138656007E7C37 /* Supporting Files */,
 				9A0339AB1E1521780024C30A /* NameView1ViewController.h */,
 				9A0339AC1E1521780024C30A /* NameView1ViewController.m */,
@@ -1180,10 +1300,18 @@
 				9AAF10DF1E1B8ABC0065CA75 /* ProfileUserViewController.m */,
 				9AAF10E11E1B8AD50065CA75 /* FriendsViewController.h */,
 				9AAF10E21E1B8AD50065CA75 /* FriendsViewController.m */,
+				9A1FFF4A1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.h */,
+				9A1FFF4B1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m */,
+				9AD3F1B81EF2B98F005A215D /* NewPlayDateCreateViewController.h */,
+				9AD3F1B91EF2B98F005A215D /* NewPlayDateCreateViewController.m */,
+				9A1FFF231EF3B06C00CA9677 /* SelectUsers */,
 				9A5AA38F1EE929BF00274F3C /* ContactList */,
 				9A5AA3961EE929BF00274F3C /* FacebookList */,
 				9AB37B271E2DFAB400CBD599 /* FriendCahtingViewController.h */,
+				9AFD62981EF552D8000D5A20 /* ViewCalnder */,
 				9AB37B281E2DFAB500CBD599 /* FriendCahtingViewController.m */,
+				9A1FFF4D1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.h */,
+				9A1FFF4E1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m */,
 				619334EB1EAF2179006ADBF7 /* FriendRequestViewController.h */,
 				619334EC1EAF2179006ADBF7 /* FriendRequestViewController.m */,
 				9AE5BD351E4C386100737AF5 /* AdProfileViewController.h */,
@@ -1194,6 +1322,8 @@
 				9AE26AEB1E2C9B7A00F1B133 /* FriendsSecTwoTableViewCell.m */,
 				9AB37B321E2E3B1200CBD599 /* CustomTableViewCell.h */,
 				9AB37B331E2E3B1200CBD599 /* CustomTableViewCell.m */,
+				9AD3F1AD1EF2AE56005A215D /* MymeetupsTableViewCell.h */,
+				9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */,
 			);
 			name = HomeTabbarViews;
 			sourceTree = "<group>";
@@ -1201,6 +1331,7 @@
 		9AAF10E41E1B8DA50065CA75 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9AD3F1B11EF2B165005A215D /* calendarimage */,
 				9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */,
 				9A3E9D0F1EE94F1D008BDA3B /* plusandbackpd */,
 				9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */,
@@ -1296,6 +1427,17 @@
 				6185EB5B1E8E5D21005883A0 /* AccFiveTableViewCell.m */,
 			);
 			name = AccountSetting;
+			sourceTree = "<group>";
+		};
+		9AD3F1B11EF2B165005A215D /* calendarimage */ = {
+			isa = PBXGroup;
+			children = (
+				9AD3F1B21EF2B165005A215D /* calendar.png */,
+				9AD3F1B31EF2B165005A215D /* calendar@2x.png */,
+				9AD3F1B41EF2B165005A215D /* calendar@3x.png */,
+			);
+			name = calendarimage;
+			path = Play_Date/calendarimage;
 			sourceTree = "<group>";
 		};
 		9AE13EE31E44B3A900C747E6 /* Airship */ = {
@@ -1486,6 +1628,16 @@
 				9AE13F631E44B3C300C747E6 /* AirshipKit.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9AFD62981EF552D8000D5A20 /* ViewCalnder */ = {
+			isa = PBXGroup;
+			children = (
+				9AFD62991EF552D8000D5A20 /* Viewmeetup.h */,
+				9AFD629A1EF552D8000D5A20 /* Viewmeetup.m */,
+				9AFD629B1EF552D8000D5A20 /* Viewmeetup.xib */,
+			);
+			path = ViewCalnder;
 			sourceTree = "<group>";
 		};
 		E378024FB78569BE8B9E4F1A /* Pods */ = {
@@ -1718,6 +1870,7 @@
 				9AE13F561E44B3AA00C747E6 /* AirshipResources.bundle in Resources */,
 				9AB37B301E2E199400CBD599 /* Screenshot Filled-50.png in Resources */,
 				9AC30BDC1E54333E00920D8D /* ribbon@2x.png in Resources */,
+				9AD3F1B71EF2B165005A215D /* calendar@3x.png in Resources */,
 				9AA91B491E28E2090071500A /* nope.png in Resources */,
 				9AE13DDE1E44ACC500C747E6 /* AirshipConfig.plist in Resources */,
 				9AB37B2F1E2E199400CBD599 /* heart.png in Resources */,
@@ -1732,6 +1885,7 @@
 				9A3E9D171EE94F1D008BDA3B /* back@2x.png in Resources */,
 				9AE13F5A1E44B3AA00C747E6 /* copy_header_imports.sh in Resources */,
 				61B761911E72818F0017E215 /* MyView1.xib in Resources */,
+				9AFD624B1EF4F856000D5A20 /* ChatTextPlayDate.plist in Resources */,
 				9A4ACB211E24A51C00CD6D17 /* everywhere.png in Resources */,
 				9A1C590C1E1A787E009EA17C /* 10154143609282724.jpg in Resources */,
 				9A40A2131E138FD5007E7C37 /* Facebook_logo2.png in Resources */,
@@ -1744,6 +1898,7 @@
 				9A81E6D91E3F6BB400D3804E /* defaultboy.jpg in Resources */,
 				9A4ACB1A1E24A51C00CD6D17 /* afterschool.png in Resources */,
 				9A4ACB361E24C26900CD6D17 /* boypictureframe 2.png in Resources */,
+				9AFD629D1EF552D8000D5A20 /* Viewmeetup.xib in Resources */,
 				9A160C6A1E26292F00300BE7 /* profile1@3x.png in Resources */,
 				9A3D2CFB1E5569F3002E19A1 /* tutorial@3x.png in Resources */,
 				9A4ACB381E24C5C900CD6D17 /* girlpictureframe 1.png in Resources */,
@@ -1764,6 +1919,7 @@
 				9AB37B311E2E199400CBD599 /* Screenshot-50 (1).png in Resources */,
 				9A3D2CFA1E5569F3002E19A1 /* tutorial@2x.png in Resources */,
 				9A3D2D041E55CDB5002E19A1 /* Help@3x.png in Resources */,
+				9AD3F1B51EF2B165005A215D /* calendar.png in Resources */,
 				9A4ACB351E24C26900CD6D17 /* boypictureframe 1.png in Resources */,
 				9AC30BDD1E54333E00920D8D /* ribbon@3x.png in Resources */,
 				9A9CF00F1E2F37F4007885BE /* ChatText.plist in Resources */,
@@ -1781,6 +1937,7 @@
 				9A5F332D1E30E5D400C29894 /* Message1.png in Resources */,
 				9A4ACB1D1E24A51C00CD6D17 /* circle1.png in Resources */,
 				9A3E9D161EE94F1D008BDA3B /* back.png in Resources */,
+				9AD3F1B61EF2B165005A215D /* calendar@2x.png in Resources */,
 				9AF0ECB51E24FB5D001A6B47 /* friends@3x.png in Resources */,
 				9AF4EF451E335A5900F87794 /* ChatText1.plist in Resources */,
 				9A3E9D1B1EE94F1D008BDA3B /* plus@3x.png in Resources */,
@@ -1963,6 +2120,8 @@
 				9A5AA39F1EE929BF00274F3C /* FacebookoneTableViewCell.m in Sources */,
 				9AAF10FC1E1BCC550065CA75 /* AccThreeTableViewCell.m in Sources */,
 				9A08A0C31E49C67100013278 /* UIImageView+MHFacebookImageViewer.m in Sources */,
+				9AD3F1BA1EF2B98F005A215D /* NewPlayDateCreateViewController.m in Sources */,
+				9A1FFF421EF3B06C00CA9677 /* InviteSprintTagUserViewController.m in Sources */,
 				9A40A26A1E13C3C1007E7C37 /* SinupStepThreeViewController.m in Sources */,
 				9A40A2571E13958E007E7C37 /* SBJsonStreamParserAccumulator.m in Sources */,
 				9AAF10D01E1B85D60065CA75 /* UIButton+WebCache.m in Sources */,
@@ -1973,13 +2132,17 @@
 				9AE26AEC1E2C9B7A00F1B133 /* FriendsSecTwoTableViewCell.m in Sources */,
 				61B7618E1E72818F0017E215 /* MyView.m in Sources */,
 				9A0339B61E1521C50024C30A /* LocationView4ViewController.m in Sources */,
+				9A1FFF461EF3B06C00CA9677 /* LCNContactViewStyle.m in Sources */,
+				9A1FFF431EF3B06C00CA9677 /* InviteSprintUserTableViewCell.m in Sources */,
 				9AA91B451E28AB350071500A /* OverlayView1.m in Sources */,
 				61B761941E72818F0017E215 /* MyView3.m in Sources */,
 				9A40A2541E13958E007E7C37 /* SBJsonStreamParser.m in Sources */,
 				9AAF10D11E1B85D60065CA75 /* UIImage+GIF.m in Sources */,
+				9A1FFF4F1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m in Sources */,
 				9AAF10CF1E1B85D60065CA75 /* SDWebImagePrefetcher.m in Sources */,
 				9AAF10DD1E1B8A990065CA75 /* DiscoverViewController.m in Sources */,
 				9A7176051E4605FB00946281 /* PushHandler.m in Sources */,
+				9A1FFF411EF3B06C00CA9677 /* CLTokenView.m in Sources */,
 				9AFA74D21E17CE370032FD39 /* YSHYClipViewController.m in Sources */,
 				61B761921E72818F0017E215 /* MyView2.m in Sources */,
 				9A0339B01E15219A0024C30A /* DOBView2ViewController.m in Sources */,
@@ -2008,6 +2171,7 @@
 				9A3D2CFE1E556A87002E19A1 /* TutorialViewController.m in Sources */,
 				9AAF10D61E1B85D60065CA75 /* UIView+WebCacheOperation.m in Sources */,
 				9AE26AE91E2C9B5B00F1B133 /* FriendsSeconeTableViewCell.m in Sources */,
+				9AFD629C1EF552D8000D5A20 /* Viewmeetup.m in Sources */,
 				619334ED1EAF217A006ADBF7 /* FriendRequestViewController.m in Sources */,
 				9AAF10E31E1B8AD50065CA75 /* FriendsViewController.m in Sources */,
 				9AAF10A11E1B818A0065CA75 /* MainProfilenavigationController.m in Sources */,
@@ -2015,15 +2179,20 @@
 				9A08A0B91E49C67100013278 /* AFImageRequestOperation.m in Sources */,
 				9A40A2561E13958E007E7C37 /* SBJsonParser.m in Sources */,
 				9A6685831E1CD1D000246F9D /* SettingGenderViewController.m in Sources */,
+				9A1FFF401EF3B06C00CA9677 /* CLTokenInputView.m in Sources */,
+				9A1FFF451EF3B06C00CA9677 /* LCNContactModel.m in Sources */,
+				9A1FFF3F1EF3B06C00CA9677 /* CLToken.m in Sources */,
 				9A7BA9781E1FBEF900EAD34D /* OverlayView.m in Sources */,
 				9A0339B31E1521AD0024C30A /* GenderView3ViewController.m in Sources */,
 				9A0339BC1E1521EB0024C30A /* AboutView6ViewController.m in Sources */,
 				9AAF10C71E1B85D60065CA75 /* MKAnnotationView+WebCache.m in Sources */,
 				9A5AA39E1EE929BF00274F3C /* FacebookListViewController.m in Sources */,
 				9AAF10D21E1B85D60065CA75 /* UIImage+MultiFormat.m in Sources */,
+				9AD3F1AF1EF2AE56005A215D /* MymeetupsTableViewCell.m in Sources */,
 				9A0339BF1E153BCC0024C30A /* GenderViewTableViewCell.m in Sources */,
 				9A40A2641E13C373007E7C37 /* SinupStepOneViewController.m in Sources */,
 				9AAF10C81E1B85D60065CA75 /* NSData+ImageContentType.m in Sources */,
+				9A1FFF4C1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m in Sources */,
 				9A40A2291E139282007E7C37 /* Reachability.m in Sources */,
 				9A5BB3411E1E76EA00265DBB /* UIView+RNActivityView.m in Sources */,
 				9AAF10D31E1B85D60065CA75 /* UIImage+WebP.m in Sources */,
@@ -2034,6 +2203,8 @@
 				9A40A2551E13958E007E7C37 /* NSObject+SBJson.m in Sources */,
 				6185EB5C1E8E5D21005883A0 /* AccFiveTableViewCell.m in Sources */,
 				9A40A25E1E13958E007E7C37 /* SBJsonUTF8Stream.m in Sources */,
+				9A1FFF471EF3B06C00CA9677 /* LCNContactView.m in Sources */,
+				9A1FFF3E1EF3B06C00CA9677 /* CLBackspaceDetectingTextField.m in Sources */,
 				9A40A25F1E13958E007E7C37 /* SBJsonWriter.m in Sources */,
 				9A40A26D1E13C3E2007E7C37 /* SinupStepFourViewController.m in Sources */,
 				9A5BB3401E1E76EA00265DBB /* RNActivityView.m in Sources */,
@@ -2042,7 +2213,9 @@
 				9A08A0BD1E49C67100013278 /* AFURLConnectionOperation.m in Sources */,
 				9AE13F581E44B3AA00C747E6 /* AirshipCore.m in Sources */,
 				9A5AA39C1EE929BF00274F3C /* ContactListViewController.m in Sources */,
+				9A1FFF481EF3B06C00CA9677 /* LCNTextField.m in Sources */,
 				9A54E5551E236A7F00623412 /* DiscoverInfoViewController.m in Sources */,
+				9A1FFF441EF3B06C00CA9677 /* LCNContactPickerView.m in Sources */,
 				9A08A0BE1E49C67100013278 /* AFXMLRequestOperation.m in Sources */,
 				9A40A2671E13C39F007E7C37 /* SinupStepTwoViewController.m in Sources */,
 				9A0339B91E1521DA0024C30A /* LanguagesView5ViewController.m in Sources */,

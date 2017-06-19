@@ -42,5 +42,17 @@
 	<string>http://play-date.ae/app/invite_contacts.php</string>
 	<key>invite_fb</key>
 	<string>http://play-date.ae/app/invite_fb.php</string>
+	<key>createevent_addfriends</key>
+	<string>http://play-date.ae/app/createevent_addfriends.php</string>
+	<key>createevent</key>
+	<string>http://play-date.ae/app/createevent.php</string>
+	<key>events</key>
+	<string>http://play-date.ae/app/events.php</string>
+	<key>eventchat</key>
+	<string>http://play-date.ae/app/eventchat.php</string>
+	<key>addeventchat</key>
+	<string>http://play-date.ae/app/addeventchat.php</string>
+	<key>eventattending</key>
+	<string>http://play-date.ae/app/eventattending.php</string>
 </dict>
 </plist>

@@ -89,7 +89,7 @@
     item2.title = @"Friends";
     
    
-    if ([[defautls valueForKey:@"letsChat"] isEqualToString:@"yes"] || [[defautls valueForKey:@"letsChatAd"] isEqualToString:@"yes"])
+    if ([[defautls valueForKey:@"letsChat"] isEqualToString:@"yes"] || [[defautls valueForKey:@"letsChatAd"] isEqualToString:@"yes"] || [[defautls valueForKey:@"tapindex"] isEqualToString:@"yes"])
     {
         [defautls setObject:@"no" forKey:@"letsChat"];
         [defautls setObject:@"no" forKey:@"letsChatAd"];
@@ -100,7 +100,7 @@
     {
         self.selectedIndex=1;
     }
-
+    
     
     
     NSDictionary *theInfo = [NSDictionary dictionaryWithObjectsAndKeys:Array_AllDataPro,@"ArrayData", nil];
