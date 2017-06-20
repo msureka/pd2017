@@ -54,5 +54,11 @@
 	<string>http://play-date.ae/app/addeventchat.php</string>
 	<key>eventattending</key>
 	<string>http://play-date.ae/app/eventattending.php</string>
+	<key>eventdetails</key>
+	<string>http://play-date.ae/app/eventdetails.php</string>
+	<key>deleteevent</key>
+	<string>http://play-date.ae/app/deleteevent.php</string>
+	<key>editevent</key>
+	<string>http://play-date.ae/app/editevent.php</string>
 </dict>
 </plist>

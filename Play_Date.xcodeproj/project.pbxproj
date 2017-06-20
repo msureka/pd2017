@@ -71,6 +71,10 @@
 		9A1FFF481EF3B06C00CA9677 /* LCNTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF3D1EF3B06C00CA9677 /* LCNTextField.m */; };
 		9A1FFF4C1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF4B1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m */; };
 		9A1FFF4F1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1FFF4E1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m */; };
+		9A2352A31EF7DA6A0006B097 /* MeetupDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2352A21EF7DA6A0006B097 /* MeetupDetailsViewController.m */; };
+		9A2352A71EF7DAC50006B097 /* InvitemeetupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2352A61EF7DAC50006B097 /* InvitemeetupsTableViewCell.m */; };
+		9A2352AA1EF7DAE10006B097 /* AttendingMeetupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2352A91EF7DAE10006B097 /* AttendingMeetupTableViewCell.m */; };
+		9A2352AD1EF7EF590006B097 /* InvitemoremeetupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2352AC1EF7EF590006B097 /* InvitemoremeetupTableViewCell.m */; };
 		9A31A2A91E3237B700974261 /* Teddy.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A31A2A81E3237B700974261 /* Teddy.png */; };
 		9A35101E1E43619300B3BA32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A35101D1E43619300B3BA32 /* CoreGraphics.framework */; };
 		9A3D2CF91E5569F3002E19A1 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A3D2CF61E5569F3002E19A1 /* tutorial.png */; };
@@ -242,8 +246,6 @@
 		9AF4EF451E335A5900F87794 /* ChatText1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AF4EF441E335A5900F87794 /* ChatText1.plist */; };
 		9AFA74D21E17CE370032FD39 /* YSHYClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFA74D11E17CE370032FD39 /* YSHYClipViewController.m */; };
 		9AFD624B1EF4F856000D5A20 /* ChatTextPlayDate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AFD624A1EF4F856000D5A20 /* ChatTextPlayDate.plist */; };
-		9AFD629C1EF552D8000D5A20 /* Viewmeetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD629A1EF552D8000D5A20 /* Viewmeetup.m */; };
-		9AFD629D1EF552D8000D5A20 /* Viewmeetup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AFD629B1EF552D8000D5A20 /* Viewmeetup.xib */; };
 		9AFEF4081E4DEBAB00292760 /* downarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEF4051E4DEBAB00292760 /* downarrow.png */; };
 		9AFEF4091E4DEBAB00292760 /* downarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEF4061E4DEBAB00292760 /* downarrow@2x.png */; };
 		9AFEF40A1E4DEBAB00292760 /* downarrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AFEF4071E4DEBAB00292760 /* downarrow@3x.png */; };
@@ -420,6 +422,14 @@
 		9A1FFF4B1EF3B3C500CA9677 /* NavigationNewPlayDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationNewPlayDateViewController.m; sourceTree = "<group>"; };
 		9A1FFF4D1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCahtingViewControlleroneViewController.h; sourceTree = "<group>"; };
 		9A1FFF4E1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCahtingViewControlleroneViewController.m; sourceTree = "<group>"; };
+		9A2352A11EF7DA6A0006B097 /* MeetupDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetupDetailsViewController.h; sourceTree = "<group>"; };
+		9A2352A21EF7DA6A0006B097 /* MeetupDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetupDetailsViewController.m; sourceTree = "<group>"; };
+		9A2352A51EF7DAC50006B097 /* InvitemeetupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitemeetupsTableViewCell.h; sourceTree = "<group>"; };
+		9A2352A61EF7DAC50006B097 /* InvitemeetupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitemeetupsTableViewCell.m; sourceTree = "<group>"; };
+		9A2352A81EF7DAE10006B097 /* AttendingMeetupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendingMeetupTableViewCell.h; sourceTree = "<group>"; };
+		9A2352A91EF7DAE10006B097 /* AttendingMeetupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendingMeetupTableViewCell.m; sourceTree = "<group>"; };
+		9A2352AB1EF7EF590006B097 /* InvitemoremeetupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitemoremeetupTableViewCell.h; sourceTree = "<group>"; };
+		9A2352AC1EF7EF590006B097 /* InvitemoremeetupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitemoremeetupTableViewCell.m; sourceTree = "<group>"; };
 		9A31A2A81E3237B700974261 /* Teddy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Teddy.png; path = Play_Date/Teddy.png; sourceTree = "<group>"; };
 		9A35101D1E43619300B3BA32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9A3D2CF61E5569F3002E19A1 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
@@ -773,9 +783,6 @@
 		9AFA74D01E17CE370032FD39 /* YSHYClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSHYClipViewController.h; sourceTree = "<group>"; };
 		9AFA74D11E17CE370032FD39 /* YSHYClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSHYClipViewController.m; sourceTree = "<group>"; };
 		9AFD624A1EF4F856000D5A20 /* ChatTextPlayDate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ChatTextPlayDate.plist; sourceTree = "<group>"; };
-		9AFD62991EF552D8000D5A20 /* Viewmeetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewmeetup.h; sourceTree = "<group>"; };
-		9AFD629A1EF552D8000D5A20 /* Viewmeetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Viewmeetup.m; sourceTree = "<group>"; };
-		9AFD629B1EF552D8000D5A20 /* Viewmeetup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Viewmeetup.xib; sourceTree = "<group>"; };
 		9AFEF4051E4DEBAB00292760 /* downarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downarrow.png; sourceTree = "<group>"; };
 		9AFEF4061E4DEBAB00292760 /* downarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downarrow@2x.png"; sourceTree = "<group>"; };
 		9AFEF4071E4DEBAB00292760 /* downarrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downarrow@3x.png"; sourceTree = "<group>"; };
@@ -1308,7 +1315,6 @@
 				9A5AA38F1EE929BF00274F3C /* ContactList */,
 				9A5AA3961EE929BF00274F3C /* FacebookList */,
 				9AB37B271E2DFAB400CBD599 /* FriendCahtingViewController.h */,
-				9AFD62981EF552D8000D5A20 /* ViewCalnder */,
 				9AB37B281E2DFAB500CBD599 /* FriendCahtingViewController.m */,
 				9A1FFF4D1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.h */,
 				9A1FFF4E1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.m */,
@@ -1324,6 +1330,14 @@
 				9AB37B331E2E3B1200CBD599 /* CustomTableViewCell.m */,
 				9AD3F1AD1EF2AE56005A215D /* MymeetupsTableViewCell.h */,
 				9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */,
+				9A2352A11EF7DA6A0006B097 /* MeetupDetailsViewController.h */,
+				9A2352A21EF7DA6A0006B097 /* MeetupDetailsViewController.m */,
+				9A2352A51EF7DAC50006B097 /* InvitemeetupsTableViewCell.h */,
+				9A2352A61EF7DAC50006B097 /* InvitemeetupsTableViewCell.m */,
+				9A2352A81EF7DAE10006B097 /* AttendingMeetupTableViewCell.h */,
+				9A2352A91EF7DAE10006B097 /* AttendingMeetupTableViewCell.m */,
+				9A2352AB1EF7EF590006B097 /* InvitemoremeetupTableViewCell.h */,
+				9A2352AC1EF7EF590006B097 /* InvitemoremeetupTableViewCell.m */,
 			);
 			name = HomeTabbarViews;
 			sourceTree = "<group>";
@@ -1630,16 +1644,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9AFD62981EF552D8000D5A20 /* ViewCalnder */ = {
-			isa = PBXGroup;
-			children = (
-				9AFD62991EF552D8000D5A20 /* Viewmeetup.h */,
-				9AFD629A1EF552D8000D5A20 /* Viewmeetup.m */,
-				9AFD629B1EF552D8000D5A20 /* Viewmeetup.xib */,
-			);
-			path = ViewCalnder;
-			sourceTree = "<group>";
-		};
 		E378024FB78569BE8B9E4F1A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1898,7 +1902,6 @@
 				9A81E6D91E3F6BB400D3804E /* defaultboy.jpg in Resources */,
 				9A4ACB1A1E24A51C00CD6D17 /* afterschool.png in Resources */,
 				9A4ACB361E24C26900CD6D17 /* boypictureframe 2.png in Resources */,
-				9AFD629D1EF552D8000D5A20 /* Viewmeetup.xib in Resources */,
 				9A160C6A1E26292F00300BE7 /* profile1@3x.png in Resources */,
 				9A3D2CFB1E5569F3002E19A1 /* tutorial@3x.png in Resources */,
 				9A4ACB381E24C5C900CD6D17 /* girlpictureframe 1.png in Resources */,
@@ -2123,6 +2126,7 @@
 				9AD3F1BA1EF2B98F005A215D /* NewPlayDateCreateViewController.m in Sources */,
 				9A1FFF421EF3B06C00CA9677 /* InviteSprintTagUserViewController.m in Sources */,
 				9A40A26A1E13C3C1007E7C37 /* SinupStepThreeViewController.m in Sources */,
+				9A2352A71EF7DAC50006B097 /* InvitemeetupsTableViewCell.m in Sources */,
 				9A40A2571E13958E007E7C37 /* SBJsonStreamParserAccumulator.m in Sources */,
 				9AAF10D01E1B85D60065CA75 /* UIButton+WebCache.m in Sources */,
 				9AAF11001E1BD39A0065CA75 /* AccFourTableViewCell.m in Sources */,
@@ -2160,6 +2164,7 @@
 				9AAF10CE1E1B85D60065CA75 /* SDWebImageManager.m in Sources */,
 				9A40A25A1E13958E007E7C37 /* SBJsonStreamWriter.m in Sources */,
 				9AAF10FD1E1BCC550065CA75 /* AccTwoTableViewCell.m in Sources */,
+				9A2352AA1EF7DAE10006B097 /* AttendingMeetupTableViewCell.m in Sources */,
 				9ADA72CB1E4DCE7C0061D820 /* AdProfileMatchViewController.m in Sources */,
 				9A0339AD1E1521780024C30A /* NameView1ViewController.m in Sources */,
 				9A40A25B1E13958E007E7C37 /* SBJsonStreamWriterAccumulator.m in Sources */,
@@ -2171,9 +2176,9 @@
 				9A3D2CFE1E556A87002E19A1 /* TutorialViewController.m in Sources */,
 				9AAF10D61E1B85D60065CA75 /* UIView+WebCacheOperation.m in Sources */,
 				9AE26AE91E2C9B5B00F1B133 /* FriendsSeconeTableViewCell.m in Sources */,
-				9AFD629C1EF552D8000D5A20 /* Viewmeetup.m in Sources */,
 				619334ED1EAF217A006ADBF7 /* FriendRequestViewController.m in Sources */,
 				9AAF10E31E1B8AD50065CA75 /* FriendsViewController.m in Sources */,
+				9A2352AD1EF7EF590006B097 /* InvitemoremeetupTableViewCell.m in Sources */,
 				9AAF10A11E1B818A0065CA75 /* MainProfilenavigationController.m in Sources */,
 				9A40A25D1E13958E007E7C37 /* SBJsonTokeniser.m in Sources */,
 				9A08A0B91E49C67100013278 /* AFImageRequestOperation.m in Sources */,
@@ -2225,6 +2230,7 @@
 				9A08A0BA1E49C67100013278 /* AFJSONRequestOperation.m in Sources */,
 				9A08A0C21E49C67100013278 /* MHFacebookImageViewer.m in Sources */,
 				9AAF10C91E1B85D60065CA75 /* SDImageCache.m in Sources */,
+				9A2352A31EF7DA6A0006B097 /* MeetupDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -454,10 +454,13 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (Array_Comment1.count !=0)
+    {
+         return Array_Comment1.count+1;
+    }
     
-      return Array_Comment1.count+1;
   
-    
+     return 0;
     
 }
 

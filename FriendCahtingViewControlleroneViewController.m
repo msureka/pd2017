@@ -18,7 +18,8 @@
 #import "AdProfileViewController.h"
 #import "Reachability.h"
 #import "SBJsonParser.h"
-#import "Viewmeetup.h"
+
+#import "MeetupDetailsViewController.h"
 static NSString* const CellIdentifier = @"DynamicTableViewCell";
 #define FONT_SIZE 16.0f
 #define CELL_CONTENT_WIDTH self.view.frame.size.width-138
@@ -55,7 +56,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     
     NSArray *previousArray;
     
-    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone;
+    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone,Button_width;
     NSString * flag1,*flag2,*flag3,*eventidval,*statusval;
     BOOL statusTextView;
     CGRect previousRect;
@@ -119,9 +120,9 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     //    Image_UserProfile.clipsToBounds = YES;
     //    Image_UserProfile.layer.cornerRadius = Image_UserProfile.frame.size.height / 2;
     
-    NSURL * url=[NSURL URLWithString:[[AllDataArray objectAtIndex:0] valueForKey:@"profilepic"]];
-    [Image_UserProfile sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
-    Label_UserName.text=[[AllDataArray objectAtIndex:0] valueForKey:@"fname"];
+//    NSURL * url=[NSURL URLWithString:[[AllDataArray objectAtIndex:0] valueForKey:@"profilepic"]];
+//    [Image_UserProfile sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//    Label_UserName.text=[[AllDataArray objectAtIndex:0] valueForKey:@"fname"];
     
     //     [Image_UserProfile setFrame:CGRectMake(HeadTopView.center.x-64,  Image_UserProfile.frame.origin.y, Image_UserProfile.frame.size.width, Image_UserProfile.frame.size.height)];
     //
@@ -207,19 +208,21 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     {
         
         ww=194.0;
+        Button_width=87.0;
         
     }
     else if ([[UIScreen mainScreen]bounds].size.width==375 && [[UIScreen mainScreen]bounds].size.height==667)
     {
         
         ww=249.0;
+        Button_width=100.0;
     }
     
     else  if ([[UIScreen mainScreen]bounds].size.width==414 && [[UIScreen mainScreen]bounds].size.height==736)
     {
         
         ww=288.0;
-        
+        Button_width=114.0;
         
     }
     
@@ -255,8 +258,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     // Table_Friend_chat.backgroundColor=[UIColor greenColor];
     
     
-    subImgname =[[[AllDataArray objectAtIndex:0]valueForKey:@"tagpic"]lastPathComponent];
-    NSLog(@"subImgname=%@",subImgname);
+//    subImgname =[[[AllDataArray objectAtIndex:0]valueForKey:@"tagpic"]lastPathComponent];
+//    NSLog(@"subImgname=%@",subImgname);
     
     
     
@@ -284,7 +287,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
     Array_Comment = [[NSMutableArray alloc] init];
     Array_Like = [[NSMutableArray alloc] init];
-    NSLog(@"paid data====%@",[[AllDataArray objectAtIndex:0]valueForKey:@"tagtype"] );
+  //  NSLog(@"paid data====%@",[[AllDataArray objectAtIndex:0]valueForKey:@"tagtype"] );
     
     
     Array_Comment1=[[NSMutableArray alloc]init];
@@ -296,13 +299,15 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     //
     //    NSString * path = [documnetPath1 stringByAppendingPathComponent:@"ChatText.plist"];
     
+    [defaults setObject:[[AllDataArray valueForKey:@"eventid"]objectAtIndex:0] forKey:@"neweventid"];
+    [defaults synchronize];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
     
     NSLog(@"dictionary setValue:=%@",dictionary );
     if (AllDataArray.count==0)
     {
-        Label_UserName.text=@"sachin";
+       
         TagId_plist=[defaults valueForKey:@"eventid"];
     }
     else
@@ -310,8 +315,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         
         
         TagId_plist=[[AllDataArray valueForKey:@"eventid"]objectAtIndex:0];
-        //        [defaults setObject:[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] forKey:@"matchedfbid"];
-        //        [defaults synchronize];
+        
     }
     
     
@@ -331,6 +335,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         }
         NSLog(@"data plist path array==%@",Array_Comment1);
     }
+    
     NSLog(@"Arrraararara:=%@",AllDataArray );
     Image_UserProfile.userInteractionEnabled=YES;
     UITapGestureRecognizer *TabGestureDetailView =[[UITapGestureRecognizer alloc] initWithTarget:self
@@ -876,8 +881,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             [label_caltime setFrame:CGRectMake(12,label_callocation.frame.size.height+label_callocation.frame.origin.y,calnderView.frame.size.width-24, 20)];
             
-            [Button_IM setFrame:CGRectMake(label_caltime.frame.origin.x,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,100,34)];
-            [Button_cantgo setFrame:CGRectMake((label_caltime.frame.origin.x+label_caltime.frame.size.width)-100,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,100, 34)];
+            [Button_IM setFrame:CGRectMake(label_caltime.frame.origin.x,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,Button_width,34)];
+            [Button_cantgo setFrame:CGRectMake((label_caltime.frame.origin.x+label_caltime.frame.size.width)-Button_width,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,Button_width, 34)];
             
             [Button_AddCalnder setFrame:CGRectMake(12,Button_IM.frame.size.height+Button_IM.frame.origin.y+30,calnderView.frame.size.width-24, 34)];
             
@@ -1244,74 +1249,6 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ((long)actionSheet.tag == 777)
-    {
-        NSLog(@"INDEXAcrtionShhet==%ld",(long)buttonIndex);
-        
-        if (buttonIndex== 0)
-        {
-            
-            UIAlertController * alert=[UIAlertController
-                                       
-                                       alertControllerWithTitle:@"Unfriend?" message:@"Are you sure you want to Unfriend this user? You will not be able to connect again in the future and all your chats will be deleted."preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* yesButton = [UIAlertAction
-                                        actionWithTitle:@"Yes"
-                                        style:UIAlertActionStyleDefault
-                                        handler:^(UIAlertAction * action)
-                                        {
-                                            
-                                            [self UnfriendCommunication];
-                                            
-                                        }];
-            UIAlertAction* noButton = [UIAlertAction
-                                       actionWithTitle:@"No"
-                                       style:UIAlertActionStyleDefault
-                                       handler:^(UIAlertAction * action)
-                                       {
-                                           
-                                           
-                                       }];
-            
-            [alert addAction:yesButton];
-            [alert addAction:noButton];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-        else  if (buttonIndex== 1)
-        {
-            [self FlagVedioCommunication];
-        }
-    }
-    else
-    {
-        if (buttonIndex== 0)
-        {
-            
-            
-            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.delegate = self;
-            //picker.allowsEditing = NO;
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:picker animated:YES completion:nil];
-            //  [self.navigationController pushViewController:picker animated:YES];
-            // [self.navigationController presentModalViewController:picker animated:YES];
-        }
-        if (buttonIndex== 1)
-        {
-            
-            
-            UIImagePickerController * picker = [[UIImagePickerController alloc]init];
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            picker.delegate = self;
-            [self presentViewController:picker animated:YES completion:nil];
-            
-            
-            
-        }
-    }
-}
 
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -2087,358 +2024,29 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 -(IBAction)FlagButton_Acion:(id)sender
 {
     
+   
+    
+//    label_caltitle.text=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"eventtitle"];
+//    label_callocation.text=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"eventlocation"];
+//    label_caltime.text=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"eventdateformat"];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    MeetupDetailsViewController * set=[mainStoryboard instantiateViewControllerWithIdentifier:@"MeetupDetailsViewController"];
+    set.eventidvalue=[[AllDataArray objectAtIndex:0]valueForKey:@"eventid"];
     
     
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Unfriend" otherButtonTitles:@"Flag as inappropriate",nil];
-    popup.tag = 777;
-    [popup showInView:self.view];
+//    set.Str_Title=[[AllDataArray objectAtIndex:0]valueForKey:@"eventtitle"];
+//    set.Str_Location=[[AllDataArray objectAtIndex:0]valueForKey:@"eventlocation"];
+//    set.Str_Datetime=[[AllDataArray objectAtIndex:0]valueForKey:@"eventdateformat"];
     
+    
+    [self.navigationController pushViewController:set animated:YES];
     
 }
 
--(void)UnfriendCommunication
-{
-    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-    if (networkStatus == NotReachable)
-    {
-        //        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please Note" message:@"Internet Connection is not available." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        //        message.tag=100;
-        //        [message show];
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction *action)
-                                   {
-                                       exit(0);
-                                   }];
-        
-        [alertController addAction:actionOk];
-        [self presentViewController:alertController animated:YES completion:nil];
-        
-        
-        
-    }
-    else
-    {
-        
-        
 
-        
-        
-        
-        
-        NSString *fbid1= @"fbid1";
-        NSString *fbid1Val = [defaults valueForKey:@"fid"];;
-        
-        NSString *fbid2= @"fbid2";
-        
-        NSString *fbid2val;
-        
-        
-        if (AllDataArray.count==0)
-        {
-            fbid2=@"fbid2";
-            fbid2val=[defaults valueForKey:@"matchedfbid"];
-        }
-        else
-        {
-            fbid2=@"fbid2";
-            fbid2val=[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"];
-            
-        }
-        
-        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@",fbid1,fbid1Val,fbid2,fbid2val];
-        
-        
-        
-        
-        
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-        
-        NSURL *url;
-        NSString *  urlStrLivecount=[urlplist valueForKey:@"unfriend"];
-        url =[NSURL URLWithString:urlStrLivecount];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        
-        [request setHTTPMethod:@"POST"];//Web API Method
-        
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        
-        request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
-        
-        
-        
-        NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-                                         {
-                                             
-                                             if(data)
-                                             {
-                                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                                 NSInteger statusCode = httpResponse.statusCode;
-                                                 if(statusCode == 200)
-                                                 {
-                                                     
-                                                     // Array_Swipe=[[NSMutableArray alloc]init];
-                                                     
-                                                     
-                                                     NSString * ResultString1=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-                                                     
-                                                     ResultString1 = [ResultString1 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                                                     ResultString1 = [ResultString1 stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-                                                     if ([ResultString1 isEqualToString:@"done"])
-                                                     {
-                                                         UIAlertController * alert=[UIAlertController
-                                                                                    
-                                                                                    alertControllerWithTitle:@"Unfriend" message:@"You have unfriended this user, and you are no longer connected."preferredStyle:UIAlertControllerStyleAlert];
-                                                         
-                                                         UIAlertAction* yesButton = [UIAlertAction
-                                                                                     actionWithTitle:@"Ok"
-                                                                                     style:UIAlertActionStyleDefault
-                                                                                     handler:^(UIAlertAction * action)
-                                                                                     {
-                                                                                         
-                                                                                         [defaults setObject:@"no" forKey:@"notification"];
-                                                                                         [defaults synchronize];
-                                                                                         if ([[defaults valueForKey:@"letsChat"] isEqualToString:@"yes"] || [[defaults valueForKey:@"letsChatAd"] isEqualToString:@"yes"])
-                                                                                         {
-                                                                                             //        self.view.window.rootViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-                                                                                             //[self.view.window.rootViewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-                                                                                             
-                                                                                             [self performSegueWithIdentifier:@"back" sender:self];
-                                                                                         }
-                                                                                         else
-                                                                                         {
-                                                                                             [defaults setObject:@"no" forKey:@"letsChat"];
-                                                                                             [defaults setObject:@"no" forKey:@"letsChatAd"];
-                                                                                             
-                                                                                             [defaults synchronize];
-                                                                                             if ([[defaults valueForKey:@"friendRequest"] isEqualToString:@"yes"])
-                                                                                             {
-                                                                                                 [defaults setObject:@"no" forKey:@"friendRequest"];
-                                                                                                 [self.navigationController popToRootViewControllerAnimated:YES];
-                                                                                                 
-                                                                                                 
-                                                                                             }
-                                                                                             else
-                                                                                             {
-                                                                                                 [self.navigationController popViewControllerAnimated:YES];
-                                                                                                 
-                                                                                             }
-                                                                                             
-                                                                                             
-                                                                                         }
-                                                                                         
-                                                                                         
-                                                                                         
-                                                                                         [HomeTimer invalidate];
-                                                                                         HomeTimer=nil;
-                                                                                         
-                                                                                     }];
-                                                         
-                                                         
-                                                         [alert addAction:yesButton];
-                                                         
-                                                         [self presentViewController:alert animated:YES completion:nil];
-                                                     }
-                                                     
-                                                     
-                                                     
-                                                 }
-                                                 else
-                                                 {
-                                                     NSLog(@"Error...   %ld",(long)statusCode);
-                                                 }
-                                                 
-                                             }
-                                             else if (error)
-                                             {
-                                                 NSLog(@"flag error=%@",error.description);
-                                             }
-                                             
-                                             
-                                             
-                                         }];
-        
-        [dataTask resume];
-        
-        
-        
-        
-        
-    }
-    
-    
-}
--(void)FlagVedioCommunication
-{
-    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-    if (networkStatus == NotReachable)
-    {
-        //        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please Note" message:@"Internet Connection is not available." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        //        message.tag=100;
-        //        [message show];
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction *action)
-                                   {
-                                       exit(0);
-                                   }];
-        
-        [alertController addAction:actionOk];
-        [self presentViewController:alertController animated:YES completion:nil];
-        
-        
-        
-    }
-    else
-    {
-        
-        
 
-        
-        
-        
-        
-        NSString *fbid1= @"fbid1";
-        NSString *fbid1Val = [defaults valueForKey:@"fid"];;
-        
-        NSString *fbid2= @"fbid2";
-        
-        NSString *fbid2val;
-        
-        
-        if (AllDataArray.count==0)
-        {
-            fbid2=@"fbid2";
-            fbid2val=[defaults valueForKey:@"matchedfbid"];
-        }
-        else
-        {
-            fbid2=@"fbid2";
-            fbid2val=[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"];
-            
-        }
-        
-        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@",fbid1,fbid1Val,fbid2,fbid2val];
-        
-        
-        
-        
-        
-        
-        NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-        
-        NSURL *url;
-        NSString *  urlStrLivecount=[urlplist valueForKey:@"flagprofile"];
-        url =[NSURL URLWithString:urlStrLivecount];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        
-        [request setHTTPMethod:@"POST"];//Web API Method
-        
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        
-        request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
-        
-        
-        
-        NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-                                         {
-                                             
-                                             if(data)
-                                             {
-                                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                                 NSInteger statusCode = httpResponse.statusCode;
-                                                 if(statusCode == 200)
-                                                 {
-                                                     
-                                                     // Array_Swipe=[[NSMutableArray alloc]init];
-                                                     
-                                                     
-                                                     NSString * ResultString1=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-                                                     
-                                                     ResultString1 = [ResultString1 stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                                                     ResultString1 = [ResultString1 stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-                                                     if ([ResultString1 isEqualToString:@"done"])
-                                                     {
-                                                         UIAlertController * alert=[UIAlertController
-                                                                                    
-                                                                                    alertControllerWithTitle:@"User Reported" message:@"Our team will check the details of this user and appropriate action will be taken. Thank-you for your help!"preferredStyle:UIAlertControllerStyleAlert];
-                                                         
-                                                         UIAlertAction* yesButton = [UIAlertAction
-                                                                                     actionWithTitle:@"Ok"
-                                                                                     style:UIAlertActionStyleDefault
-                                                                                     handler:^(UIAlertAction * action)
-                                                                                     {
-                                                                                         
-                                                                                         
-                                                                                         
-                                                                                     }];
-                                                         
-                                                         
-                                                         [alert addAction:yesButton];
-                                                         
-                                                         [self presentViewController:alert animated:YES completion:nil];
-                                                     }
-                                                     
-                                                     if ([ResultString1 isEqualToString:@"alreadydone"])
-                                                     {
-                                                         UIAlertController * alert=[UIAlertController
-                                                                                    
-                                                                                    alertControllerWithTitle:@"Flagged" message:@"You have already flagged this user, and our support team will be taking an appropriate action about it. Thank-you for your concern."preferredStyle:UIAlertControllerStyleAlert];
-                                                         
-                                                         UIAlertAction* yesButton = [UIAlertAction
-                                                                                     actionWithTitle:@"Ok"
-                                                                                     style:UIAlertActionStyleDefault
-                                                                                     handler:^(UIAlertAction * action)
-                                                                                     {
-                                                                                         
-                                                                                         
-                                                                                         
-                                                                                     }];
-                                                         
-                                                         
-                                                         [alert addAction:yesButton];
-                                                         
-                                                         [self presentViewController:alert animated:YES completion:nil];
-                                                     }
-                                                     
-                                                     
-                                                 }
-                                                 else
-                                                 {
-                                                     NSLog(@"Error...   %ld",(long)statusCode);
-                                                 }
-                                                 
-                                             }
-                                             else if (error)
-                                             {
-                                                 NSLog(@"flag error=%@",error.description);
-                                             }
-                                             
-                                             
-                                             
-                                         }];
-        
-        [dataTask resume];
-        
-        
-        
-        
-        
-    }
-    
-    
-}
 
 -(void)Button_calIM_Action:(UIButton *)sender
 
@@ -2635,4 +2243,5 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
  msgread = self;
  profilepic = "http://play-date.ae/app/profileimages/defaultboy.jpg";
  */
+
 @end

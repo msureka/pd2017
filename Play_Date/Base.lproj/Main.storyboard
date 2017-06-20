@@ -276,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3774.5" y="-1007.5"/>
+            <point key="canvasLocation" x="4452" y="-845"/>
         </scene>
         <!--Login Signup View Controller-->
         <scene sceneID="Zq4-JP-9JU">
@@ -1742,7 +1742,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MainMenuNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nL5-gV-tp9" customClass="MainMenuNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="t4m-Lo-eeG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="t4m-Lo-eeG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.050980392159999999" green="0.57254901960000004" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2858,7 +2858,7 @@ World of Play:Date!</string>
                 <navigationController storyboardIdentifier="MainProfilenavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zGz-4R-g25" customClass="MainProfilenavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="4xU-k7-1xV"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a4u-4r-F59">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a4u-4r-F59">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2869,7 +2869,7 @@ World of Play:Date!</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYN-Or-8bI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877" y="-1584"/>
+            <point key="canvasLocation" x="1798" y="-1772"/>
         </scene>
         <!--Account Sett View Controller-->
         <scene sceneID="Qdy-Pl-daj">
@@ -3063,7 +3063,7 @@ World of Play:Date!</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="MjE-VM-BWm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oX0-B3-YSO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oX0-B3-YSO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3445,7 +3445,7 @@ World of Play:Date!</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qVP-Nf-3rp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" id="d4x-4h-iaw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2I2-ES-8LH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2I2-ES-8LH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3865,6 +3865,7 @@ World of Play:Date!</string>
                         <outlet property="Picker_date" destination="BvN-6I-DSr" id="2Wf-wW-n6c"/>
                         <outlet property="label_date" destination="POa-lO-Wle" id="fZ7-gn-KTh"/>
                         <outlet property="label_day" destination="HCc-9L-CRA" id="NhX-dx-slb"/>
+                        <outlet property="label_hederTop" destination="3G0-SL-u3M" id="SmM-Ae-uat"/>
                         <outlet property="label_placeholder" destination="l2G-GD-0Iu" id="xu0-eZ-Eno"/>
                         <outlet property="label_time" destination="281-sN-u6c" id="SXa-l4-zNo"/>
                         <outlet property="textfield_location" destination="dle-x9-xfm" id="0ks-Ts-ot4"/>
@@ -3875,6 +3876,207 @@ World of Play:Date!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Os-ag-3h6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3233.5" y="-1099.5"/>
+        </scene>
+        <!--Meetup Details View Controller-->
+        <scene sceneID="2p4-ee-Pqh">
+            <objects>
+                <viewController storyboardIdentifier="MeetupDetailsViewController" id="4DN-SB-NLD" customClass="MeetupDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fbu-UX-hml"/>
+                        <viewControllerLayoutGuide type="bottom" id="gMN-kE-3nt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p8m-Q5-CE0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-wI-h0E">
+                                <frame key="frameInset" minX="50.00%" minY="50.00%" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z1F-I2-ofz">
+                                <frame key="frameInset" minX="0.0%" minY="10.50%" width="100.00%" height="89.51%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cellone" rowHeight="389" id="Zht-pB-uS6" customClass="InvitemeetupsTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="389"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zht-pB-uS6" id="2aS-DO-rAj">
+                                            <frame key="frameInset" width="375" height="389"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's o to the beach!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxy-qZ-2ql">
+                                                    <frame key="frameInset" minX="10.13%" minY="14.40%" width="79.47%" height="8.48%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KIte Beach, Jumeirah" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khg-0w-gPJ">
+                                                    <frame key="frameInset" minX="10.13%" minY="23.14%" width="79.47%" height="6.17%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                    <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22 may 2017, 8:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-gh-8pZ">
+                                                    <frame key="frameInset" minX="10.13%" minY="28.79%" width="79.47%" height="6.17%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                                    <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar.png" translatesAutoresizingMaskIntoConstraints="NO" id="h2i-xI-bj4">
+                                                    <frame key="frameInset" minX="44.53%" minY="3.86%" width="10.67%" height="10.28%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3a-qs-aQt">
+                                                    <frame key="frameInset" minX="0.0%" minY="67.35%" width="100.00%" height="32.13%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                </scrollView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invited" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WW-GV-NbA">
+                                                    <frame key="frameInset" minX="4.27%" minY="60.67%" width="91.47%" height="6.68%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMn-ib-Efj">
+                                                    <frame key="frameInset" minX="0.0%" minY="60.41%" width="100.00%" height="0.26%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created by: sachin mokashi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-5R-uvI">
+                                                    <frame key="frameInset" minX="10.13%" minY="52.70%" width="79.47%" height="6.68%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                                    <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SiI-9y-RBl">
+                                                    <frame key="frameInset" minX="41.87%" minY="36.76%" width="16.00%" height="15.42%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="Image_CreatedProfilepic" destination="SiI-9y-RBl" id="kPD-ac-71b"/>
+                                            <outlet property="label_Invitecount" destination="5WW-GV-NbA" id="gzm-d8-7u0"/>
+                                            <outlet property="label_createdname" destination="aGn-5R-uvI" id="qsX-mZ-ajQ"/>
+                                            <outlet property="label_datetime" destination="ihX-gh-8pZ" id="f8N-br-4mM"/>
+                                            <outlet property="label_location" destination="khg-0w-gPJ" id="RVv-Xf-Dre"/>
+                                            <outlet property="label_title" destination="nxy-qZ-2ql" id="0go-Ad-rox"/>
+                                            <outlet property="myscrollView" destination="w3a-qs-aQt" id="XBJ-kf-qjF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Celltwo" rowHeight="147" id="iKQ-ls-bAe" customClass="AttendingMeetupTableViewCell">
+                                        <rect key="frame" x="0.0" y="417" width="375" height="147"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iKQ-ls-bAe" id="2ew-AL-Xqe">
+                                            <frame key="frameInset" width="375" height="147"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L0f-wl-yMU">
+                                                    <frame key="frameInset" minX="0.0%" minY="19.73%" width="100.00%" height="78.23%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                </scrollView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attending" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guo-OW-cZ4">
+                                                    <frame key="frameInset" minX="4.27%" minY="2.04%" width="91.47%" height="17.69%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="label_count" destination="guo-OW-cZ4" id="UKu-hk-Nle"/>
+                                            <outlet property="myscrollView" destination="L0f-wl-yMU" id="RI3-PE-iYO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cellthree" rowHeight="54" id="tZM-bf-WOE" customClass="InvitemoremeetupTableViewCell">
+                                        <rect key="frame" x="0.0" y="564" width="375" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZM-bf-WOE" id="caT-Yv-3sx">
+                                            <frame key="frameInset" width="375" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invite mores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kar-MR-N9k">
+                                                    <frame key="frameInset" minX="2.13%" minY="16.67%" width="95.73%" height="62.96%"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="label_invitemoresroes" destination="kar-MR-N9k" id="8zW-U2-C2K"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4DN-SB-NLD" id="rsJ-Mn-4Ie"/>
+                                    <outlet property="delegate" destination="4DN-SB-NLD" id="tBi-hs-ekK"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4E-6A-4jZ">
+                                <frame key="frameInset" minX="0.0%" minY="0.0%" width="100.00%" height="10.50%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh3-9t-bDc">
+                                        <frame key="frameInset" minX="18.13%" minY="42.86%" width="63.47%" height="40.00%"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ep-vr-zfN">
+                                        <frame key="frameInset" minX="1.87%" minY="42.86%" width="8.53%" height="40.00%"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="SanFranciscoDisplay-Medium" family="San Francisco Display" pointSize="16"/>
+                                        <state key="normal" image="back.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="BackButton:" destination="O5Q-sz-txD" eventType="touchUpInside" id="SUR-NU-Rky"/>
+                                            <action selector="Button_BackView:" destination="4DN-SB-NLD" eventType="touchUpInside" id="JOD-AT-mnc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMw-YL-6w1">
+                                        <frame key="frameInset" minX="82.40%" minY="41.43%" width="17.60%" height="42.86%"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Button_share:" destination="4DN-SB-NLD" eventType="touchUpInside" id="MMG-aO-qkn"/>
+                                            <action selector="SendButtons:" destination="O5Q-sz-txD" eventType="touchUpInside" id="Xt3-I5-t9t"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="HeadTopView" destination="V4E-6A-4jZ" id="Mqf-zy-Zya"/>
+                        <outlet property="Table_Friend" destination="Z1F-I2-ofz" id="Fl5-eg-mbP"/>
+                        <outlet property="indicator" destination="CFd-wI-h0E" id="ENX-mI-bFN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h6g-F3-jOi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3731.5" y="-1087.5"/>
         </scene>
         <!--Facebook List View Controller-->
         <scene sceneID="ldn-rm-DIj">
@@ -4238,7 +4440,7 @@ World of Play:Date!</string>
             <objects>
                 <navigationController storyboardIdentifier="NavigationNewPlayDateViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="htR-q2-f50" customClass="NavigationNewPlayDateViewController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uQz-hj-h3b">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uQz-hj-h3b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4297,7 +4499,7 @@ World of Play:Date!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-nR-9Me">
-                                        <frame key="frameInset" minX="89.87%" minY="45.00%" width="8.00%" height="50.00%"/>
+                                        <frame key="frameInset" minX="89.87%" minY="41.67%" width="8.00%" height="50.00%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="Settings.png">
@@ -4440,7 +4642,7 @@ World of Play:Date!</string>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MQ1-YM-bOq"/>
         <segue reference="s6D-LK-AIJ"/>
+        <segue reference="MQ1-YM-bOq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -525,13 +525,13 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
                                                  
                                                  
                                                  NSLog(@"array_createEvent ResultString %@",ResultString);
-            if ([ResultString isEqualToString:@"done"])
+            if (array_createEvent.count !=0)
                         {
                              [self.view hideActivityViewWithAfterDelay:1];
                           
                         
 FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"FriendCahtingViewControlleroneViewController"];
-                                                           
+                            set.AllDataArray=array_createEvent;
         [self.navigationController pushViewController:set animated:YES];
                      [defaults setObject:@"yes" forKey:@"tapindex"];
                         [defaults setObject:@"yes" forKey:@"letsmeet"];
@@ -549,7 +549,17 @@ FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateV
                                                      
                                                      
                                                  }
-                       
+                                                 if ([ResultString isEqualToString:@"expired"])
+                                                 {
+                                                     
+                                                     [self.view hideActivityViewWithAfterDelay:1];
+                                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Meetups date has been expired. please checkup your enter date and time." preferredStyle:UIAlertControllerStyleAlert];
+                                                     UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                                                     [alertController addAction:actionOk];
+                                                     [self presentViewController:alertController animated:YES completion:nil];
+                                                     
+                                                     
+                                                 }
                                                  
                                              }
                                              

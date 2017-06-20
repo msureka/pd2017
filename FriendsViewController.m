@@ -450,7 +450,7 @@
         }
         if (section==1)
         {
-            return 1;
+            return 0;
         }
        
         if (section==2)
@@ -528,15 +528,15 @@
         
         if (indexPath.section==1)
         {
-            if (Array_Match.count==0)
-            {
+//            if (Array_Match.count==0)
+//            {
                 return 0;
-            }
-            else
-            {
-                return 138;
-            }
-            
+//            }
+//            else
+//            {
+//                return 138;
+//            }
+//            
             
         }
         
@@ -1697,14 +1697,14 @@ static NSString * Cellid111=@"Cellmeet";
         
         if (section==1)
         {
-            if (Array_Match.count==0)
-            {
+//            if (Array_Match.count==0)
+//            {
                 return 0;
-            }
-            else
-            {
-                return 36;
-            }
+//            }
+//            else
+//            {
+//                return 36;
+//            }
         }
         
         
@@ -2542,6 +2542,8 @@ for (int i=0; i<Array_MatchMessages.count; i++)
     if ([sender tag]==2)
     {
         NSLog(@"button oplus tag is ==2");
+        [defaults setObject:@"newedit" forKey:@"checkview"];
+        [defaults synchronize];
         NavigationNewPlayDateViewController *tvc=[self.storyboard instantiateViewControllerWithIdentifier:@"NavigationNewPlayDateViewController"];
         [self.navigationController presentModalViewController:tvc animated:YES];
     }

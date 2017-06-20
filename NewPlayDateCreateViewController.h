@@ -11,7 +11,7 @@
 @interface NewPlayDateCreateViewController : UIViewController
 - (IBAction)Cancel_Button:(id)sender;
 @property(nonatomic,strong)IBOutlet UIView * HeadTopView;
-
+@property(nonatomic,strong)IBOutlet UILabel * label_hederTop;
 @property(nonatomic,strong)IBOutlet UILabel * label_day;
 @property(nonatomic,strong)IBOutlet UILabel * label_date;
 @property(nonatomic,strong)IBOutlet UILabel * label_time;
@@ -27,4 +27,7 @@
 
 - (IBAction)Invite_Button:(id)sender;
 - (IBAction)TextField_Actions:(id)sender;
+
+@property(nonatomic,strong)IBOutlet NSString * str_checkview;
+
 @end
