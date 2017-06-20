@@ -691,10 +691,12 @@
 }
 -(IBAction)Button_share:(id)sender
 {
-    NSString * texttoshare=[NSString stringWithFormat:@"%@%@",@"sachin",@" has recorded a new challenge video. Download the app now - http://www.care2dareapp.com or Watch the video here: "];
+//    NSString * texttoshare=[NSString stringWithFormat:@"%@%@",@"sachin",@" has recorded a new challenge video. Download the app now - http://www.care2dareapp.com or Watch the video here: "];
+    NSString * texttoshare=[NSString stringWithFormat:@"Download Play:Date on your iPhone from http://www.play-date.ae and find new friends for your children!"];
     
-    NSURL * urltoshare=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"http://www.care2dareapp.com"]];
-    NSArray *activityItems1=@[texttoshare,urltoshare];
+//    NSURL * urltoshare=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"http://www.care2dareapp.com"]];
+//    NSArray *activityItems1=@[texttoshare,urltoshare];
+    NSArray *activityItems1=@[texttoshare];
     NSArray *activityItems =@[UIActivityTypePrint,UIActivityTypeAirDrop,UIActivityTypeAssignToContact,UIActivityTypeAddToReadingList,UIActivityTypeOpenInIBooks];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems1 applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = activityItems;
