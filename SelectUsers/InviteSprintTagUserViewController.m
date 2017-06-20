@@ -42,7 +42,7 @@
 @end
 
 @implementation InviteSprintTagUserViewController
-@synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,textfield_location1,textview_disc1,textfield_meetup1;
+@synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,textfield_location1,textview_disc1,textfield_meetup1,str_checkmorefriends;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -75,7 +75,9 @@ string_Keyboardload=@"no";
     
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"UrlName" ofType:@"plist"];
   urlplist = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    
    [self Communication_Invite_user];
+    
     [self Communication_SuggestedFriends];
     NSLog(@"Mewwwwww=%@",_Names_UserId);
    
@@ -584,29 +586,165 @@ FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateV
     [dataTask resume];
     
 }
+-(void)communication_MorefriendsEvent
+{
+    
+    
+   // eventdetails_addfriends.php
+    
+    NSString *fbid1= @"fbid";
+    NSString *fbid1Val=[defaults valueForKey:@"fid"];
+    
+    NSString *eventid= @"eventid";
+    NSString *eventidval=[defaults valueForKey:@"neweventid"];
+    
+    NSString *friendlist= @"friendlist";
+    NSString *friendlistVal =[selectedUserid componentsJoinedByString:@","];
+    
+    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,eventid,eventidval,friendlist,friendlistVal];
+    
+    
+    
+#pragma mark - swipe sesion
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    
+    NSURL *url;
+    NSString *  urlStrLivecount=[urlplist valueForKey:@"eventdetails_invitefriends"];;
+    url =[NSURL URLWithString:urlStrLivecount];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];//Web API Method
+    
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    
+    NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                     {
+                                         
+                                         if(data)
+                                         {
+                                             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                             NSInteger statusCode = httpResponse.statusCode;
+                                             if(statusCode == 200)
+                                             {
+                                                 
+                                                 array_createEvent=[[NSMutableArray alloc]init];
+                                                 SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
+                                                 array_createEvent=[objSBJsonParser objectWithData:data];
+                                                 NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                 ;
+                                                 
+                                                 ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                                                 ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                                                 
+                                                 NSLog(@"array_createEvent %@",array_createEvent);
+                                                 
+                                                 
+                                                 NSLog(@"array_createEvent ResultString %@",ResultString);
+                                                 if ([ResultString isEqualToString:@"done"])
+                                                 {
+                                                     [self.navigationController popViewControllerAnimated:YES];
+                                                 }
+                                                 if (array_createEvent.count !=0)
+                                                 {
+                                                     [self.view hideActivityViewWithAfterDelay:1];
+                                                     
+                                                     
+                                                     FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"FriendCahtingViewControlleroneViewController"];
+                                                     set.AllDataArray=array_createEvent;
+                                                     [self.navigationController pushViewController:set animated:YES];
+                                                     [defaults setObject:@"yes" forKey:@"tapindex"];
+                                                     [defaults setObject:@"yes" forKey:@"letsmeet"];
+                                                     [defaults synchronize];
+                                                     
+                                                 }
+                                                 if ([ResultString isEqualToString:@"inserterror"])
+                                                 {
+                                                     
+                                                     [self.view hideActivityViewWithAfterDelay:1];
+                                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"The server encountered an error and your Play:Date could not be created. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+                                                     UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                                                     [alertController addAction:actionOk];
+                                                     [self presentViewController:alertController animated:YES completion:nil];
+                                                     
+                                                     
+                                                 }
+                                                 if ([ResultString isEqualToString:@"expired"])
+                                                 {
+                                                     
+                                                     [self.view hideActivityViewWithAfterDelay:1];
+                                                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Meetups date has been expired. please checkup your enter date and time." preferredStyle:UIAlertControllerStyleAlert];
+                                                     UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                                                     [alertController addAction:actionOk];
+                                                     [self presentViewController:alertController animated:YES completion:nil];
+                                                     
+                                                     
+                                                 }
+                                                 
+                                             }
+                                             
+                                             else
+                                             {
+                                                 NSLog(@" error login1 ---%ld",(long)statusCode);
+                                                 [self.view hideActivityViewWithAfterDelay:1];
+                                                 
+                                             }
+                                             
+                                             
+                                         }
+                                         else if(error)
+                                         {
+                                             [self.view hideActivityViewWithAfterDelay:1];
+                                             
+                                             NSLog(@"error login2.......%@",error.description);
+                                         }
+                                         
+                                         
+                                     }];
+    [dataTask resume];
+    
+}
 -(void)Communication_Invite_user
 {
     
     
     
     NSURL *url11;//=[NSURL URLWithString:[urlplist valueForKey:@"singup"]];
-    NSString *  urlStrLivecount11=[urlplist valueForKey:@"createevent_addfriends"];
+    NSString *tagName11=@"fbid";
+    NSString *tagnameV11=[defaults valueForKey:@"fid"];
+    
+    NSString *eventid=@"eventid";
+    NSString *eventidval=[defaults valueForKey:@"neweventid"];
+    
+    NSString *reqStringFUll11;
+    NSMutableURLRequest *request11;
+    NSString *  urlStrLivecount11;
+    if([str_checkmorefriends isEqualToString:@"morefriend"])
+    {
+        urlStrLivecount11=[urlplist valueForKey:@"eventdetails_addfriends"];
+        
+        
+        reqStringFUll11=[NSString stringWithFormat:@"%@=%@&%@=%@",tagName11,tagnameV11,eventid,eventidval];
+    }
+    else
+    {
+        urlStrLivecount11=[urlplist valueForKey:@"createevent_addfriends"];
+        
+        
+        reqStringFUll11=[NSString stringWithFormat:@"%@=%@",tagName11,tagnameV11];
+    }
+    
     url11 =[NSURL URLWithString:urlStrLivecount11];
-    NSMutableURLRequest *request11 = [NSMutableURLRequest requestWithURL:url11];
+    request11 = [NSMutableURLRequest requestWithURL:url11];
     
     [request11 setHTTPMethod:@"POST"];
     
     [request11 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
-    
-    NSString *tagName11=@"fbid";
-    NSString *tagnameV11=[defaults valueForKey:@"fid"];
-    
-    
-    
-    NSString *reqStringFUll11=[NSString stringWithFormat:@"%@=%@",tagName11,tagnameV11];
-    
-    
     NSData *requestData11 = [NSData dataWithBytes:[reqStringFUll11 UTF8String] length:[reqStringFUll11 length]];
     [request11 setHTTPBody: requestData11];
     
@@ -633,21 +771,39 @@ FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateV
     
     
     NSURL *url11;//=[NSURL URLWithString:[urlplist valueForKey:@"singup"]];
-    NSString *  urlStrLivecount11=[urlplist valueForKey:@"createevent_addfriends"];
-    url11 =[NSURL URLWithString:urlStrLivecount11];
-    NSMutableURLRequest *request11 = [NSMutableURLRequest requestWithURL:url11];
     
-    [request11 setHTTPMethod:@"POST"];
-    
-    [request11 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
     
     NSString *tagName11=@"fbid";
     NSString *tagnameV11=[defaults valueForKey:@"fid"];
     
+    NSString *eventid=@"eventid";
+    NSString *eventidval=[defaults valueForKey:@"neweventid"];
     
+    NSString *reqStringFUll11;
+    NSMutableURLRequest *request11;
+    NSString *  urlStrLivecount11;
+    if([str_checkmorefriends isEqualToString:@"morefriend"])
+    {
+       urlStrLivecount11=[urlplist valueForKey:@"eventdetails_addfriends"];
+        
+        
+        reqStringFUll11=[NSString stringWithFormat:@"%@=%@&%@=%@",tagName11,tagnameV11,eventid,eventidval];
+    }
+    else
+    {
+     urlStrLivecount11=[urlplist valueForKey:@"createevent_addfriends"];
+       
+        
+        reqStringFUll11=[NSString stringWithFormat:@"%@=%@",tagName11,tagnameV11];
+    }
+
+    url11 =[NSURL URLWithString:urlStrLivecount11];
+    request11 = [NSMutableURLRequest requestWithURL:url11];
     
-    NSString *reqStringFUll11=[NSString stringWithFormat:@"%@=%@",tagName11,tagnameV11];
+    [request11 setHTTPMethod:@"POST"];
+    
+    [request11 setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
     
     NSData *requestData11 = [NSData dataWithBytes:[reqStringFUll11 UTF8String] length:[reqStringFUll11 length]];
@@ -784,8 +940,15 @@ FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateV
 //    NSLog(@"concat_UserId ==%@ ",strInvite_users);
 //    NSLog(@"concat_UserId ==%@ ",selectedNames);
 //       [self.navigationController popViewControllerAnimated:YES];
-   
-    [self communication_createEvent];
+   if([str_checkmorefriends isEqualToString:@"morefriend"])
+   {
+       [self communication_MorefriendsEvent];
+   }
+   else
+   {
+      [self communication_createEvent];
+   }
+    
 }
 
 -(void)dataReceived1:(NSNotification *)noti

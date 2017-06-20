@@ -28,6 +28,6 @@
 - (IBAction)Invite_Button:(id)sender;
 - (IBAction)TextField_Actions:(id)sender;
 
-@property(nonatomic,strong)IBOutlet NSString * str_checkview;
+
 
 @end

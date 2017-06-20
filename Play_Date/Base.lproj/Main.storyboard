@@ -1044,7 +1044,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hko-eu-e4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3492" y="-3357"/>
+            <point key="canvasLocation" x="3580" y="-3365"/>
         </scene>
         <!--Discover Info View Controller-->
         <scene sceneID="Amp-Qo-0Y9">
@@ -1742,7 +1742,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MainMenuNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nL5-gV-tp9" customClass="MainMenuNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="t4m-Lo-eeG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="t4m-Lo-eeG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.050980392159999999" green="0.57254901960000004" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2858,7 +2858,7 @@ World of Play:Date!</string>
                 <navigationController storyboardIdentifier="MainProfilenavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zGz-4R-g25" customClass="MainProfilenavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="4xU-k7-1xV"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a4u-4r-F59">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a4u-4r-F59">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3063,7 +3063,7 @@ World of Play:Date!</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="MjE-VM-BWm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oX0-B3-YSO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oX0-B3-YSO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3445,7 +3445,7 @@ World of Play:Date!</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qVP-Nf-3rp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" id="d4x-4h-iaw"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2I2-ES-8LH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2I2-ES-8LH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4030,11 +4030,11 @@ World of Play:Date!</string>
                                 <frame key="frameInset" minX="0.0%" minY="0.0%" width="100.00%" height="10.50%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh3-9t-bDc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meetup details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh3-9t-bDc">
                                         <frame key="frameInset" minX="18.13%" minY="42.86%" width="63.47%" height="40.00%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ep-vr-zfN">
@@ -4050,12 +4050,12 @@ World of Play:Date!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMw-YL-6w1">
-                                        <frame key="frameInset" minX="82.40%" minY="41.43%" width="17.60%" height="42.86%"/>
+                                        <frame key="frameInset" minX="83.73%" minY="41.43%" width="16.27%" height="42.86%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                                         <state key="normal" title="Share">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="Button_share:" destination="4DN-SB-NLD" eventType="touchUpInside" id="MMG-aO-qkn"/>
@@ -4440,7 +4440,7 @@ World of Play:Date!</string>
             <objects>
                 <navigationController storyboardIdentifier="NavigationNewPlayDateViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="htR-q2-f50" customClass="NavigationNewPlayDateViewController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uQz-hj-h3b">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uQz-hj-h3b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

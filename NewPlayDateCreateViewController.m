@@ -20,7 +20,7 @@
 @end
 
 @implementation NewPlayDateCreateViewController
-@synthesize HeadTopView,label_day,label_date,label_time,label_placeholder,textview_disc,textfield_meetup,Picker_date,Button_invite,textfield_location,str_checkview,label_hederTop;
+@synthesize HeadTopView,label_day,label_date,label_time,label_placeholder,textview_disc,textfield_meetup,Picker_date,Button_invite,textfield_location,label_hederTop;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -152,6 +152,7 @@
         set.textfield_meetup1=textfield_meetup.text;
         set.textfield_location1=textfield_location.text;
         set.textview_disc1=textview_disc.text;
+         set.str_checkmorefriends=@"allmorefriend";
         
         [self.navigationController pushViewController:set animated:YES];
     }

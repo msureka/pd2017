@@ -18,7 +18,7 @@
 #import "FriendCahtingViewControlleroneViewController.h"
 @interface FriendsViewController ()<UISearchBarDelegate>
 {
-     NSTimer *HomechatTimer;
+     NSTimer *HomechatTimer,*HomechatTimerplaydate;
     NSArray *Array_Title1,*Array_Title2,*Array_Title3,*Array_Title4,*Array_Gender2,*Array_Gender1;
     UIView *sectionView,*transparancyTuchView;
     NSUserDefaults *defaults;
@@ -28,7 +28,7 @@
     NSURLConnection *Connection_Match,*Connection_Messages;
     NSMutableData *webData_Match,*webData_Messages;
     NSMutableArray * Array_MatchMessages,*Array_Match,*Array_Messages,*Array_Comment1,*Array_Messages22,*Array_Request,*Array_RequestMessages,*array_createEvent,*Array_Meetups;
-    NSArray *SearchCrickArray,*Array_Match1,*Array_Messages1,*Array_Request1;
+    NSArray *SearchCrickArray,*Array_Match1,*Array_Messages1,*Array_Request1,*Array_Meetups1;
     UIScrollView * scrollView;
    
     CGFloat Xpostion, Ypostion, Xwidth, Yheight, ScrollContentSize,Xpostion_label, Ypostion_label, Xwidth_label, Yheight_label;
@@ -289,9 +289,7 @@
         borderBottom_chat.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
         borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-1, Button_chats.frame.size.width, 1);
         [Button_chats.layer addSublayer:borderBottom_chat];
-          [self communication_Eventsmeetups];
-        [Table_Friend reloadData];
-
+       
     }
     else
     {
@@ -311,10 +309,8 @@
         
         [self NewMatchServerComm];
         [Table_Friend reloadData];
-        
-       
     }
-    
+       [self communication_Eventsmeetups];
     // [self NewMatchServerComm];
     
     
@@ -352,6 +348,14 @@
     
 
 }
+-(void)homeTimerPlaydate
+{
+    
+    
+    HomechatTimerplaydate =  [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(communication_Eventsmeetups) userInfo:nil  repeats:YES];
+    
+    
+}
 
 - (void)ViewTap51Tapped:(UITapGestureRecognizer *)recognizer
 {
@@ -369,11 +373,7 @@
 }
 -(void)PulltoRefershtable
 {
-//    [self.navigationController.navigationBar setHidden:YES];
-//    [self.view endEditing:YES];
-//    [self NewMatchServerComm];
-//    [Table_Friend reloadData];
-//    [self.refreshControl endRefreshing];
+
     
 }
 
@@ -383,18 +383,28 @@
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
+    
     [HomechatTimer invalidate];
       HomechatTimer=nil;
     
-     [Table_Friend reloadData];
-   
+        [HomechatTimerplaydate invalidate];
+        HomechatTimerplaydate=nil;
+        [Table_Friend reloadData];
+    
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self NewMatchServerComm];
-
+    
+        [self communication_Eventsmeetups];
+        [self homeTimerPlaydate];
+   
+        [self NewMatchServerComm];
+        [self homeTimer];
+       
+        
+    
     Xpostion=12;
     Ypostion=16;
     Xwidth=72;
@@ -407,13 +417,8 @@
     transparancyTuchView.hidden=YES;
     searchbar.text=@"";
     FlagSearchBar=@"no";
-//    HomechatTimer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(NewMatchServerComm) userInfo:nil  repeats:YES];
-    
+   
     [Table_Friend reloadData];
-    
-  // [self viewDidLoad];
-    [self homeTimer];
-
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -455,7 +460,15 @@
        
         if (section==2)
         {
-            return Array_Meetups.count;
+            if ( Array_Meetups.count==0)
+            {
+                return 0;
+            }
+            else
+            {
+               return Array_Meetups.count;
+            }
+           
         }
         
     }
@@ -1294,6 +1307,10 @@ static NSString * Cellid111=@"Cellmeet";
                 {
                     text =[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"message"];
                 }
+                else if ([[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"chattype"] isEqualToString:@"EVENT"])
+                {
+                    text =@"";
+                }
                 else
                 {
                     text=@"Image";
@@ -1710,7 +1727,7 @@ static NSString * Cellid111=@"Cellmeet";
         
         if (section==2)
         {
-            if (Array_Messages.count==0)
+            if (Array_Meetups.count==0)
             {
                 return 0;
             }
@@ -1900,6 +1917,8 @@ static NSString * Cellid111=@"Cellmeet";
                                                  
                 array_createEvent=[[NSMutableArray alloc]init];
              Array_Meetups=[[NSMutableArray alloc]init];
+            Array_Meetups1=[[NSArray alloc]init];
+
                 SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
         array_createEvent=[objSBJsonParser objectWithData:data];
             NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -1946,6 +1965,8 @@ static NSString * Cellid111=@"Cellmeet";
                                                          }
                                                      }
                                                  }
+                                
+                                  Array_Meetups1=[Array_Meetups mutableCopy];
                             }
                                              }
                                              
@@ -2344,10 +2365,20 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     
-    [HomechatTimer invalidate];
-    HomechatTimer=nil;
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
+        [HomechatTimer invalidate];
+        HomechatTimer=nil;
+    }
     
-  
+    
+    if ([Str_ChangeScreen isEqualToString:@"playdate"])
+    {
+ 
+    [HomechatTimerplaydate invalidate];
+    HomechatTimerplaydate=nil;
+    }
+
     FlagSearchBar=@"yes";
     transparancyTuchView.hidden=NO;
     [searchBar setShowsCancelButton:YES animated:YES];
@@ -2364,8 +2395,8 @@ for (int i=0; i<Array_MatchMessages.count; i++)
    
     FlagSearchBar=@"yes";
     
-
-    
+    if ([Str_ChangeScreen isEqualToString:@"chats"])
+    {
     
     if (searchText.length==0)
     {
@@ -2494,8 +2525,53 @@ for (int i=0; i<Array_MatchMessages.count; i++)
  
     }
 
+    }
     
+
+if ([Str_ChangeScreen isEqualToString:@"playdate"])
+{
     
+    if (searchText.length==0)
+    {
+        searchString=@"";
+        transparancyTuchView.hidden=NO;
+        [Array_Meetups removeAllObjects];
+       
+        [Array_Meetups addObjectsFromArray:Array_Meetups1];
+       
+        
+        
+    }
+    else
+        
+    {
+        transparancyTuchView.hidden=YES;
+        
+        [Array_Meetups removeAllObjects];
+       
+        
+        for (NSDictionary *book in Array_Meetups1)
+        {
+            NSString * string=[book objectForKey:@"eventtitle"];
+            NSString * stringcom=[book objectForKey:@"message"];
+            NSRange r=[string rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            NSRange rcompetition=[stringcom rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (r.location !=NSNotFound || rcompetition.location !=NSNotFound)
+            {
+                searchString=searchText;
+                [Array_Meetups addObject:book];
+                
+            }
+            
+        }
+        
+        
+        
+    }
+    
+}
+
+
      [searchBar setShowsCancelButton:YES animated:YES];
     
     [Table_Friend reloadData];
@@ -2571,9 +2647,18 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 }
 - (IBAction)Button_Chatscreen:(id)sender
 {
+    
+   
+    [HomechatTimerplaydate invalidate];
+    HomechatTimerplaydate=nil;
+    
       Button_Plustap.tag=1;
        Str_ChangeScreen=@"chats";
      Label_HeadTop.text=@"Friends";
+    
+    
+    
+    
     [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
     [Button_playdates setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
@@ -2590,6 +2675,10 @@ for (int i=0; i<Array_MatchMessages.count; i++)
 }
 - (IBAction)Button_PlayDatescreen:(id)sender
 {
+    
+    [HomechatTimer invalidate];
+    HomechatTimer=nil;
+    
       Button_Plustap.tag=2;
        Str_ChangeScreen=@"playdate";
      Label_HeadTop.text=@"Create a Play:Date";

@@ -29,6 +29,6 @@
 @property(nonatomic,strong)NSString * textview_disc1;
 @property(nonatomic,strong)NSString * textfield_meetup1;
 @property(nonatomic,strong) NSString * textfield_location1;
-
+@property(nonatomic,strong)IBOutlet NSString * str_checkmorefriends;
 @property (strong, nonatomic) NSMutableArray *Names,*Names_UserId;
 @end

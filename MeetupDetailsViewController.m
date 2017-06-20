@@ -12,6 +12,7 @@
 #import "UIImageView+WebCache.h"
 #import "MainProfilenavigationController.h"
 #import "NavigationNewPlayDateViewController.h"
+#import "InviteSprintTagUserViewController.h"
 @interface MeetupDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
      CGFloat Xpostion, Ypostion, Xwidth, Yheight, ScrollContentSize,Xpostion_label, Ypostion_label, Xwidth_label, Yheight_label;
@@ -251,7 +252,16 @@
         }
     if (section==3)
     {
-        return Array_title.count;
+    if(![[defaults valueForKey:@"fid"] isEqualToString:[[Array_AllMeetupData objectAtIndex:0]valueForKey:@"creatorfbid"]])
+        {
+            return 0;
+        }
+        else
+        {
+             return Array_title.count;
+        }
+
+       
     }
 
     
@@ -702,7 +712,10 @@
 
 -(void)invitemoreIndexZero
 {
+    InviteSprintTagUserViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"InviteSprintTagUserViewController"];
     
+    set.str_checkmorefriends=@"morefriend";
+    [self.navigationController pushViewController:set animated:YES];
 }
 -(void)EditmeetupIndexone
 {
