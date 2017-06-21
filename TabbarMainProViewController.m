@@ -171,7 +171,7 @@ else
 {
     
     NSURL *url;//=[NSURL URLWithString:[urlplist valueForKey:@"singup"]];
-    NSString *  urlStrLivecount=[urlplist valueForKey:@"friendsticker"];
+    NSString *  urlStrLivecount=[urlplist valueForKey:@"friendstickerv2"];
     url =[NSURL URLWithString:urlStrLivecount];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
@@ -250,14 +250,42 @@ else
         NSLog(@"Array_budge %@",Array_budge);
        
         NSLog(@"ResultString %@",ResultString);
-        if (![ResultString isEqualToString:@""] && ![ResultString isEqualToString:@"0"] )
+        if (Array_budge.count==0)
         {
-            item2.badgeValue=ResultString;
+              item2.badgeValue=nil;
+            [defautls setObject:@"0" forKey:@"budgechat"];
+            [defautls setObject:@"0" forKey:@"budgeplaydate"];
+           
         }
         else
         {
-            item2.badgeValue=nil;
+            NSString * stringTotal=[NSString stringWithFormat:@"%@",[[Array_budge objectAtIndex:0]valueForKey:@"total"]];
+            
+            NSString * budgechat=[NSString stringWithFormat:@"%@",[[Array_budge objectAtIndex:0]valueForKey:@"chat"]];
+            
+            NSString * budgeplaydate=[NSString stringWithFormat:@"%@",[[Array_budge objectAtIndex:0]valueForKey:@"playdate"]];
+
+            
+            
+            [defautls setObject:budgechat forKey:@"budgechat"];
+            [defautls setObject:budgeplaydate forKey:@"budgeplaydate"];
+        
+            
+        if (![stringTotal isEqualToString:@""] && ![stringTotal isEqualToString:@"0"] )
+        {
+            
+            item2.badgeValue=stringTotal;
         }
+        else
+        {
+         item2.badgeValue=nil;
+            [defautls setObject:@"0" forKey:@"budgechat"];
+            [defautls setObject:@"0" forKey:@"budgeplaydate"];
+        }
+            
+        }
+        [defautls synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdatedBudge" object:self userInfo:nil];
     }
 }
 @end

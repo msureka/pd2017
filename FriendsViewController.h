@@ -27,5 +27,9 @@
 - (IBAction)Button_PlayDatescreen:(id)sender;
 @property(nonatomic,strong)IBOutlet UIButton * Button_chats;
 @property(nonatomic,strong)IBOutlet UIButton * Button_playdates;
+
+@property(strong,nonatomic)IBOutlet UIImageView * ImageMessageread_Button_chat;
+@property(strong,nonatomic)IBOutlet UIImageView *  ImageMessageread_Button_playdates;
+
 -(void)calculate;
 @end

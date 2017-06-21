@@ -12,4 +12,6 @@
 
 @property(nonatomic,strong)IBOutlet UIScrollView * myscrollView;
 @property(nonatomic,strong)IBOutlet UILabel * label_count;
+@property(nonatomic,strong)IBOutlet UILabel * label_AttendingCount;
+
 @end

@@ -53,14 +53,16 @@
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Choose a photo for your profile picture</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>You need to Allow Calender Permission to use Play Date</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take a selfie for your profile picture!</string>
 	<key>NSContactsUsageDescription</key>
 	<string>You need to Allow Contact Permission to use Play Date</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>You need to Allow Location Permission to use Play Date</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Choose a photo for your profile picture</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>You need to Allow Reminder Permission to use Play Date</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

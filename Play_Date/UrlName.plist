@@ -28,8 +28,8 @@
 	<string>http://play-date.ae/app/addchat.php</string>
 	<key>saveemoji</key>
 	<string>http://play-date.ae/app/saveemoji.php</string>
-	<key>friendsticker</key>
-	<string>http://play-date.ae/app/friendsticker.php</string>
+	<key>friendstickerv2</key>
+	<string>http://play-date.ae/app/friendstickerv2.php</string>
 	<key>restoreprofile</key>
 	<string>http://play-date.ae/app/restore.php</string>
 	<key>acceptdecline</key>
@@ -64,5 +64,7 @@
 	<string>http://play-date.ae/app/eventdetails_invitefriends.php</string>
 	<key>eventdetails_addfriends</key>
 	<string>http://play-date.ae/app/eventdetails_addfriends.php</string>
+	<key>removeevent</key>
+	<string>http://play-date.ae/app/removeevent.php</string>
 </dict>
 </plist>

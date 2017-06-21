@@ -18,8 +18,11 @@
 #import "AdProfileViewController.h"
 #import "Reachability.h"
 #import "SBJsonParser.h"
-
 #import "MeetupDetailsViewController.h"
+#import <EventKit/EventKit.h>
+@import EventKit;
+@import EventKitUI;
+
 static NSString* const CellIdentifier = @"DynamicTableViewCell";
 #define FONT_SIZE 16.0f
 #define CELL_CONTENT_WIDTH self.view.frame.size.width-138
@@ -60,7 +63,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     NSString * flag1,*flag2,*flag3,*eventidval,*statusval;
     BOOL statusTextView;
     CGRect previousRect;
-    
+    NSInteger * senderTag_Addcalender;
     UIView *sectionView;
     NSMutableArray * arracal;
 }
@@ -668,9 +671,25 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     }
     else
     {
+        if (![[defaults valueForKey:@"fid"] isEqualToString:[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"senderfbid"]])
+        {
+            
+            NSURL * url2=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"profilepic"];
+            [desc_Imagepro sd_setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+            
+            
+        }
+        else
+            
+        {
+            NSURL * url=[defaults valueForKey:@"profilepic"];
+            [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+            
+            
+        }
         
         label_time.tag=indexPath.row-1;
-        
+        desc_Imagepro.tag=indexPath.row-1;
         label_time.textColor=[UIColor lightGrayColor];
         label_time.textAlignment=NSTextAlignmentCenter;
         label_time.hidden=NO;
@@ -687,6 +706,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         
         label_time.text=str_Date;
         label_time.hidden=NO;
+        desc_Imagepro.tag=indexPath.row;
         if (indexPath.row==1)
         {
             
@@ -724,7 +744,6 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             
         }
-        
         
         
         
@@ -774,8 +793,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
                 
                 
                 
-                NSURL * url=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"profilepic"];
-                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//                NSURL * url=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"profilepic"];
+//                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
                 
                 
                 label.backgroundColor=[UIColor colorWithRed:255/255.0 green:244/255.0 blue:96/255.0 alpha:0.7];
@@ -798,19 +817,15 @@ static const CGFloat kButtonSpaceHided = 24.0f;
                     
                 }
                 
-                //        Chat_ImageRight.backgroundColor=[UIColor clearColor];
-                //        [Chat_ImageRight setFrame:CGRectMake(label.frame.origin.x-14,label.frame.size.height-27, 16,16)];
-                //        [Chat_ImageRight setImage:[UIImage imageNamed:@"Chat_arrow_left.png"]];
-                
-                //chat_arrow_right.png
+             
                 [desc_Imagepro setFrame:CGRectMake(8,label.frame.origin.y+(label.frame.size.height-32),32,32)];
                 desc_Imagepro.clipsToBounds=YES;
                 desc_Imagepro.layer.cornerRadius=desc_Imagepro.frame.size.height/2;
             }
             else
             {
-                NSURL * url=[defaults valueForKey:@"profilepic"];
-                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//                NSURL * url=[defaults valueForKey:@"profilepic"];
+//                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
                 if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
                 {
                     label.backgroundColor=[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1];
@@ -976,9 +991,9 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             {
                 label.hidden=YES;
                 
-                NSURL * url=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"profilepic"];
-                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
-                
+//                NSURL * url=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"profilepic"];
+//                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//                
                 
                 [desc_Imagepro setFrame:CGRectMake(8,calnderView.frame.origin.y+(calnderView.frame.size.height-32),32,32)];
                 desc_Imagepro.clipsToBounds=YES;
@@ -988,8 +1003,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
                 
             {
                 label.hidden=YES;
-                NSURL * url=[defaults valueForKey:@"profilepic"];
-                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//                NSURL * url=[defaults valueForKey:@"profilepic"];
+//                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
                
                 [desc_Imagepro setFrame:CGRectMake(self.view.frame.size.width-48,calnderView.frame.origin.y+(calnderView.frame.size.height-32),32,32)];
                 desc_Imagepro.clipsToBounds=YES;
@@ -1021,8 +1036,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             if ([[defaults valueForKey:@"fid"] isEqualToString:[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"senderfbid"]])
             {
                 
-                NSURL * url=[[AllDataArray objectAtIndex:0]valueForKey:@"profilepic"];
-                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//                NSURL * url=[[AllDataArray objectAtIndex:0]valueForKey:@"profilepic"];
+//                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
                 
                 [Chat_UserImage setFrame:CGRectMake(52,4+label_time.frame.size.height,imgwidth,imgheight)];
                 Chat_UserImage.clipsToBounds=YES;
@@ -1039,8 +1054,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             {
                 
                 
-                NSURL * url=[defaults valueForKey:@"profilepic"];
-                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+//                NSURL * url=[defaults valueForKey:@"profilepic"];
+//                [desc_Imagepro sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
                 
                 
                 [Chat_UserImage setFrame:CGRectMake((self.view.frame.size.width-64)-imgwidth,4+label_time.frame.size.height,imgwidth,imgheight)];
@@ -1057,6 +1072,10 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             
         }
+        
+        
+        
+        
     }
     return Cell_one1;
     
@@ -1736,12 +1755,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             }
             
             
-            
-            
-            
-            
-            
-            [Table_Friend_chat reloadData];
+             [Table_Friend_chat reloadData];
             if(Array_Comment.count>=1)
             {
                 
@@ -1749,7 +1763,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 [Table_Friend_chat scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:Array_Comment.count inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
                 
             }
-            
+
         }
         
         
@@ -2093,10 +2107,110 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 -(void)Button_Addcalender_Action:(UIButton *)sender
 
 {
-    //eventattending
-     [self CalenderEvents];
-    NSLog(@"Button_Addcalender_Action calenser button tag==%d",[sender tag]);
+    senderTag_Addcalender=[sender tag];
+    //NSLog(@"Add my calnder data==%@",[Array_Comment1 objectAtIndex:[sender tag]]);
+    EKEventStore *eventStore = [[EKEventStore alloc]init];
+    
+//    if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
+//    {
+//        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted,NSError* error){
+//            if(!granted)
+//            {
+//               //                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+//                
+//                
+//            }
+//            else
+//            {
+    
+                EKEventEditViewController *addController = [[EKEventEditViewController alloc] initWithNibName:nil bundle:nil];
+                addController.event = [self createEvent:eventStore];
+                addController.eventStore = eventStore;
+                
+                [self presentViewController:addController animated:YES completion:nil];
+               addController.editViewDelegate = self;
+//            }
+//        }];
+//    }
+  
+    
 }
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action{
+    if (action ==EKEventEditViewActionCanceled)
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    if (action==EKEventEditViewActionSaved) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+-(EKEvent*)createEvent:(EKEventStore*)eventStore
+{
+//    chattype = EVENT;
+//    createdate = "2017-06-21 05:58:10";
+//    creatorfbid = 1224819434269672;
+//    creatorprofilepic = "http://play-date.ae/app/profileimages/defaultboy.jpg";
+//    eventdate = "2017-06-23 05:57:58";
+//    eventdateformat = "23rd June 2017, 5:57am";
+//    eventdescription = Xcgh;
+//    eventlocation = Tgc;
+//    eventtitle = Ddddf;
+//    gender = Boy;
+//    imageheight = "";
+//    imageurl = "";
+//    imagewidth = "";
+//    message = Ddddf;
+//    msgdate = "2017-06-21 05:58:10";
+//    profilepic = "http://play-date.ae/app/profileimages/defaultboy.jpg";
+//    senderfbid = 1224819434269672;
+//    senderfname = test;
+    
+    EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+    event.title =[[Array_Comment1 objectAtIndex:senderTag_Addcalender]valueForKey:@"eventtitle"];
+    
+//    event.startDate = [[NSDate date] dateByAddingTimeInterval:86400];
+    
+    NSDateFormatter *df1 = [[NSDateFormatter alloc] init];
+    [df1 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *currDate1=[df1 dateFromString:[[Array_Comment1 objectAtIndex:senderTag_Addcalender]valueForKey:@"eventdate"]];
+   
+    
+    event.startDate = currDate1;//[[NSDate date] dateByAddingTimeInterval:86400];
+    
+    // duration = 1 h
+    event.endDate = [currDate1 dateByAddingTimeInterval:3600];
+    
+    event.location=[[Array_Comment1 objectAtIndex:senderTag_Addcalender]valueForKey:@"eventlocation"];;
+    event.allDay = NO;
+    event.notes =[[Array_Comment1 objectAtIndex:senderTag_Addcalender]valueForKey:@"eventdescription"];;
+    
+    NSString* calendarName = @"Calendar";
+    EKCalendar* calendar;
+    EKSource* localSource;
+    for (EKSource *source in eventStore.sources){
+        if (source.sourceType == EKSourceTypeCalDAV &&
+            [source.title isEqualToString:@"iCloud"]){
+            localSource = source;
+            break;
+        }
+    }
+    if (localSource == nil){
+        for (EKSource *source in eventStore.sources){
+            if (source.sourceType == EKSourceTypeLocal){
+                localSource = source;
+                break;
+            }
+        }
+    }
+    calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:eventStore];
+    calendar.source = localSource;
+    calendar.title = calendarName;
+    NSError* error;
+    [eventStore saveCalendar:calendar commit:YES error:&error];
+    return event;
+}
+
 -(void)CalenderEvents
 {
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];

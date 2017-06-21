@@ -160,6 +160,13 @@
 		9A63F0031E5FFF6A0090711A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A63F0021E5FFF6A0090711A /* Security.framework */; };
 		9A63F0051E5FFF820090711A /* libFlurry-iOS-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A63F0041E5FFF820090711A /* libFlurry-iOS-SDK.a */; };
 		9A6685831E1CD1D000246F9D /* SettingGenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6685821E1CD1D000246F9D /* SettingGenderViewController.m */; };
+		9A6C53011EFA3ECF002AF652 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C52FE1EFA3ECF002AF652 /* share.png */; };
+		9A6C53021EFA3ECF002AF652 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C52FF1EFA3ECF002AF652 /* share@2x.png */; };
+		9A6C53031EFA3ECF002AF652 /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C53001EFA3ECF002AF652 /* share@3x.png */; };
+		9A6C53081EFA3F11002AF652 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C53051EFA3F11002AF652 /* calendar.png */; };
+		9A6C53091EFA3F11002AF652 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C53061EFA3F11002AF652 /* calendar@2x.png */; };
+		9A6C530A1EFA3F11002AF652 /* calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6C53071EFA3F11002AF652 /* calendar@3x.png */; };
+		9A6C53101EFA57EE002AF652 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6C530F1EFA57ED002AF652 /* EventKit.framework */; };
 		9A7176051E4605FB00946281 /* PushHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7176041E4605FB00946281 /* PushHandler.m */; };
 		9A7BA9761E1FBEF900EAD34D /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7BA9711E1FBEF900EAD34D /* DraggableView.m */; };
 		9A7BA9781E1FBEF900EAD34D /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7BA9751E1FBEF900EAD34D /* OverlayView.m */; };
@@ -219,9 +226,6 @@
 		9AC392421E1D030B00A63487 /* HowOldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC392411E1D030B00A63487 /* HowOldViewController.m */; };
 		9AC7211E1E52E08F00E88E6A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC7211D1E52E08F00E88E6A /* MessageUI.framework */; };
 		9AD3F1AF1EF2AE56005A215D /* MymeetupsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */; };
-		9AD3F1B51EF2B165005A215D /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B21EF2B165005A215D /* calendar.png */; };
-		9AD3F1B61EF2B165005A215D /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B31EF2B165005A215D /* calendar@2x.png */; };
-		9AD3F1B71EF2B165005A215D /* calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B41EF2B165005A215D /* calendar@3x.png */; };
 		9AD3F1BA1EF2B98F005A215D /* NewPlayDateCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD3F1B91EF2B98F005A215D /* NewPlayDateCreateViewController.m */; };
 		9ADA72CB1E4DCE7C0061D820 /* AdProfileMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA72CA1E4DCE7C0061D820 /* AdProfileMatchViewController.m */; };
 		9AE13DDE1E44ACC500C747E6 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9AE13DDD1E44ACC500C747E6 /* AirshipConfig.plist */; };
@@ -554,6 +558,13 @@
 		9A63F0041E5FFF820090711A /* libFlurry-iOS-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libFlurry-iOS-SDK.a"; path = "Pods/../build/Debug-iphoneos/Flurry-iOS-SDK/libFlurry-iOS-SDK.a"; sourceTree = "<group>"; };
 		9A6685811E1CD1D000246F9D /* SettingGenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingGenderViewController.h; sourceTree = "<group>"; };
 		9A6685821E1CD1D000246F9D /* SettingGenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingGenderViewController.m; sourceTree = "<group>"; };
+		9A6C52FE1EFA3ECF002AF652 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		9A6C52FF1EFA3ECF002AF652 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		9A6C53001EFA3ECF002AF652 /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@3x.png"; sourceTree = "<group>"; };
+		9A6C53051EFA3F11002AF652 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		9A6C53061EFA3F11002AF652 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		9A6C53071EFA3F11002AF652 /* calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@3x.png"; sourceTree = "<group>"; };
+		9A6C530F1EFA57ED002AF652 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		9A7176031E4605FB00946281 /* PushHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushHandler.h; sourceTree = "<group>"; };
 		9A7176041E4605FB00946281 /* PushHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushHandler.m; sourceTree = "<group>"; };
 		9A7BA9701E1FBEF900EAD34D /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
@@ -650,9 +661,6 @@
 		9AC7211D1E52E08F00E88E6A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9AD3F1AD1EF2AE56005A215D /* MymeetupsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MymeetupsTableViewCell.h; sourceTree = "<group>"; };
 		9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MymeetupsTableViewCell.m; sourceTree = "<group>"; };
-		9AD3F1B21EF2B165005A215D /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
-		9AD3F1B31EF2B165005A215D /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
-		9AD3F1B41EF2B165005A215D /* calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@3x.png"; sourceTree = "<group>"; };
 		9AD3F1B81EF2B98F005A215D /* NewPlayDateCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlayDateCreateViewController.h; sourceTree = "<group>"; };
 		9AD3F1B91EF2B98F005A215D /* NewPlayDateCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlayDateCreateViewController.m; sourceTree = "<group>"; };
 		9ADA72C91E4DCE7C0061D820 /* AdProfileMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdProfileMatchViewController.h; sourceTree = "<group>"; };
@@ -799,6 +807,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A6C53101EFA57EE002AF652 /* EventKit.framework in Frameworks */,
 				9A63F0051E5FFF820090711A /* libFlurry-iOS-SDK.a in Frameworks */,
 				9A63F0031E5FFF6A0090711A /* Security.framework in Frameworks */,
 				9A63F0001E5FFF610090711A /* SystemConfiguration.framework in Frameworks */,
@@ -1035,8 +1044,8 @@
 				9A40A2271E139282007E7C37 /* Reachability.m */,
 				9A40A2281E139282007E7C37 /* Reachability.h */,
 				9A40A2161E139067007E7C37 /* FacbookLogin */,
-				9A1C590B1E1A787E009EA17C /* 10154143609282724.jpg */,
 				9A40A2121E138FD5007E7C37 /* Facebook_logo2.png */,
+				9A1C590B1E1A787E009EA17C /* 10154143609282724.jpg */,
 				9A40A1D01E138656007E7C37 /* AppDelegate.h */,
 				9A40A1D11E138656007E7C37 /* AppDelegate.m */,
 				9A7176031E4605FB00946281 /* PushHandler.h */,
@@ -1126,6 +1135,7 @@
 		9A40A21C1E139173007E7C37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A6C530F1EFA57ED002AF652 /* EventKit.framework */,
 				9A63F0041E5FFF820090711A /* libFlurry-iOS-SDK.a */,
 				9A63F0021E5FFF6A0090711A /* Security.framework */,
 				9A63EFFF1E5FFF610090711A /* SystemConfiguration.framework */,
@@ -1214,6 +1224,28 @@
 				9A5BB33F1E1E76EA00265DBB /* UIView+RNActivityView.m */,
 			);
 			name = ACtivityIndiction;
+			sourceTree = "<group>";
+		};
+		9A6C52FD1EFA3ECF002AF652 /* shareicon */ = {
+			isa = PBXGroup;
+			children = (
+				9A6C52FE1EFA3ECF002AF652 /* share.png */,
+				9A6C52FF1EFA3ECF002AF652 /* share@2x.png */,
+				9A6C53001EFA3ECF002AF652 /* share@3x.png */,
+			);
+			name = shareicon;
+			path = Play_Date/shareicon;
+			sourceTree = "<group>";
+		};
+		9A6C53041EFA3F11002AF652 /* calendarimage */ = {
+			isa = PBXGroup;
+			children = (
+				9A6C53051EFA3F11002AF652 /* calendar.png */,
+				9A6C53061EFA3F11002AF652 /* calendar@2x.png */,
+				9A6C53071EFA3F11002AF652 /* calendar@3x.png */,
+			);
+			name = calendarimage;
+			path = Play_Date/calendarimage;
 			sourceTree = "<group>";
 		};
 		9AAF109E1E1B81490065CA75 /* MainProfile */ = {
@@ -1345,7 +1377,8 @@
 		9AAF10E41E1B8DA50065CA75 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9AD3F1B11EF2B165005A215D /* calendarimage */,
+				9A6C53041EFA3F11002AF652 /* calendarimage */,
+				9A6C52FD1EFA3ECF002AF652 /* shareicon */,
 				9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */,
 				9A3E9D0F1EE94F1D008BDA3B /* plusandbackpd */,
 				9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */,
@@ -1441,17 +1474,6 @@
 				6185EB5B1E8E5D21005883A0 /* AccFiveTableViewCell.m */,
 			);
 			name = AccountSetting;
-			sourceTree = "<group>";
-		};
-		9AD3F1B11EF2B165005A215D /* calendarimage */ = {
-			isa = PBXGroup;
-			children = (
-				9AD3F1B21EF2B165005A215D /* calendar.png */,
-				9AD3F1B31EF2B165005A215D /* calendar@2x.png */,
-				9AD3F1B41EF2B165005A215D /* calendar@3x.png */,
-			);
-			name = calendarimage;
-			path = Play_Date/calendarimage;
 			sourceTree = "<group>";
 		};
 		9AE13EE31E44B3A900C747E6 /* Airship */ = {
@@ -1851,6 +1873,7 @@
 				9A1C59051E1A4A33009EA17C /* Cancel.png in Resources */,
 				9AF0ECB41E24FB5D001A6B47 /* friends@2x.png in Resources */,
 				9A160C681E26292F00300BE7 /* profile@3x.png in Resources */,
+				9A6C53011EFA3ECF002AF652 /* share.png in Resources */,
 				9AFEF4081E4DEBAB00292760 /* downarrow.png in Resources */,
 				9A54038E1ECB06D90026BDAE /* 3dotsgrey.png in Resources */,
 				61B761931E72818F0017E215 /* MyView2.xib in Resources */,
@@ -1874,13 +1897,13 @@
 				9AE13F561E44B3AA00C747E6 /* AirshipResources.bundle in Resources */,
 				9AB37B301E2E199400CBD599 /* Screenshot Filled-50.png in Resources */,
 				9AC30BDC1E54333E00920D8D /* ribbon@2x.png in Resources */,
-				9AD3F1B71EF2B165005A215D /* calendar@3x.png in Resources */,
 				9AA91B491E28E2090071500A /* nope.png in Resources */,
 				9AE13DDE1E44ACC500C747E6 /* AirshipConfig.plist in Resources */,
 				9AB37B2F1E2E199400CBD599 /* heart.png in Resources */,
 				9A160C6E1E2629BC00300BE7 /* graypictureframe 1.png in Resources */,
 				9A3D2D031E55CDB5002E19A1 /* Help@2x.png in Resources */,
 				9A4ACB291E24A51C00CD6D17 /* pictureframe.png in Resources */,
+				9A6C530A1EFA3F11002AF652 /* calendar@3x.png in Resources */,
 				9A1C590A1E1A77E5009EA17C /* frame.png in Resources */,
 				9A4ACB261E24A51C00CD6D17 /* indoor.png in Resources */,
 				9A160C671E26292F00300BE7 /* profile@2x.png in Resources */,
@@ -1897,6 +1920,8 @@
 				9AE19E281E278BB2006143E5 /* arrow.png in Resources */,
 				61B7618F1E72818F0017E215 /* MyView.xib in Resources */,
 				9A4ACB1B1E24A51C00CD6D17 /* anytime.png in Resources */,
+				9A6C53031EFA3ECF002AF652 /* share@3x.png in Resources */,
+				9A6C53091EFA3F11002AF652 /* calendar@2x.png in Resources */,
 				9A160C631E26292F00300BE7 /* discover@2x.png in Resources */,
 				9A81E6DA1E3F6BB400D3804E /* defaultgirl.jpg in Resources */,
 				9A81E6D91E3F6BB400D3804E /* defaultboy.jpg in Resources */,
@@ -1911,18 +1936,19 @@
 				9AFEF40F1E4DF06000292760 /* introprofile.png in Resources */,
 				9A4ACB2C1E24A54500CD6D17 /* profile.png in Resources */,
 				9A4ACB221E24A51C00CD6D17 /* flag.png in Resources */,
+				9A6C53081EFA3F11002AF652 /* calendar.png in Resources */,
 				9A40A1DA1E138657007E7C37 /* Assets.xcassets in Resources */,
 				9A40A1D81E138656007E7C37 /* Main.storyboard in Resources */,
 				61B761951E72818F0017E215 /* MyView3.xib in Resources */,
 				9A4ACB231E24A51C00CD6D17 /* friends.png in Resources */,
 				9A4ACB281E24A51C00CD6D17 /* outdoor.png in Resources */,
 				9A5403901ECB06D90026BDAE /* 3dotsgrey@3x.png in Resources */,
+				9A6C53021EFA3ECF002AF652 /* share@2x.png in Resources */,
 				9A4ACB1E1E24A51C00CD6D17 /* circle2.png in Resources */,
 				9A40A22F1E1393D8007E7C37 /* Images in Resources */,
 				9AB37B311E2E199400CBD599 /* Screenshot-50 (1).png in Resources */,
 				9A3D2CFA1E5569F3002E19A1 /* tutorial@2x.png in Resources */,
 				9A3D2D041E55CDB5002E19A1 /* Help@3x.png in Resources */,
-				9AD3F1B51EF2B165005A215D /* calendar.png in Resources */,
 				9A4ACB351E24C26900CD6D17 /* boypictureframe 1.png in Resources */,
 				9AC30BDD1E54333E00920D8D /* ribbon@3x.png in Resources */,
 				9A9CF00F1E2F37F4007885BE /* ChatText.plist in Resources */,
@@ -1940,7 +1966,6 @@
 				9A5F332D1E30E5D400C29894 /* Message1.png in Resources */,
 				9A4ACB1D1E24A51C00CD6D17 /* circle1.png in Resources */,
 				9A3E9D161EE94F1D008BDA3B /* back.png in Resources */,
-				9AD3F1B61EF2B165005A215D /* calendar@2x.png in Resources */,
 				9AF0ECB51E24FB5D001A6B47 /* friends@3x.png in Resources */,
 				9AF4EF451E335A5900F87794 /* ChatText1.plist in Resources */,
 				9A3E9D1B1EE94F1D008BDA3B /* plus@3x.png in Resources */,

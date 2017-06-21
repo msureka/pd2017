@@ -43,19 +43,34 @@
 
 @implementation FriendsViewController
 @synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two,Button_chats,Button_playdates,Label_HeadTop,Button_Plustap,Cell_Two2;
-- (void)viewDidLoad {
+
+
+
+
+
+
+
+
+- (void)viewDidLoad
+{
     
     [super viewDidLoad];
     
     defaults=[[NSUserDefaults alloc]init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLabel) name:@"UpdatenotificationChat" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Refresh_UpdatedBudge) name:@"UpdatedBudge" object:nil];
     borderBottom_chat = [CALayer layer];
     borderBottom_playdate = [CALayer layer];
     Label_HeadTop.text=@"Friends";
     Button_Plustap.tag=1;
     [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
     
+     _ImageMessageread_Button_chat.hidden=YES;
+     _ImageMessageread_Button_playdates.hidden=YES;
+    
+//    _ImageMessageread_Button_chat.hidden=NO;
+//    [_ImageMessageread_Button_chat setImage:[UIImage imageNamed:@"SpeechBubble1.png"]];
     
 //    Button_chats.clipsToBounds=YES;
 //    Button_playdates.clipsToBounds=YES;
@@ -322,6 +337,33 @@
     
     
 }
+- (void)Refresh_UpdatedBudge
+{
+    if ( [[defaults valueForKey:@"budgechat"]isEqualToString:@"0"] )
+    {
+        
+        _ImageMessageread_Button_chat.hidden=YES;
+       
+        
+    }
+    else
+    {
+        _ImageMessageread_Button_chat.hidden=NO;
+       
+    }
+    if ( [[defaults valueForKey:@"budgeplaydate"]isEqualToString:@"0"] )
+    {
+      
+        _ImageMessageread_Button_playdates.hidden=YES;
+        
+    }
+    else
+    {
+     
+        _ImageMessageread_Button_playdates.hidden=NO;
+    }
+    
+}
 - (void) viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -417,7 +459,7 @@
     transparancyTuchView.hidden=YES;
     searchbar.text=@"";
     FlagSearchBar=@"no";
-   
+    
     [Table_Friend reloadData];
 }
 - (void)didReceiveMemoryWarning {
@@ -1062,11 +1104,14 @@ static NSString * Cellid111=@"Cellmeet";
             {
                 Cell_Two.Image_messagered.hidden=NO;
                [Cell_Two.Image_messagered setImage:[UIImage imageNamed:@"SpeechBubble1.png"]];
+               
             }
             else
             {
                 Cell_Two.Image_messagered.hidden=YES;
                  [Cell_Two.Image_messagered setImage:[UIImage imageNamed:@""]];
+//                _ImageMessageread_Button_chat.hidden=YES;
+//                [_ImageMessageread_Button_chat setImage:[UIImage imageNamed:@""]];
                 
             }
             
@@ -1407,7 +1452,22 @@ static NSString * Cellid111=@"Cellmeet";
                 }
                 
                 
-                
+                Cell_Two2.Image_messagered.tag=indexPath.row;
+                if ([[[Array_Meetups objectAtIndex:indexPath.row]valueForKey:@"msgread"]isEqualToString:@"no"])
+                {
+                    Cell_Two2.Image_messagered.hidden=NO;
+                    [Cell_Two2.Image_messagered setImage:[UIImage imageNamed:@"SpeechBubble1.png"]];
+                    
+                  
+                }
+                else
+                {
+                    Cell_Two2.Image_messagered.hidden=YES;
+                    [Cell_Two2.Image_messagered setImage:[UIImage imageNamed:@""]];
+                    
+
+                    
+                }
                 
               
                 
@@ -1967,6 +2027,7 @@ static NSString * Cellid111=@"Cellmeet";
                                                  }
                                 
                                   Array_Meetups1=[Array_Meetups mutableCopy];
+                                [Table_Friend reloadData];
                             }
                                              }
                                              

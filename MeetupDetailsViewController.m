@@ -33,7 +33,7 @@
     
     borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
     [HeadTopView.layer addSublayer:borderBottom];
-    Array_title=[[NSArray alloc]initWithObjects:@"Invite more friends",@"Edit this meetup",@"Delete this meetup", nil];
+   
   
     defaults=[[NSUserDefaults alloc]init];
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"UrlName" ofType:@"plist"];
@@ -158,25 +158,37 @@
                                                          indicator.hidden=YES;
                                                          
                                                      }
-                                        if (Array_AllMeetupData.count !=0)
-                                                     {
-                                                         _Table_Friend.hidden=NO;
-                                                for (int i=0; i<Array_AllMeetupData.count; i++)
-                                        {
-                                        if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqualToString:@"INVITED"])
-                                        {
-                                    [Array_InvitesData addObject:[Array_AllMeetupData objectAtIndex:i]];
+                    if (Array_AllMeetupData.count !=0)
+                                {
+                                    
+                                    
+                                    
+                                    if(![[defaults valueForKey:@"fid"] isEqualToString:[[Array_AllMeetupData objectAtIndex:0]valueForKey:@"creatorfbid"]])
+                                    {
+                        Array_title=[[NSArray alloc]initWithObjects:@"Remove this event", nil];
+                                    }
+                                    else
+                                    {
+                    Array_title=[[NSArray alloc]initWithObjects:@"Invite more friends",@"Edit this meetup",@"Delete this meetup", nil];
+                                     
+                                    }
+                                    
+                            
+                                    
+                                    
+    _Table_Friend.hidden=NO;
+    for (int i=0; i<Array_AllMeetupData.count; i++)
+            {
+if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqualToString:@"INVITED"])
+                {
+        [Array_InvitesData addObject:[Array_AllMeetupData objectAtIndex:i]];
                                                                  
-                                            }
-                                else if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"attendingstatus"] isEqualToString:@"ATTENDING"])
-                                                             {
-                          [Array_AttendingData addObject:[Array_AllMeetupData objectAtIndex:i]];
-                                                                }
-//                else if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"eventstatus"] isEqualToString:@"event"])
-//                                        {
-//                   
-                  
-//                                        }
+                    }
+              if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"attendingstatus"] isEqualToString:@"ATTENDING"])
+                    {
+            [Array_AttendingData addObject:[Array_AllMeetupData objectAtIndex:i]];
+                    }
+
                                            
                                     }
                                     
@@ -252,15 +264,8 @@
         }
     if (section==3)
     {
-    if(![[defaults valueForKey:@"fid"] isEqualToString:[[Array_AllMeetupData objectAtIndex:0]valueForKey:@"creatorfbid"]])
-        {
-            return 0;
-        }
-        else
-        {
-             return Array_title.count;
-        }
-
+   
+        return Array_title.count;
        
     }
 
@@ -344,6 +349,21 @@
                 borderBottomViewTap6.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
                 borderBottomViewTap6.frame = CGRectMake(0, Cell_One.myscrollView.frame.size.height - 1, Cell_One.myscrollView.frame.size.width, 1);
                 [Cell_One.myscrollView.layer addSublayer:borderBottomViewTap6];
+                
+                
+              
+                
+                NSString *text =[NSString stringWithFormat:@"%d",Array_InvitesData.count];// @"300";
+               
+                CGSize constraint = CGSizeMake(296,9999);
+                CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16]
+                               constrainedToSize:constraint
+                                   lineBreakMode:UILineBreakModeWordWrap];
+                [Cell_One.label_Invitecount setFrame:CGRectMake(Cell_One.label_Invitecount.frame.origin.x, Cell_One.label_Invitecount.frame.origin.y, size.width+16, Cell_One.label_Invitecount.frame.size.height)];
+                
+                 Cell_One.label_Invitecount.text=text;
+                Cell_One.label_Invitecount.clipsToBounds=YES;
+                Cell_One.label_Invitecount.layer.cornerRadius= Cell_One.label_Invitecount.frame.size.height/2;;
                 
                 Cell_One.label_title.text=[[Array_Date objectAtIndex:0]valueForKey:@"eventtitle"];
                 Cell_One.label_location.text=[[Array_Date objectAtIndex:0]valueForKey:@"eventlocation"];
@@ -437,6 +457,11 @@
                     
                     ScrollContentSize+=Xwidth;
                     Cell_One.myscrollView.contentSize=CGSizeMake(Xpostion, 115);
+                    
+                    
+                    
+                    
+                    
                 }
                 
                 
@@ -470,8 +495,15 @@
                 }
                 
                 
-                
-                
+                 NSString *text =[NSString stringWithFormat:@"%d",Array_AttendingData.count];
+                CGSize constraint = CGSizeMake(296,9999);
+                CGSize size = [text sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16]
+                               constrainedToSize:constraint
+                                   lineBreakMode:UILineBreakModeWordWrap];
+                [Cell_OneOne.label_AttendingCount setFrame:CGRectMake(Cell_OneOne.label_AttendingCount.frame.origin.x, Cell_OneOne.label_AttendingCount.frame.origin.y, size.width+16,Cell_OneOne.label_AttendingCount.frame.size.height)];
+                Cell_OneOne.label_AttendingCount.text=text;
+                Cell_OneOne.label_AttendingCount.clipsToBounds=YES;
+                Cell_OneOne.label_AttendingCount.layer.cornerRadius= Cell_OneOne.label_AttendingCount.frame.size.height/2;;
 //                CALayer *borderBottomViewTap6 = [CALayer layer];
 //                borderBottomViewTap6.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
 //                borderBottomViewTap6.frame = CGRectMake(0, Cell_OneOne.myscrollView.frame.size.height - 1, Cell_OneOne.myscrollView.frame.size.width, 1);
@@ -645,7 +677,35 @@
     {
         if (indexPath.row==0)
         {
+    if(![[defaults valueForKey:@"fid"] isEqualToString:[[Array_AllMeetupData objectAtIndex:0]valueForKey:@"creatorfbid"]])
+        {
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Remove Meetup" message:@"Are you sure you want to remove yourself from this meetup?" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Yes"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action)
+                                       {
+                                           [self DeleteEventCreatedIndexZero];
+                                       }];
+            UIAlertAction *actionOk1 = [UIAlertAction actionWithTitle:@"No"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action)
+                                        {
+                                            
+                                        }];
+            
+            [alertController addAction:actionOk];
+            [alertController addAction:actionOk1];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        else
+        {
+            
             [self invitemoreIndexZero];
+   
+       
+        }
         }
         if (indexPath.row==1)
         {
@@ -890,6 +950,149 @@
         [dataTask resume];
     }
 }
-
+-(void)DeleteEventCreatedIndexZero
+{
+    
+    
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        //        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        //        message.tag=100;
+        //        [message show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action)
+                                   {
+                                       exit(0);
+                                   }];
+        
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+    }
+    else
+    {
+        
+        NSString *fbid1= @"fbid";
+        NSString *fbid1Val=[defaults valueForKey:@"fid"];
+        
+        NSString *eventid= @"eventid";
+        
+        
+        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@",fbid1,fbid1Val,eventid,eventidvalue];
+        
+        
+#pragma mark - swipe sesion
+        
+        NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+        
+        NSURL *url;
+        NSString *  urlStrLivecount=[urlplist valueForKey:@"removeevent"];
+        url =[NSURL URLWithString:urlStrLivecount];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        
+        [request setHTTPMethod:@"POST"];//Web API Method
+        
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+        request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
+        
+        
+        
+        NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                         {
+                                             
+                                             if(data)
+                                             {
+                                                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                 NSInteger statusCode = httpResponse.statusCode;
+                                                 if(statusCode == 200)
+                                                 {
+                                                     
+                                                     Array_AllMeetupData=[[NSMutableArray alloc]init];
+                                                     Array_InvitesData=[[NSMutableArray alloc]init];
+                                                     Array_AttendingData=[[NSMutableArray alloc]init];
+                                                     Array_Date=[[NSMutableArray alloc]init];
+                                                     SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
+                                                     Array_AllMeetupData=[objSBJsonParser objectWithData:data];
+                                                     NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                     ;
+                                                     
+                                                     ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                                                     ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                                                     
+                                                     NSLog(@"array_createEvent %@",Array_AllMeetupData);
+                                                     
+                                                     NSLog(@"array_createEvent ResultString %@",ResultString);
+                                                     if ([ResultString isEqualToString:@"noeventid"])
+                                                     {
+                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"noeventid" preferredStyle:UIAlertControllerStyleAlert];
+                                                         UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                                                            style:UIAlertActionStyleDefault
+                                                                                                          handler:^(UIAlertAction *action)
+                                                                                    {
+                                                                                        [self.navigationController popViewControllerAnimated:YES];;
+                                                                                    }];
+                                                         
+                                                         [alertController addAction:actionOk];
+                                                         [self presentViewController:alertController animated:YES completion:nil];
+                                                         
+                                                         
+                                                     }
+                                                     if ([ResultString isEqualToString:@"done"])
+                                                     {
+                                                         
+                                                         [defaults setObject:@"yes" forKey:@"tapindex"];
+                                                         [defaults synchronize];
+                                                         MainProfilenavigationController *loginController=[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainProfilenavigationController"];
+                                                         [[UIApplication sharedApplication].keyWindow setRootViewController:loginController];
+                                                         
+                                                         
+                                                         
+                                                     }
+                                                 }
+                                                 
+                                                 else
+                                                 {
+                                                     NSLog(@" error login1 ---%ld",(long)statusCode);
+                                                     if ((long)statusCode ==500)
+                                                     {
+                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Check php file" preferredStyle:UIAlertControllerStyleAlert];
+                                                         UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                                                            style:UIAlertActionStyleDefault
+                                                                                                          handler:^(UIAlertAction *action)
+                                                                                    {
+                                                                                        [self.navigationController popViewControllerAnimated:YES];;
+                                                                                    }];
+                                                         [alertController addAction:actionOk];
+                                                         [self presentViewController:alertController animated:YES completion:nil];
+                                                         [indicator stopAnimating];
+                                                         indicator.hidden=YES;
+                                                         
+                                                     }
+                                                     
+                                                 }
+                                                 
+                                                 
+                                             }
+                                             else if(error)
+                                             {
+                                                 
+                                                 NSLog(@"error login2.......%@",error.description);
+                                             }
+                                             
+                                             
+                                         }];
+        [dataTask resume];
+    }
+}
 
 @end

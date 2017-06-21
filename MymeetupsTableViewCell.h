@@ -13,4 +13,5 @@
 @property(strong,nonatomic)IBOutlet UILabel * Label_name;
 @property(strong,nonatomic)IBOutlet UILabel * Label_chatInfo;
 @property(strong,nonatomic)IBOutlet UILabel * Label_Date;
+@property(strong,nonatomic)IBOutlet UIImageView * Image_messagered;
 @end

@@ -18,5 +18,4 @@
 @property(nonatomic,strong)IBOutlet UILabel * label_createdname;
 @property(nonatomic,strong)IBOutlet UILabel * label_createdtime;
 @property(nonatomic,strong)IBOutlet UIImageView * Image_CreatedProfilepic;
-
 @end
