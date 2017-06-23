@@ -25,7 +25,7 @@
 @end
 
 @implementation MeetupDetailsViewController
-@synthesize Cell_One,Cell_OneOne,HeadTopView,Cell_three,indicator,eventidvalue;
+@synthesize Cell_One,Cell_OneOne,HeadTopView,Cell_three,indicator,eventidvalue,cell_Details;
 - (void)viewDidLoad {
     [super viewDidLoad];
     CALayer *borderBottom = [CALayer layer];
@@ -165,7 +165,7 @@
                                     
                                     if(![[defaults valueForKey:@"fid"] isEqualToString:[[Array_AllMeetupData objectAtIndex:0]valueForKey:@"creatorfbid"]])
                                     {
-                        Array_title=[[NSArray alloc]initWithObjects:@"Remove this event", nil];
+                        Array_title=[[NSArray alloc]initWithObjects:@"Remove this meetup", nil];
                                     }
                                     else
                                     {
@@ -245,7 +245,7 @@ if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqual
     
      if (section==0)
         {
-            return 0;
+            return 1;
         }
         if (section==1)
         {
@@ -281,13 +281,13 @@ if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqual
     
         if (indexPath.section==0)
         {
-            return 0;
+            return 225;
         }
         
         if (indexPath.section==1)
         {
            
-                return 389;
+                return 160;
             
             
             
@@ -315,11 +315,9 @@ if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqual
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *Cellid=@"Celldetail";
     static NSString *Cellid1=@"Cellone";
-    
-    
     static NSString *cellId2=@"Celltwo";
-   
     static NSString *cellId3=@"Cellthree";
    
         switch (indexPath.section)
@@ -327,7 +325,44 @@ if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqual
                 
             case 0:
             {
-                return 0;
+                
+                cell_Details = (MeetupDetailCellTableViewCell *)[tableView dequeueReusableCellWithIdentifier:Cellid forIndexPath:indexPath];
+                
+                
+                
+                
+                
+                
+                cell_Details.label_title.text=[[Array_Date objectAtIndex:0]valueForKey:@"eventtitle"];
+                cell_Details.label_location.text=[[Array_Date objectAtIndex:0]valueForKey:@"eventlocation"];
+                cell_Details.label_datetime.text=[[Array_Date objectAtIndex:0]valueForKey:@"eventdateformat"];
+                cell_Details.label_eventcode.text=[NSString stringWithFormat:@"%@%@%@",@"(Event Code: ",eventidvalue,@")"];
+                
+                cell_Details.label_createdname.text=[NSString stringWithFormat:@"%@%@",@"Created by ",[[Array_Date objectAtIndex:0]valueForKey:@"fname"]];
+                
+                
+                [cell_Details.Image_CreatedProfilepic setFrame:CGRectMake(cell_Details.Image_CreatedProfilepic.frame.origin.x, cell_Details.Image_CreatedProfilepic.frame.origin.y, cell_Details.Image_CreatedProfilepic.frame.size.height, cell_Details.Image_CreatedProfilepic.frame.size.height)];
+                NSURL * url1=[[Array_Date objectAtIndex:0]valueForKey:@"profilepic"];
+                
+                if ([[[Array_Date objectAtIndex:0]valueForKey:@"gender"] isEqualToString:@"Boy"])
+                {
+                    
+                    
+                    
+                    [cell_Details.Image_CreatedProfilepic sd_setImageWithURL:url1 placeholderImage:[UIImage imageNamed:@"defaultboy.jpg"]options:SDWebImageRefreshCached];
+                    
+                }
+                else
+                {
+                    [cell_Details.Image_CreatedProfilepic sd_setImageWithURL:url1 placeholderImage:[UIImage imageNamed:@"girlpictureframe 1.png"]options:SDWebImageRefreshCached];
+                }
+                
+                
+                
+                
+                return cell_Details;
+                
+                
             }
                 break;
             case 1:
@@ -751,16 +786,14 @@ if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqual
 }
 -(IBAction)Button_share:(id)sender
 {
-//    NSString * texttoshare=[NSString stringWithFormat:@"%@%@",@"sachin",@" has recorded a new challenge video. Download the app now - http://www.care2dareapp.com or Watch the video here: "];
-    NSString * texttoshare=[NSString stringWithFormat:@"Download Play:Date on your iPhone from http://www.play-date.ae and find new friends for your children!"];
+
+NSString * texttoshare=[NSString stringWithFormat:@"%@%@%@",@"You have been invited to a Play:Date meet-up! Use the event code ",eventidvalue,@" to join the meet-up. Download Play:Date on your iPhone from http://www.play-date.ae and find new friends for your children!"];
     
-//    NSURL * urltoshare=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"http://www.care2dareapp.com"]];
-//    NSArray *activityItems1=@[texttoshare,urltoshare];
+
     NSArray *activityItems1=@[texttoshare];
     NSArray *activityItems =@[UIActivityTypePrint,UIActivityTypeAirDrop,UIActivityTypeAssignToContact,UIActivityTypeAddToReadingList,UIActivityTypeOpenInIBooks];
     UIActivityViewController *activityViewControntroller = [[UIActivityViewController alloc] initWithActivityItems:activityItems1 applicationActivities:nil];
     activityViewControntroller.excludedActivityTypes = activityItems;
-    //  [self.view addSubview:activityViewControntroller];
     [self presentViewController:activityViewControntroller animated:YES completion:nil];
 }
 -(void)ImageTapped_profile1:(UIGestureRecognizer*)reconizer

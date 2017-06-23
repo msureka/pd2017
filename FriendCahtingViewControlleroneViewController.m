@@ -66,6 +66,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     NSInteger * senderTag_Addcalender;
     UIView *sectionView;
     NSMutableArray * arracal;
+    UIFont * Font_AddCalender;
 }
 - (void) displayImage:(UIImageView*)imageView withImage:(UIImage*)image;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tabBarBottomSpace;
@@ -211,7 +212,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     {
         
         ww=194.0;
-        Button_width=87.0;
+        Button_width=77.0;
+       Font_AddCalender=[UIFont fontWithName:@"Helvetica-Bold" size:12];
         
     }
     else if ([[UIScreen mainScreen]bounds].size.width==375 && [[UIScreen mainScreen]bounds].size.height==667)
@@ -219,6 +221,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         
         ww=249.0;
         Button_width=100.0;
+         Font_AddCalender=[UIFont fontWithName:@"Helvetica-Bold" size:14];
     }
     
     else  if ([[UIScreen mainScreen]bounds].size.width==414 && [[UIScreen mainScreen]bounds].size.height==736)
@@ -226,6 +229,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         
         ww=288.0;
         Button_width=114.0;
+         Font_AddCalender=[UIFont fontWithName:@"Helvetica-Bold" size:16];
         
     }
     
@@ -575,7 +579,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         Button_AddCalnder = [[UIButton alloc] initWithFrame:CGRectZero];
         [Button_AddCalnder setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:Button_AddCalnder];
-        [Button_AddCalnder setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
+        [Button_AddCalnder setFont:Font_AddCalender];
         [Button_AddCalnder setTitle:@"ADD TO MY CALENDAR" forState:UIControlStateNormal];
         
         Button_AddCalnder.titleLabel.minimumScaleFactor = 0.5f;
@@ -643,9 +647,13 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     if (!label1)
         label1 = (UILabel*)[Cell_one1 viewWithTag:2];
     
+    if (!desc_Imagepro)
+        desc_Imagepro = (UIImageView*)[Cell_one1 viewWithTag:4];
+    
+   
     
     [label setBackgroundColor:[UIColor clearColor]];
-    
+   
     
     label.textColor=[UIColor blackColor];
     
@@ -653,7 +661,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     if (indexPath.row==0)
     {
         
-      
+       
    if ([[defaults valueForKey:@"fid"] isEqualToString:[[Array_Comment1 objectAtIndex:indexPath.row]valueForKey:@"creatorfbid"]])
         {
         [label setText:[NSString stringWithFormat:@"%@%@",@"You have created this meetup on ",[[AllDataArray objectAtIndex:0] valueForKey:@"createdate"]]];
@@ -671,11 +679,29 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     }
     else
     {
+        
+        
         if (![[defaults valueForKey:@"fid"] isEqualToString:[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"senderfbid"]])
         {
             
+            
+          
+            
+            
             NSURL * url2=[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"profilepic"];
-            [desc_Imagepro sd_setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"DefaultImg.jpg"]options:SDWebImageRefreshCached];
+            if ([[[Array_Comment1 objectAtIndex:indexPath.row-1] valueForKey:@"gender"] isEqualToString:@"Boy"])
+            {
+                [desc_Imagepro setBackgroundColor:[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1]];
+               [desc_Imagepro sd_setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"boypictureframe 1.png"]options:SDWebImageRefreshCached];
+            
+            }
+            else
+            {
+                 [desc_Imagepro setBackgroundColor:[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1]];
+                [desc_Imagepro sd_setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"girlpictureframe 1.png"]options:SDWebImageRefreshCached];
+             
+            }
+            
             
             
         }
@@ -689,7 +715,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         }
         
         label_time.tag=indexPath.row-1;
-        desc_Imagepro.tag=indexPath.row-1;
+        
         label_time.textColor=[UIColor lightGrayColor];
         label_time.textAlignment=NSTextAlignmentCenter;
         label_time.hidden=NO;
@@ -706,7 +732,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         
         label_time.text=str_Date;
         label_time.hidden=NO;
-        desc_Imagepro.tag=indexPath.row;
+    
         if (indexPath.row==1)
         {
             
@@ -886,7 +912,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
            
             
             desc_Imagepro.hidden=NO;
-          [calnderView setFrame:CGRectMake(55,25,self.view.frame.size.width-110, 256)];
+          [calnderView setFrame:CGRectMake(55,25,self.view.frame.size.width-110, 236)];
             
             [Image_calnder setFrame:CGRectMake((calnderView.frame.size.width/2)-13,20,26,26)];
             
@@ -894,12 +920,12 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             [label_callocation setFrame:CGRectMake(12,label_caltitle.frame.size.height+label_caltitle.frame.origin.y+5,calnderView.frame.size.width-24, 20)];
             
-            [label_caltime setFrame:CGRectMake(12,label_callocation.frame.size.height+label_callocation.frame.origin.y,calnderView.frame.size.width-24, 20)];
+            [label_caltime setFrame:CGRectMake(24,label_callocation.frame.size.height+label_callocation.frame.origin.y,calnderView.frame.size.width-48, 20)];
             
-            [Button_IM setFrame:CGRectMake(label_caltime.frame.origin.x,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,Button_width,34)];
-            [Button_cantgo setFrame:CGRectMake((label_caltime.frame.origin.x+label_caltime.frame.size.width)-Button_width,label_caltime.frame.size.height+label_caltime.frame.origin.y+20,Button_width, 34)];
+            [Button_IM setFrame:CGRectMake(label_caltime.frame.origin.x,label_caltime.frame.size.height+label_caltime.frame.origin.y+15,Button_width,34)];
+            [Button_cantgo setFrame:CGRectMake((label_caltime.frame.origin.x+label_caltime.frame.size.width)-Button_width,label_caltime.frame.size.height+label_caltime.frame.origin.y+15,Button_width, 34)];
             
-            [Button_AddCalnder setFrame:CGRectMake(12,Button_IM.frame.size.height+Button_IM.frame.origin.y+30,calnderView.frame.size.width-24, 34)];
+            [Button_AddCalnder setFrame:CGRectMake(24,Button_IM.frame.size.height+Button_IM.frame.origin.y+15,calnderView.frame.size.width-48, 34)];
             
             [Button_IM setTag:indexPath.row-1];
             [Button_cantgo setTag:indexPath.row-1];
@@ -1189,7 +1215,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         }
         else if ([[[Array_Comment1 objectAtIndex:indexPath.row-1]valueForKey:@"chattype"] isEqualToString:@"EVENT"])
         {
-            return 291;
+            return 271;
         }
         else
         {
@@ -2111,9 +2137,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     //NSLog(@"Add my calnder data==%@",[Array_Comment1 objectAtIndex:[sender tag]]);
     EKEventStore *eventStore = [[EKEventStore alloc]init];
     
-//    if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
-//    {
-//        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted,NSError* error){
+    if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
+    {
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted,NSError* error){
 //            if(!granted)
 //            {
 //               //                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
@@ -2129,9 +2155,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 
                 [self presentViewController:addController animated:YES completion:nil];
                addController.editViewDelegate = self;
-//            }
-//        }];
-//    }
+            //}
+        }];
+    }
   
     
 }

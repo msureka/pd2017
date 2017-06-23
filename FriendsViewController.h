@@ -31,5 +31,14 @@
 @property(strong,nonatomic)IBOutlet UIImageView * ImageMessageread_Button_chat;
 @property(strong,nonatomic)IBOutlet UIImageView *  ImageMessageread_Button_playdates;
 
+@property(nonatomic,strong)IBOutlet UIButton * Button_JoinImage;
+@property(nonatomic,strong)IBOutlet UIButton * Button_Join;
+@property(nonatomic,strong)IBOutlet UIButton * Button_Create;
+
+- (IBAction)Button_JoinImage_action:(id)sender;
+- (IBAction)Button_Join_action:(id)sender;
+- (IBAction)Button_Create_action:(id)sender;
+
+
 -(void)calculate;
 @end

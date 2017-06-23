@@ -16,6 +16,8 @@
 #import "FacebookListViewController.h"
 #import "NavigationNewPlayDateViewController.h"
 #import "FriendCahtingViewControlleroneViewController.h"
+#import "UIView+RNActivityView.h"
+
 @interface FriendsViewController ()<UISearchBarDelegate>
 {
      NSTimer *HomechatTimer,*HomechatTimerplaydate;
@@ -37,18 +39,13 @@
     NSMutableArray * myarr;
     NSMutableDictionary *dictionary;
      CALayer *borderBottom_chat,*borderBottom_playdate;
-    NSString * Str_ChangeScreen;
+    NSString * Str_ChangeScreen,*Str_TextfieldJoinText;
+    NSInteger senderTagPlus;
 }
 @end
 
 @implementation FriendsViewController
-@synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two,Button_chats,Button_playdates,Label_HeadTop,Button_Plustap,Cell_Two2;
-
-
-
-
-
-
+@synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two,Button_chats,Button_playdates,Label_HeadTop,Button_Plustap,Cell_Two2,Button_Join,Button_Create,Button_JoinImage;
 
 
 - (void)viewDidLoad
@@ -286,22 +283,42 @@
                   forControlEvents:UIControlEventValueChanged];
     
    // [Table_Friend addSubview:self.refreshControl]; //uday
+    
     if ( [[defaults valueForKey:@"tapindex"] isEqualToString:@"yes"])
     {
         [defaults setObject:@"no" forKey:@"tapindex"];
         [defaults synchronize];
+        Button_Join.hidden=NO;
+        Button_JoinImage.hidden=NO;
+        [Button_Create setTitle:@"CREATE" forState:UIControlStateNormal];
         Button_Plustap.tag=2;
+        Button_Create.tag=2;
         Str_ChangeScreen=@"playdate";
-        Label_HeadTop.text=@"Create a Play:Date";
+        Label_HeadTop.text=@"Play:Date";
         [Button_chats setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [Button_playdates setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
         borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+        
+        if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
+        {
+            
+            
+            
+            borderBottom_chat.backgroundColor =[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
+        }
+        else
+        {
+            
+            
+            borderBottom_chat.backgroundColor =[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
+        }
+        
         borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-2.5, Button_playdates.frame.size.width, 2.5);
         [Button_playdates.layer addSublayer:borderBottom_playdate];
         
         
         
-        borderBottom_chat.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+        borderBottom_chat.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
         borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-1, Button_chats.frame.size.width, 1);
         [Button_chats.layer addSublayer:borderBottom_chat];
        
@@ -309,16 +326,37 @@
     else
     {
         Button_Plustap.tag=1;
+        Button_Create.tag=1;
         Str_ChangeScreen=@"chats";
         Label_HeadTop.text=@"Friends";
+         Button_Join.hidden=YES;
+        Button_JoinImage.hidden=YES;
+         [Button_Create setTitle:@"ADD" forState:UIControlStateNormal];
         [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
         [Button_playdates setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         
-        borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+        if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
+        {
+           
+            
+          
+             borderBottom_chat.backgroundColor =[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
+        }
+        else
+        {
+           
+            
+            borderBottom_chat.backgroundColor =[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
+        }
+
+        
+        
+        
+       
         borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
         [Button_chats.layer addSublayer:borderBottom_chat];
         
-        borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+        borderBottom_playdate.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
         borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
         [Button_playdates.layer addSublayer:borderBottom_playdate];
         
@@ -364,24 +402,28 @@
     }
     
 }
-- (void) viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-//    borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
-//    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
-//    [Button_chats.layer addSublayer:borderBottom_chat];
+//- (void) viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    CALayer *borderBottom = [CALayer layer];
+//    borderBottom.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
 //    
-//    
-//    
-//    
-//    
-//    
-//    borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
-//    borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
-//    [Button_playdates.layer addSublayer:borderBottom_playdate];
-
-}
+//    borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
+//    [HeadTopView.layer addSublayer:borderBottom];
+////    borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+////    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
+////    [Button_chats.layer addSublayer:borderBottom_chat];
+////    
+////    
+////    
+////    
+////    
+////    
+////    borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+////    borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
+////    [Button_playdates.layer addSublayer:borderBottom_playdate];
+//
+//}
 -(void)homeTimer
 {
     
@@ -2668,15 +2710,15 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
 {
     [self NewMatchServerComm];
 }
-- (IBAction)Button_Plus:(id)sender
+-(void)Plus_Action
 {
-    if ([sender tag]==1)
+    if (senderTagPlus==1)
     {
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Facebook friends",@"Invite contacts",nil];
         popup.tag = 777;
         [popup showInView:self.view];
     }
-    if ([sender tag]==2)
+    if (senderTagPlus==2)
     {
         NSLog(@"button oplus tag is ==2");
         [defaults setObject:@"newedit" forKey:@"checkview"];
@@ -2684,7 +2726,13 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
         NavigationNewPlayDateViewController *tvc=[self.storyboard instantiateViewControllerWithIdentifier:@"NavigationNewPlayDateViewController"];
         [self.navigationController presentModalViewController:tvc animated:YES];
     }
-   
+ 
+}
+- (IBAction)Button_Plus:(id)sender
+{
+    senderTagPlus=[sender tag];
+    [self Plus_Action];
+    
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -2712,22 +2760,38 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
    
     [HomechatTimerplaydate invalidate];
     HomechatTimerplaydate=nil;
-    
+     [Button_Create setTitle:@"ADD" forState:UIControlStateNormal];
       Button_Plustap.tag=1;
        Str_ChangeScreen=@"chats";
      Label_HeadTop.text=@"Friends";
     
-    
+    Button_Join.hidden=YES;
+    Button_JoinImage.hidden=YES;
     
     
     [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
     [Button_playdates setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
-    borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+    
+    if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
+    {
+        
+        
+        
+        borderBottom_chat.backgroundColor =[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
+    }
+    else
+    {
+        
+        
+        borderBottom_chat.backgroundColor =[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
+    }
+
+   // borderBottom_chat.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
     borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-2.5, Button_chats.frame.size.width, 2.5);
     [Button_chats.layer addSublayer:borderBottom_chat];
     
-        borderBottom_playdate.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
+        borderBottom_playdate.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
     borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-1, Button_playdates.frame.size.width, 1);
     [Button_playdates.layer addSublayer:borderBottom_playdate];
     
@@ -2739,23 +2803,215 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     
     [HomechatTimer invalidate];
     HomechatTimer=nil;
-    
+    Button_Join.hidden=NO;
+    Button_JoinImage.hidden=NO;
       Button_Plustap.tag=2;
        Str_ChangeScreen=@"playdate";
-     Label_HeadTop.text=@"Create a Play:Date";
+     Label_HeadTop.text=@"Play:Date";
+     [Button_Create setTitle:@"CREATE" forState:UIControlStateNormal];
    [Button_chats setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [Button_playdates setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
-    borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+//    borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+    
+    
+    if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
+    {
+        
+        
+        
+        borderBottom_playdate.backgroundColor =[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
+    }
+    else
+    {
+        
+        
+        borderBottom_playdate.backgroundColor =[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
+    }
+
+    
+    
     borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-2.5, Button_playdates.frame.size.width, 2.5);
     [Button_playdates.layer addSublayer:borderBottom_playdate];
     
     
     
-    borderBottom_chat.backgroundColor = [UIColor colorWithRed:186/255.0 green:188/255.0 blue:190/255.0 alpha:1.0].CGColor;
-    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-1, Button_chats.frame.size.width, 1);
+    borderBottom_chat.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;    borderBottom_chat.frame = CGRectMake(0, Button_chats.frame.size.height-1, Button_chats.frame.size.width, 1);
     [Button_chats.layer addSublayer:borderBottom_chat];
     [Table_Friend reloadData];
     [self communication_Eventsmeetups];
 }
+- (IBAction)Button_JoinImage_action:(id)sender
+{
+  [self JoinAction];
+}
+- (IBAction)Button_Join_action:(id)sender
+{
+    [self JoinAction];
+}
+- (IBAction)Button_Create_action:(id)sender
+{
+    senderTagPlus=[sender tag];
+    [self Plus_Action];
+}
+-(void)JoinAction
+{
 
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Event Code" message:@"Enter the event code of the event that you wish to join:" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField)
+     {
+//         textField.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+        textField.placeholder = @"Event Code";
+        
+//        textField.secureTextEntry = YES;
+    }];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Join" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+    {
+        NSLog(@"Current password %@", [[alertController textFields][0] text]);
+        Str_TextfieldJoinText=[[alertController textFields][0] text];
+            [self Join_Communication];
+           
+        
+        
+        
+    }];
+   
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Canelled");
+    }];
+      [alertController addAction:confirmAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+-(void)Join_Communication
+{
+    if (![Str_TextfieldJoinText isEqualToString:@""])
+    {
+         [self.view showActivityViewWithLabel:@"Loading"];
+      Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+        NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+        if (networkStatus == NotReachable)
+        {
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play:Date." preferredStyle:UIAlertControllerStyleAlert];
+            
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+        {
+        exit(0);
+          }];
+            
+            [alertController addAction:actionOk];
+[self presentViewController:alertController animated:YES completion:nil];
+            
+            
+        }
+        else
+        {
+            
+            NSString *fbid1= @"fbid";
+            NSString *fbid1Val=[defaults valueForKey:@"fid"];
+            NSString *eventid= @"eventid";
+          
+            
+            
+            NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@",fbid1,fbid1Val,eventid,Str_TextfieldJoinText];
+            
+            
+            
+#pragma mark - swipe sesion
+            
+            NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+            
+            NSURL *url;
+            NSString *  urlStrLivecount=[urlplist valueForKey:@"joinevent"];;
+            url =[NSURL URLWithString:urlStrLivecount];
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            
+            [request setHTTPMethod:@"POST"];//Web API Method
+            
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            
+            request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
+            
+            
+            
+            NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                    {
+                                                 
+                        if(data)
+                                {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSInteger statusCode = httpResponse.statusCode;
+                        if(statusCode == 200)
+                        {
+                                                         
+                    
+    NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                         ;
+    ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                                                         
+   
+                                                         
+    NSLog(@"array_createEvent ResultString %@",ResultString);
+    if ([ResultString isEqualToString:@"inserterror"])
+    {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"The server encountered an error and your Play:Date could not be created. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:actionOk];
+    [self presentViewController:alertController animated:YES completion:nil];
+                                                             
+    [self.view hideActivityViewWithAfterDelay:1];
+    }
+                    if ([ResultString isEqualToString:@"noeventid"])
+                    {
+                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"no event id." preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                                [alertController addAction:actionOk];
+                                [self presentViewController:alertController animated:YES completion:nil];
+                                [self.view hideActivityViewWithAfterDelay:1];
+                                
+                            }
+        if ([ResultString isEqualToString:@"done"])
+                {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"no event id." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                                [alertController addAction:actionOk];
+                                [self presentViewController:alertController animated:YES completion:nil];
+                                
+                                [self.view hideActivityViewWithAfterDelay:1];
+                            }
+                            if ([ResultString isEqualToString:@"alreadyinvited"])
+                            {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"alreadyinvited" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                    [alertController addAction:actionOk];
+                                [self presentViewController:alertController animated:YES completion:nil];
+                               [self.view hideActivityViewWithAfterDelay:1];
+                                
+                            }
+                            [self.view hideActivityViewWithAfterDelay:1];
+ }
+      else
+            {
+                [self.view hideActivityViewWithAfterDelay:1];
+        NSLog(@" error login1 ---%ld",(long)statusCode);
+                                                         
+                                                         
+                                }
+                                                     
+                                                     
+                            }
+                            else if(error)
+                            {
+                        [self.view hideActivityViewWithAfterDelay:1];
+            NSLog(@"error login2.......%@",error.description);
+                          }
+                                                 
+                                                 
+                           }];
+            [dataTask resume];
+        }
+    }
+}
 @end

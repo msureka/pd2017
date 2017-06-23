@@ -26,6 +26,10 @@
 		9A0339B91E1521DA0024C30A /* LanguagesView5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339B81E1521DA0024C30A /* LanguagesView5ViewController.m */; };
 		9A0339BC1E1521EB0024C30A /* AboutView6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339BB1E1521EB0024C30A /* AboutView6ViewController.m */; };
 		9A0339BF1E153BCC0024C30A /* GenderViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0339BE1E153BCC0024C30A /* GenderViewTableViewCell.m */; };
+		9A0523071EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0523061EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.m */; };
+		9A05230E1EFCE8D3006176F4 /* join.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A05230B1EFCE8D3006176F4 /* join.png */; };
+		9A05230F1EFCE8D3006176F4 /* join@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A05230C1EFCE8D3006176F4 /* join@2x.png */; };
+		9A0523101EFCE8D3006176F4 /* join@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A05230D1EFCE8D3006176F4 /* join@3x.png */; };
 		9A08A0941E4985E300013278 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A08A0931E4985E300013278 /* libz.tbd */; };
 		9A08A0971E4985F100013278 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A08A0961E4985F100013278 /* libsqlite3.tbd */; };
 		9A08A0B71E49C67100013278 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A08A09F1E49C67100013278 /* AFHTTPClient.m */; };
@@ -353,6 +357,11 @@
 		9A0339BB1E1521EB0024C30A /* AboutView6ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView6ViewController.m; sourceTree = "<group>"; };
 		9A0339BD1E153BCC0024C30A /* GenderViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderViewTableViewCell.h; sourceTree = "<group>"; };
 		9A0339BE1E153BCC0024C30A /* GenderViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderViewTableViewCell.m; sourceTree = "<group>"; };
+		9A0523051EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetupDetailCellTableViewCell.h; sourceTree = "<group>"; };
+		9A0523061EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetupDetailCellTableViewCell.m; sourceTree = "<group>"; };
+		9A05230B1EFCE8D3006176F4 /* join.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = join.png; sourceTree = "<group>"; };
+		9A05230C1EFCE8D3006176F4 /* join@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "join@2x.png"; sourceTree = "<group>"; };
+		9A05230D1EFCE8D3006176F4 /* join@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "join@3x.png"; sourceTree = "<group>"; };
 		9A08A0931E4985E300013278 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9A08A0961E4985F100013278 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9A08A09E1E49C67100013278 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -885,6 +894,17 @@
 			name = TutorialPageView;
 			sourceTree = "<group>";
 		};
+		9A05230A1EFCE8D3006176F4 /* joinimage */ = {
+			isa = PBXGroup;
+			children = (
+				9A05230B1EFCE8D3006176F4 /* join.png */,
+				9A05230C1EFCE8D3006176F4 /* join@2x.png */,
+				9A05230D1EFCE8D3006176F4 /* join@3x.png */,
+			);
+			name = joinimage;
+			path = Play_Date/joinimage;
+			sourceTree = "<group>";
+		};
 		9A08A09C1E49C67100013278 /* ImageZoomIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -1034,6 +1054,7 @@
 		9A40A1CC1E138656007E7C37 /* Play_Date */ = {
 			isa = PBXGroup;
 			children = (
+				9A40A1D61E138656007E7C37 /* Main.storyboard */,
 				9AF4EF431E333AC100F87794 /* Play_Date.entitlements */,
 				9A1C59041E1A4A33009EA17C /* Cancel.png */,
 				9AFA74D01E17CE370032FD39 /* YSHYClipViewController.h */,
@@ -1051,7 +1072,6 @@
 				9A7176031E4605FB00946281 /* PushHandler.h */,
 				9A7176041E4605FB00946281 /* PushHandler.m */,
 				9A40A2601E13A2D3007E7C37 /* UrlName.plist */,
-				9A40A1D61E138656007E7C37 /* Main.storyboard */,
 				9A40A1D91E138657007E7C37 /* Assets.xcassets */,
 				9A40A1DB1E138657007E7C37 /* LaunchScreen.storyboard */,
 				9A40A1DE1E138657007E7C37 /* Info.plist */,
@@ -1364,6 +1384,8 @@
 				9AD3F1AE1EF2AE56005A215D /* MymeetupsTableViewCell.m */,
 				9A2352A11EF7DA6A0006B097 /* MeetupDetailsViewController.h */,
 				9A2352A21EF7DA6A0006B097 /* MeetupDetailsViewController.m */,
+				9A0523051EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.h */,
+				9A0523061EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.m */,
 				9A2352A51EF7DAC50006B097 /* InvitemeetupsTableViewCell.h */,
 				9A2352A61EF7DAC50006B097 /* InvitemeetupsTableViewCell.m */,
 				9A2352A81EF7DAE10006B097 /* AttendingMeetupTableViewCell.h */,
@@ -1380,6 +1402,7 @@
 				9A6C53041EFA3F11002AF652 /* calendarimage */,
 				9A6C52FD1EFA3ECF002AF652 /* shareicon */,
 				9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */,
+				9A05230A1EFCE8D3006176F4 /* joinimage */,
 				9A3E9D0F1EE94F1D008BDA3B /* plusandbackpd */,
 				9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */,
 				9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */,
@@ -1947,8 +1970,11 @@
 				9A4ACB1E1E24A51C00CD6D17 /* circle2.png in Resources */,
 				9A40A22F1E1393D8007E7C37 /* Images in Resources */,
 				9AB37B311E2E199400CBD599 /* Screenshot-50 (1).png in Resources */,
+				9A05230F1EFCE8D3006176F4 /* join@2x.png in Resources */,
+				9A05230E1EFCE8D3006176F4 /* join.png in Resources */,
 				9A3D2CFA1E5569F3002E19A1 /* tutorial@2x.png in Resources */,
 				9A3D2D041E55CDB5002E19A1 /* Help@3x.png in Resources */,
+				9A0523101EFCE8D3006176F4 /* join@3x.png in Resources */,
 				9A4ACB351E24C26900CD6D17 /* boypictureframe 1.png in Resources */,
 				9AC30BDD1E54333E00920D8D /* ribbon@3x.png in Resources */,
 				9A9CF00F1E2F37F4007885BE /* ChatText.plist in Resources */,
@@ -2137,6 +2163,7 @@
 				610F62131E7BACF30081A7E7 /* FRHyperLabel.m in Sources */,
 				9A08A0C11E49C67100013278 /* UIImageView+AFNetworking.m in Sources */,
 				9AAF10D41E1B85D60065CA75 /* UIImageView+HighlightedWebCache.m in Sources */,
+				9A0523071EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.m in Sources */,
 				9A40A2591E13958E007E7C37 /* SBJsonStreamParserState.m in Sources */,
 				9A40A2191E139098007E7C37 /* LoginSignupViewController.m in Sources */,
 				9A1C590F1E1A7B0F009EA17C /* MainProfileViewController.m in Sources */,

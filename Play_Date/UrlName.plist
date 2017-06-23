@@ -66,5 +66,7 @@
 	<string>http://play-date.ae/app/eventdetails_addfriends.php</string>
 	<key>removeevent</key>
 	<string>http://play-date.ae/app/removeevent.php</string>
+	<key>joinevent</key>
+	<string>http://play-date.ae/app/joinevent.php</string>
 </dict>
 </plist>
