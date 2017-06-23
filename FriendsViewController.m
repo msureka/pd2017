@@ -60,7 +60,7 @@
     borderBottom_chat = [CALayer layer];
     borderBottom_playdate = [CALayer layer];
     Label_HeadTop.text=@"Friends";
-    Button_Plustap.tag=1;
+   // Button_Plustap.tag=1;
     [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
     
      _ImageMessageread_Button_chat.hidden=YES;
@@ -2762,6 +2762,7 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     HomechatTimerplaydate=nil;
      [Button_Create setTitle:@"ADD" forState:UIControlStateNormal];
       Button_Plustap.tag=1;
+    Button_Create.tag=1;
        Str_ChangeScreen=@"chats";
      Label_HeadTop.text=@"Friends";
     
@@ -2806,6 +2807,7 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     Button_Join.hidden=NO;
     Button_JoinImage.hidden=NO;
       Button_Plustap.tag=2;
+    Button_Create.tag=2;
        Str_ChangeScreen=@"playdate";
      Label_HeadTop.text=@"Play:Date";
      [Button_Create setTitle:@"CREATE" forState:UIControlStateNormal];
