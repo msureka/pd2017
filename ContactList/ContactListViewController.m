@@ -31,11 +31,12 @@
 @end
 
 @implementation ContactListViewController
-@synthesize cell_contact,tableview_contact,cell_contactAdd,searchbar,HeadTopView;
+@synthesize cell_contact,tableview_contact,cell_contactAdd,searchbar,HeadTopView,indicator;
 - (void)viewDidLoad {
     [super viewDidLoad];
     defaults=[[NSUserDefaults alloc]init];
-    
+    [indicator startAnimating];
+    indicator.hidden=NO;
     CALayer *borderBottom = [CALayer layer];
     borderBottom.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
     
@@ -687,10 +688,15 @@
                                                          
                                                          
                                                      }
+                                                     
+                                                     [indicator stopAnimating];
+                                                     indicator.hidden=YES;
                                                  }
                                                  
                                                  else
                                                  {
+                                                     [indicator stopAnimating];
+                                                     indicator.hidden=YES;
                                                      NSLog(@" error login1 ---%ld",(long)statusCode);
                                                      
                                                  }
@@ -698,7 +704,8 @@
                                              }
                                              else if(error)
                                              {
-                                                 
+                                                 [indicator stopAnimating];
+                                                 indicator.hidden=YES;
                                                  NSLog(@"error login2.......%@",error.description);
                                                  
                                              }

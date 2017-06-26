@@ -38,28 +38,42 @@
    
     
     
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+   
     
     Picker_date.date = [NSDate date];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     
-    NSDate *currDate = [NSDate date];
+   // NSDate *currDate = [NSDate date];
     
     
     
-    // minimum date date picker
+    NSDate*  currDate1= [NSDate date];
     
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setYear:-12];
+    
+    
+    NSTimeZone *currentTimeZone = [NSTimeZone localTimeZone];
+    NSTimeZone *utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    
+    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:currDate1];
+    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:currDate1];
+    NSTimeInterval gmtInterval = currentGMTOffset - gmtOffset;
+    
+    NSDate *currDate = [[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:currDate1] ;
+    
+    
+    
+    
+//    NSTimeZone* currentTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+//    NSTimeZone* nowTimeZone = [NSTimeZone systemTimeZone];
+//    
+//    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:currDate1];
+//    NSInteger nowGMTOffset = [nowTimeZone secondsFromGMTForDate:currDate1];
+//    
+//    NSTimeInterval interval = nowGMTOffset - currentGMTOffset;
+//    NSDate* currDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:currDate1];
     
    
-   
-    
-   
-   
-    
-
     
     [Picker_date addTarget:self
                    action:@selector(LabelChange1:)
@@ -148,7 +162,9 @@
         InviteSprintTagUserViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"InviteSprintTagUserViewController"];
         set.label_time1=label_time.text;
         set.label_day1=label_day.text;
-        set.label_date1=[NSString stringWithFormat:@"%@",Picker_date.date];;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm:ss a"];
+        set.label_date1=[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:Picker_date.date]];//[NSString stringWithFormat:@"%@",Picker_date.date];;
         set.textfield_meetup1=textfield_meetup.text;
         set.textfield_location1=textfield_location.text;
         set.textview_disc1=textview_disc.text;
@@ -290,7 +306,13 @@
     NSString *meetupstitle= @"title";
     NSString *location= @"location";
     NSString *eventdate= @"eventdate";
-    NSString *eventdateval=[NSString stringWithFormat:@"%@",Picker_date.date];
+    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm:ss a"];
+   
+    NSString *eventdateval=[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:Picker_date.date]];
+    
     NSString *description= @"description";
     NSString *eventid= @"eventid";
     
