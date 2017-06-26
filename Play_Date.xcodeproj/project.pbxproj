@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		088C763A1F00DD17002C7C79 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088C76391F00DD17002C7C79 /* Social.framework */; };
 		610F62131E7BACF30081A7E7 /* FRHyperLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 610F62121E7BACF30081A7E7 /* FRHyperLabel.m */; };
 		612A0E8A1E700B8E009867AF /* TutorialPagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612A0E891E700B8E009867AF /* TutorialPagesViewController.m */; };
 		6185EB5C1E8E5D21005883A0 /* AccFiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6185EB5B1E8E5D21005883A0 /* AccFiveTableViewCell.m */; };
@@ -317,6 +318,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		088C76391F00DD17002C7C79 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0ECD972F5E84A9DE2C49EDED /* libPods-Play_DateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Play_DateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		137198C876F4F898D30004ED /* Pods-Play_DateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play_DateUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Play_DateUITests/Pods-Play_DateUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E418CB32C5CF5073227C31E /* libPods-Play_Date.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Play_Date.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -816,6 +818,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				088C763A1F00DD17002C7C79 /* Social.framework in Frameworks */,
 				9A6C53101EFA57EE002AF652 /* EventKit.framework in Frameworks */,
 				9A63F0051E5FFF820090711A /* libFlurry-iOS-SDK.a in Frameworks */,
 				9A63F0031E5FFF6A0090711A /* Security.framework in Frameworks */,
@@ -1155,6 +1158,7 @@
 		9A40A21C1E139173007E7C37 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				088C76391F00DD17002C7C79 /* Social.framework */,
 				9A6C530F1EFA57ED002AF652 /* EventKit.framework */,
 				9A63F0041E5FFF820090711A /* libFlurry-iOS-SDK.a */,
 				9A63F0021E5FFF6A0090711A /* Security.framework */,

@@ -17,7 +17,7 @@
 #import "NavigationNewPlayDateViewController.h"
 #import "FriendCahtingViewControlleroneViewController.h"
 #import "UIView+RNActivityView.h"
-
+#import <Social/Social.h>
 @interface FriendsViewController ()<UISearchBarDelegate>
 {
      NSTimer *HomechatTimer,*HomechatTimerplaydate;
@@ -2714,7 +2714,7 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
 {
     if (senderTagPlus==1)
     {
-        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Facebook friends",@"Invite contacts",nil];
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Facebook friends",@"Invite contacts",@"Post on Facebook",nil];
         popup.tag = 777;
         [popup showInView:self.view];
     }
@@ -2751,6 +2751,10 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
             UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ContactListViewController * set=[mainStoryboard instantiateViewControllerWithIdentifier:@"ContactListViewController"];
             [self.navigationController pushViewController:set animated:YES];
+        }
+        else  if (buttonIndex== 2)
+        {
+            [self facebookPost];
         }
     }
 }
@@ -3016,4 +3020,74 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
         }
     }
 }
+-(void)facebookPost
+
+{
+    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+        
+    {
+        
+        SLComposeViewController *  fbSLComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        //   [fbSLComposeViewController addImage:[UIImage imageNamed:@"anytime.png"]];
+        
+        [fbSLComposeViewController setInitialText:@"Download Play:Date from the Appstore!"];
+        
+        [fbSLComposeViewController addURL:[NSURL URLWithString:@"http://www.play-date.ae/"]];
+        
+        
+        
+        [self presentViewController:fbSLComposeViewController animated:YES completion:nil];
+        
+        
+        
+        fbSLComposeViewController.completionHandler = ^(SLComposeViewControllerResult result)
+        
+        {
+            
+            switch(result) {
+                    
+                case SLComposeViewControllerResultCancelled:
+                    
+                    NSLog(@"facebook: CANCELLED");
+                    
+                    break;
+                    
+                case SLComposeViewControllerResultDone:
+                    
+                    NSLog(@"facebook: SHARED");
+                    
+                    break;
+                    
+            }
+            
+        };
+        
+    }
+    
+    else
+        
+    {
+        
+        
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Facebook Unavailable" message:@"Sorry, we're unable to find a Facebook account on your device.\nPlease setup an account in your devices settings and try again." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alertController addAction:actionOk];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+}
+
 @end
