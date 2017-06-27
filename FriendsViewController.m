@@ -297,20 +297,20 @@
         Label_HeadTop.text=@"Play:Date";
         [Button_chats setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [Button_playdates setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
-        borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
+//        borderBottom_playdate.backgroundColor =[UIColor colorWithRed:255/255.0 green:242/255.0 blue:82/255.0 alpha:1].CGColor;
         
         if ([[defaults valueForKey:@"gender"] isEqualToString:@"Boy"])
         {
             
             
             
-            borderBottom_chat.backgroundColor =[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
+            borderBottom_playdate.backgroundColor =[UIColor colorWithRed:220/255.0 green:242/255.0 blue:253/255.0 alpha:1].CGColor;
         }
         else
         {
             
             
-            borderBottom_chat.backgroundColor =[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
+            borderBottom_playdate.backgroundColor =[UIColor colorWithRed:250/255.0 green:207/255.0 blue:214/255.0 alpha:1].CGColor;
         }
         
         borderBottom_playdate.frame = CGRectMake(0, Button_playdates.frame.size.height-2.5, Button_playdates.frame.size.width, 2.5);

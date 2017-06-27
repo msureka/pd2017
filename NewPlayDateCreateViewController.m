@@ -48,18 +48,18 @@
     
     
     
-    NSDate*  currDate1= [NSDate date];
+    NSDate*  currDate= [NSDate date];
     
     
     
-    NSTimeZone *currentTimeZone = [NSTimeZone localTimeZone];
-    NSTimeZone *utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-    
-    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:currDate1];
-    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:currDate1];
-    NSTimeInterval gmtInterval = currentGMTOffset - gmtOffset;
-    
-    NSDate *currDate = [[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:currDate1] ;
+//    NSTimeZone *currentTimeZone = [NSTimeZone localTimeZone];
+//    NSTimeZone *utcTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+//    
+//    NSInteger currentGMTOffset = [currentTimeZone secondsFromGMTForDate:currDate1];
+//    NSInteger gmtOffset = [utcTimeZone secondsFromGMTForDate:currDate1];
+//    NSTimeInterval gmtInterval = currentGMTOffset - gmtOffset;
+//    
+//    NSDate *currDate = [[NSDate alloc] initWithTimeInterval:gmtInterval sinceDate:currDate1] ;
     
     
     
@@ -163,7 +163,7 @@
         set.label_time1=label_time.text;
         set.label_day1=label_day.text;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm:ss a"];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
         set.label_date1=[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:Picker_date.date]];//[NSString stringWithFormat:@"%@",Picker_date.date];;
         set.textfield_meetup1=textfield_meetup.text;
         set.textfield_location1=textfield_location.text;
@@ -309,7 +309,7 @@
     
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm:ss a"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
    
     NSString *eventdateval=[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:Picker_date.date]];
     
