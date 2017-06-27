@@ -593,14 +593,14 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         
         [Button_AddCalnder setTitleColor:[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1] forState:UIControlStateNormal];
         Button_IM = [[UIButton alloc] initWithFrame:CGRectZero];
-        [Button_IM setBackgroundColor:[UIColor whiteColor]];
+        [Button_IM setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:Button_IM];
         [Button_IM setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
         [Button_IM setTitle:@"I'M IN" forState:UIControlStateNormal];
         [Button_IM setTitleColor:[UIColor colorWithRed:65/255.0 green:65/255.0 blue:65/255.0 alpha:1] forState:UIControlStateNormal];
         
         Button_cantgo = [[UIButton alloc] initWithFrame:CGRectZero];
-        [Button_cantgo setBackgroundColor:[UIColor whiteColor]];
+        [Button_cantgo setBackgroundColor:[UIColor clearColor]];
         [calnderView  addSubview:Button_cantgo];
         [Button_cantgo setFont:[UIFont fontWithName:@"Helvetica-Bold" size:14]];
         [Button_cantgo setTitle:@"CAN'T GO" forState:UIControlStateNormal];
@@ -955,17 +955,17 @@ static const CGFloat kButtonSpaceHided = 24.0f;
                 
                 Button_IM.selected=YES;
                 Button_cantgo.selected=NO;
-                Button_IM.layer.borderColor=[UIColor blackColor].CGColor;
+                Button_IM.layer.borderColor=[UIColor clearColor].CGColor;
                 Button_IM.layer.borderWidth=1.0f;
                 
          
-                [Button_IM setBackgroundColor:[UIColor clearColor]];
+                [Button_IM setBackgroundColor:[UIColor whiteColor]];
                 
-                Button_cantgo.layer.borderColor=[UIColor clearColor].CGColor;
+                Button_cantgo.layer.borderColor=[UIColor blackColor].CGColor;
                 Button_cantgo.layer.borderWidth=1.0f;
                 
              
-                [Button_cantgo setBackgroundColor:[UIColor whiteColor]];
+                [Button_cantgo setBackgroundColor:[UIColor clearColor]];
                  
 
             }
@@ -978,16 +978,16 @@ static const CGFloat kButtonSpaceHided = 24.0f;
                
                 Button_cantgo.selected=YES;
                 Button_IM.selected=NO;
-                Button_IM.layer.borderColor=[UIColor clearColor].CGColor;
+                Button_IM.layer.borderColor=[UIColor blackColor].CGColor;
                 Button_IM.layer.borderWidth=1.0f;
                 
                 
-                [Button_IM setBackgroundColor:[UIColor whiteColor]];
+                [Button_IM setBackgroundColor:[UIColor clearColor]];
                 
-                Button_cantgo.layer.borderColor=[UIColor blackColor].CGColor;
+                Button_cantgo.layer.borderColor=[UIColor clearColor].CGColor;
                 Button_cantgo.layer.borderWidth=1.0f;
                 
-                [Button_cantgo setBackgroundColor:[UIColor clearColor]];
+                [Button_cantgo setBackgroundColor:[UIColor whiteColor]];
                 
             }
 //            else
@@ -998,17 +998,17 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             {
                 Button_IM.selected=NO;
                 Button_cantgo.selected=NO;
-                Button_IM.layer.borderColor=[UIColor clearColor].CGColor;
+                Button_IM.layer.borderColor=[UIColor blackColor].CGColor;
                 Button_IM.layer.borderWidth=1.0f;
                 
                
-                [Button_IM setBackgroundColor:[UIColor whiteColor]];
+                [Button_IM setBackgroundColor:[UIColor clearColor]];
                 
-                Button_cantgo.layer.borderColor=[UIColor clearColor].CGColor;
+                Button_cantgo.layer.borderColor=[UIColor blackColor].CGColor;
                 Button_cantgo.layer.borderWidth=1.0f;
                 
                
-                [Button_cantgo setBackgroundColor:[UIColor whiteColor]];
+                [Button_cantgo setBackgroundColor:[UIColor clearColor]];
             }
             
             

@@ -784,10 +784,11 @@ if ([[[Array_AllMeetupData objectAtIndex:i]valueForKey:@"invitedstatus"] isEqual
 {
     
 }
+
 -(IBAction)Button_share:(id)sender
 {
 
-NSString * texttoshare=[NSString stringWithFormat:@"%@%@%@",@"You have been invited to a Play:Date meet-up! Use the event code ",eventidvalue,@" to join the meet-up. Download Play:Date on your iPhone from http://www.play-date.ae and find new friends for your children!"];
+NSString * texttoshare=[NSString stringWithFormat:@"%@%@%@",@"You have been invited to a Play:Date meet-up!\n\nUse the event code:\n",eventidvalue,@" to join the meet-up.\n\nDownload Play:Date on your iPhone from http://www.play-date.ae and find new friends for your children!"];
     
 
     NSArray *activityItems1=@[texttoshare];
