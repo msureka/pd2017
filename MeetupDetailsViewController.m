@@ -144,7 +144,7 @@
                                                      NSLog(@"array_createEvent ResultString %@",ResultString);
                                                      if ([ResultString isEqualToString:@"noeventid"])
                                                      {
-                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"noeventid" preferredStyle:UIAlertControllerStyleAlert];
+                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"The event could not be found as it seems to have been expired or deleted by the creator." preferredStyle:UIAlertControllerStyleAlert];
                                     UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action)
@@ -924,7 +924,7 @@ NSString * texttoshare=[NSString stringWithFormat:@"%@%@%@",@"You have been invi
                                                      NSLog(@"array_createEvent ResultString %@",ResultString);
                                                 if ([ResultString isEqualToString:@"noeventid"])
                                                 {
-                            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"noeventid" preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"The event could not be found as it seems to have been expired or deleted by the creator." preferredStyle:UIAlertControllerStyleAlert];
                                 UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                             style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action)
@@ -1068,7 +1068,7 @@ NSString * texttoshare=[NSString stringWithFormat:@"%@%@%@",@"You have been invi
                                                      NSLog(@"array_createEvent ResultString %@",ResultString);
                                                      if ([ResultString isEqualToString:@"noeventid"])
                                                      {
-                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"noeventid" preferredStyle:UIAlertControllerStyleAlert];
+                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"The event could not be found as it seems to have been expired or deleted by the creator." preferredStyle:UIAlertControllerStyleAlert];
                                                          UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                                                                             style:UIAlertActionStyleDefault
                                                                                                           handler:^(UIAlertAction *action)
