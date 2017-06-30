@@ -45,10 +45,10 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     CGFloat lastScale;
     NSString *subImgname,* TagId_plist,*imageUserheight,*imageUserWidth,*Flag_TimeOneUser,*Flag_Timeseconduser;
     NSMutableArray * newCommentsArray_plist,*Array_Comment1;
-    
+
     NSArray *previousArray;
     
-    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone;
+    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone,keyboradHeight;
     NSString * flag1,*flag2,*flag3;
     BOOL statusTextView;
     CGRect previousRect;
@@ -92,6 +92,11 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         tableViewFrame.origin.y = 56;
         self.Table_Friend_chat.frame = tableViewFrame;
     }
+   
+        CGRect tableViewFrame = self.Table_Friend_chat.frame;
+        tableViewFrame.size.height = self.Table_Friend_chat.frame.size.height-8;
+        self.Table_Friend_chat.frame = tableViewFrame;
+    
     
     NSString * documnetPath1=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     
@@ -252,6 +257,15 @@ static const CGFloat kButtonSpaceHided = 24.0f;
   // Table_Friend_chat.backgroundColor=[UIColor greenColor];
     
     
+    
+    Table_Friend_chat.userInteractionEnabled=YES;
+    UITapGestureRecognizer *TabGestureTablviewTuch =[[UITapGestureRecognizer alloc] initWithTarget:self
+        action:@selector(Tablview_Tuched:)];
+    
+    
+    [Table_Friend_chat addGestureRecognizer:TabGestureTablviewTuch];
+    
+    
     subImgname =[[[AllDataArray objectAtIndex:0]valueForKey:@"tagpic"]lastPathComponent];
     NSLog(@"subImgname=%@",subImgname);
     
@@ -326,7 +340,10 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         }
         NSLog(@"data plist path array==%@",Array_Comment1);
     }
+   
     NSLog(@"Arrraararara:=%@",AllDataArray );
+    
+    
     Image_UserProfile.userInteractionEnabled=YES;
     UITapGestureRecognizer *TabGestureDetailView =[[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                           action:@selector(Image_UserProfileTapped:)];
@@ -355,7 +372,7 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
     
     
    
-      [Table_Friend_chat reloadData];
+    
     
     [defaults setObject:@"yes" forKey:@"notification"];
     [defaults synchronize];
@@ -372,7 +389,14 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
     
 
 }
-
+-(void)viewDidLayoutSubviews
+{
+    if (Array_Comment1.count>=1)
+    {
+         [Table_Friend_chat scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:Array_Comment1.count inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+   
+}
 -(void)chatTimer
 {
     HomeTimer =  [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(CommentCommmunication) userInfo:nil  repeats:YES];
@@ -423,6 +447,11 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
            
             self.tabBarBottomSpace.constant = CGRectGetHeight(keyboardRect);
           
+          
+                Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textBlueh+CGRectGetHeight(keyboardRect)));
+            keyboradHeight=(textBlueh+CGRectGetHeight(keyboardRect));
+    
+            
             if(Array_Comment1.count>=1)
             {
                 if([subImgname isEqualToString:@"defaultimg.jpg"])
@@ -434,16 +463,24 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
                 {
                     [Table_Friend_chat scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:Array_Comment1.count inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
                 }
+                
+                NSLog(@"keyboard cordinates==height==%f", CGRectGetHeight(keyboardRect));
             }
             
             
             
             
-        } else {
-            
-            self.tabBarBottomSpace.constant = 0.0f;
-           
         }
+        else
+        {
+            NSLog(@"keyboard cordinates==heightdisable==%f", CGRectGetHeight(keyboardRect));
+  
+            self.tabBarBottomSpace.constant = 0.0f;
+           Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
+            
+        }
+        
+        
         [self.view layoutIfNeeded];
     } completion:nil];}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -1003,7 +1040,7 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
     ViewTextViewOne.frame = CGRectMake(xx, yy, ww,36);
     self.sendButton.enabled=NO;
     self.sendButton.backgroundColor=[UIColor lightGrayColor];
-    Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(TextViews.contentSize.height+220));
+    Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-keyboradHeight);
             self.ImageGalButton.userInteractionEnabled = YES;  // uday
  
 }
@@ -1727,36 +1764,40 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         NSLog(@"tableOne==%f",Table_Friend_chat.frame.origin.x);
     }
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)Tablview_Tuched:(UIGestureRecognizer *)reconizer
 {
-    if (_BlackViewOne.frame.size.height > bth)
-    {
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-_BlackViewOne.frame.size.height+90);
-    }
-    else
-    {
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
-       
-    }
     [self.view endEditing:YES];
-  
-    
 }
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+////    if (_BlackViewOne.frame.size.height > bth)
+////    {
+////        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-_BlackViewOne.frame.size.height+90);
+////    }
+////    else
+////    {
+////        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
+////       
+////    }
+//   
+//  
+//    
+//}
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
     
     [textOne becomeFirstResponder];
     
-    if (textView.text.length!=0)
-    {
-        Table_Friend_chat.frame = CGRectMake(0,yt, self.view.frame.size.width, th-_BlackViewOne.frame.size.height-125);
-        
-    }
-    else
-    {
-        
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+190));
-    }
+//    if (textView.text.length!=0)
+//    {
+//        Table_Friend_chat.frame = CGRectMake(0,yt, self.view.frame.size.width, th-_BlackViewOne.frame.size.height-125);
+//        
+//    }
+//    else
+//    {
+//        
+//        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+190));
+//    }
     
     if(Array_Comment1.count>=1)
     {

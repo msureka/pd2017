@@ -94,7 +94,8 @@
     }
     
 }
-- (void)getContactsWithAddressBook:(ABAddressBookRef )addressBook {
+- (void)getContactsWithAddressBook:(ABAddressBookRef )addressBook
+{
     
     contactlists = [[NSMutableArray alloc] init];
     CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
@@ -112,17 +113,17 @@
         firstName = ABRecordCopyValue(ref, kABPersonFirstNameProperty);
         lastName  = ABRecordCopyValue(ref, kABPersonLastNameProperty);
        // [dOfPerson setObject:[NSString stringWithFormat:@"%@ %@", firstName, lastName] forKey:@"name"];
-        if (firstName !=nil || lastName==nil)
+        if (firstName !=nil && lastName==nil)
         {
             [dOfPerson setObject:[NSString stringWithFormat:@"%@", firstName] forKey:@"name"];
         }
-        else if (firstName ==nil || lastName !=nil)
+        else if (firstName ==nil && lastName !=nil)
         {
             [dOfPerson setObject:[NSString stringWithFormat:@"%@", lastName] forKey:@"name"];
         }
-        else if (firstName !=nil || lastName !=nil)
+        else if (firstName !=nil && lastName !=nil)
         {
-            [dOfPerson setObject:[NSString stringWithFormat:@"%@%@", firstName, lastName] forKey:@"name"];
+            [dOfPerson setObject:[NSString stringWithFormat:@"%@%@%@", firstName,@" ", lastName] forKey:@"name"];
         }
         // For getting the user image.
         UIImage *contactImage;

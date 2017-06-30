@@ -32,7 +32,9 @@
     
     borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
     [HeadTopView.layer addSublayer:borderBottom];
-   
+    textfield_meetup.tag=101;
+    textfield_meetup.delegate=self;
+
     textfield_location.delegate=self;
     
    
@@ -169,6 +171,7 @@
         set.textfield_location1=textfield_location.text;
         set.textview_disc1=textview_disc.text;
          set.str_checkmorefriends=@"allmorefriend";
+        set.Str_eventcreate=@"yes";
         
         [self.navigationController pushViewController:set animated:YES];
     }
@@ -412,4 +415,18 @@
     [dataTask resume];
     
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+   
+
+    if(range.length + range.location > textField.text.length)
+    {
+        return NO;
+    }
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 50;
+        
+}
+
 @end

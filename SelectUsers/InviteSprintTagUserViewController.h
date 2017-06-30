@@ -22,7 +22,7 @@
 
 //@property (strong, nonatomic) NSMutableArray *selectedNames;
 
-
+@property(nonatomic,strong)NSString * Str_eventcreate;
 @property(nonatomic,strong)NSString * label_day1;
 @property(nonatomic,strong)NSString * label_date1;
 @property(nonatomic,strong)NSString * label_time1;;

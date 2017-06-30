@@ -42,7 +42,7 @@
     NSURLConnection *Connection_LodingPro,*Connection_Swipe,*Connection_Flag;
     NSMutableData *webData_LodingPro,*webData_Swipe,*webData_Flag;
     NSMutableArray *Array_LodingPro,*Array_Swipe,*Array_Flag;
-    NSString *SwipeKeyString,*fid2String;
+    NSString *SwipeKeyString,*fid2String,*Str_TextfieldflagText;
     DraggableView *draggableView;
     UIView * ViewDetails;
     CGFloat xFromCenter;
@@ -879,6 +879,13 @@ static const float CARD_WIDTH = 375; //%%% width of the draggable card
     
 }
 
+
+
+
+
+
+
+
 -(void)Flagcommunication
 {
     
@@ -928,13 +935,10 @@ static const float CARD_WIDTH = 375; //%%% width of the draggable card
         NSString *fbid1Val = [defautls valueForKey:@"fid"];;
         
         NSString *fbid2= @"fbid2";
-        NSString *fbid2Val =[[Array_LodingPro objectAtIndex:arrayIndex]valueForKey:@"fbid"];// [defautls valueForKey:@""];
+//        NSString *fbid2Val =[[Array_LodingPro objectAtIndex:arrayIndex]valueForKey:@"fbid"];// [defautls valueForKey:@""];
+        NSString *flagreason= @"flagreason";
         
-        
-        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@",fbid1,fbid1Val,fbid2,fbid2Val];
-        
-        
-        
+        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,fbid2,fid2String,flagreason,Str_TextfieldflagText];
         
         
         //converting  string into data bytes and finding the lenght of the string.
@@ -1924,9 +1928,39 @@ static const float CARD_WIDTH = 375; //%%% width of the draggable card
     
     if (buttonIndex== 0)
     {
-        FlagStatus=@"Flagyes";
-        [self swipeLeft];
-        [self Flagcommunication];
+       
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Flag Reason?" message:@"Please mention the reason of flagging this user:" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField)
+         {
+             //         textField.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+             textField.placeholder = @"Remarks";
+             
+             //        textField.secureTextEntry = YES;
+         }];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Flag" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                                        {
+                                            NSLog(@"Current password %@", [[alertController textFields][0] text]);
+                                            Str_TextfieldflagText=[[alertController textFields][0] text];
+                if (Str_TextfieldflagText.length !=0)
+                                            {
+                                            
+                                            FlagStatus=@"Flagyes";
+                                            [self swipeLeft];
+                                            [self Flagcommunication];
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                        }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"Canelled");
+        }];
+        [alertController addAction:confirmAction];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+
         
     }
    

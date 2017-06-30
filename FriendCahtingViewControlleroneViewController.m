@@ -59,7 +59,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     
     NSArray *previousArray;
     
-    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone,Button_width;
+    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone,Button_width,keyboradHeight;
     NSString * flag1,*flag2,*flag3,*eventidval,*statusval;
     BOOL statusTextView;
     CGRect previousRect;
@@ -79,7 +79,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
 @synthesize HeadTopView,Table_Friend_chat,Label_UserName,Image_UserProfile;
 @synthesize AllDataArray,TextViews,BackTextViews;
 @synthesize textOne,tableOne,ViewTextViewOne,Cell_one1;
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     
     [super viewDidLoad];
     defaults=[[NSUserDefaults alloc]init];
@@ -100,6 +101,16 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         tableViewFrame.origin.y = 56;
         self.Table_Friend_chat.frame = tableViewFrame;
     }
+    CGRect tableViewFrame = self.Table_Friend_chat.frame;
+    tableViewFrame.size.height = self.Table_Friend_chat.frame.size.height-8;
+    self.Table_Friend_chat.frame = tableViewFrame;
+
+    Table_Friend_chat.userInteractionEnabled=YES;
+    UITapGestureRecognizer *TabGestureTablviewTuch =[[UITapGestureRecognizer alloc] initWithTarget:self
+     action:@selector(Tablview_Tuched:)];
+    
+    
+    [Table_Friend_chat addGestureRecognizer:TabGestureTablviewTuch];
     
     NSString * documnetPath1=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     
@@ -388,7 +399,14 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
     
 }
-
+-(void)viewDidLayoutSubviews
+{
+    if (Array_Comment1.count>=1)
+    {
+        [Table_Friend_chat scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:Array_Comment1.count inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -440,6 +458,8 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         if (isShowing) {
             
             self.tabBarBottomSpace.constant = CGRectGetHeight(keyboardRect);
+            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textBlueh+CGRectGetHeight(keyboardRect)));
+            keyboradHeight=(textBlueh+CGRectGetHeight(keyboardRect));
             
             if(Array_Comment1.count>=1)
             {
@@ -460,6 +480,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
         } else {
             
             self.tabBarBottomSpace.constant = 0.0f;
+            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
             
         }
         [self.view layoutIfNeeded];
@@ -916,9 +937,21 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             [Image_calnder setFrame:CGRectMake((calnderView.frame.size.width/2)-13,20,26,26)];
             
+            label_caltitle.numberOfLines = 1;
+            label_caltitle.minimumFontSize = 10;
+            label_caltitle.adjustsFontSizeToFitWidth = YES;
+            
             [label_caltitle setFrame:CGRectMake(12,Image_calnder.frame.size.height+Image_calnder.frame.origin.y+10,calnderView.frame.size.width-24,20)];
             
+            
+            
+            
+            
             [label_callocation setFrame:CGRectMake(12,label_caltitle.frame.size.height+label_caltitle.frame.origin.y+5,calnderView.frame.size.width-24, 20)];
+            
+            label_callocation.numberOfLines = 1;
+            label_callocation.minimumFontSize = 10;
+            label_callocation.adjustsFontSizeToFitWidth = YES;
             
             [label_caltime setFrame:CGRectMake(24,label_callocation.frame.size.height+label_callocation.frame.origin.y,calnderView.frame.size.width-48, 20)];
             
@@ -1281,7 +1314,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     ViewTextViewOne.frame = CGRectMake(xx, yy, ww,36);
     self.sendButton.enabled=NO;
     self.sendButton.backgroundColor=[UIColor lightGrayColor];
-    Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(TextViews.contentSize.height+220));
+    Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-keyboradHeight);
     self.ImageGalButton.userInteractionEnabled = YES;  // uday
     
 }
@@ -1930,36 +1963,40 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         NSLog(@"tableOne==%f",Table_Friend_chat.frame.origin.x);
     }
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)Tablview_Tuched:(UIGestureRecognizer *)reconizer
 {
-    if (_BlackViewOne.frame.size.height > bth)
-    {
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-_BlackViewOne.frame.size.height+90);
-    }
-    else
-    {
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
-        
-    }
     [self.view endEditing:YES];
-    
-    
 }
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+////    if (_BlackViewOne.frame.size.height > bth)
+////    {
+////        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-_BlackViewOne.frame.size.height+90);
+////    }
+////    else
+////    {
+////        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
+////        
+////    }
+//   // [self.view endEditing:YES];
+//    
+//    
+//}
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
     
     [textOne becomeFirstResponder];
     
-    if (textView.text.length!=0)
-    {
-        Table_Friend_chat.frame = CGRectMake(0,yt, self.view.frame.size.width, th-_BlackViewOne.frame.size.height-125);
-        
-    }
-    else
-    {
-        
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+190));
-    }
+//    if (textView.text.length!=0)
+//    {
+//        Table_Friend_chat.frame = CGRectMake(0,yt, self.view.frame.size.width, th-_BlackViewOne.frame.size.height-125);
+//        
+//    }
+//    else
+//    {
+//        
+//        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+190));
+//    }
     
     if(Array_Comment1.count>=1)
     {

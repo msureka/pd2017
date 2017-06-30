@@ -42,7 +42,7 @@
 @end
 
 @implementation InviteSprintTagUserViewController
-@synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,textfield_location1,textview_disc1,textfield_meetup1,str_checkmorefriends;
+@synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,Str_eventcreate,textfield_location1,textview_disc1,textfield_meetup1,str_checkmorefriends;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -68,9 +68,20 @@
     selectedNames = [NSMutableArray arrayWithCapacity:Search_Array_Recoom.count];
     selectedUserid= [NSMutableArray arrayWithCapacity:Search_Array_Recoom.count];
     Table_ContactView.hidden = NO;
-    Send_Button.enabled=NO;
-    [Send_Button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    Send_Button.alpha=0.8;
+    if ([Str_eventcreate isEqualToString:@"yes"])
+    {
+        Send_Button.enabled=YES;
+        [Send_Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        Send_Button.alpha=1;
+    }
+    else
+    {
+        Send_Button.enabled=NO;
+        [Send_Button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        Send_Button.alpha=0.8;
+       
+    }
+   
 string_Keyboardload=@"no";
     
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"UrlName" ofType:@"plist"];
@@ -529,12 +540,41 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
                                                  NSLog(@"array_createEvent ResultString %@",ResultString);
             if (array_createEvent.count !=0)
                         {
-                             [self.view hideActivityViewWithAfterDelay:1];
+                [self.view hideActivityViewWithAfterDelay:1];
+                FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"FriendCahtingViewControlleroneViewController"];
+                            set.AllDataArray=array_createEvent;
+                            
+                    if ([Str_eventcreate isEqualToString:@"yes"])
+                            {
+                                if (selectedNames.count==0)
+                                {
+                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"Since you have not invited any in-app friends, you can share this meet-up with your othr friends by going into settings." preferredStyle:UIAlertControllerStyleAlert];
+                                    
+                                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                                       style:UIAlertActionStyleDefault
+                                                                                     handler:^(UIAlertAction *action)
+                                                               {
+                                                [self.navigationController pushViewController:set animated:YES];
+                                                                
+                                                               }];
+                                    
+                                    [alertController addAction:actionOk];
+                                    [self presentViewController:alertController animated:YES completion:nil];
+                                }
+                                else
+                                {
+                                  [self.navigationController pushViewController:set animated:YES];
+                                }
+                                
+                            }
+                    else
+                    {
+                         [self.navigationController pushViewController:set animated:YES];
+          
+                    }
                           
                         
-FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"FriendCahtingViewControlleroneViewController"];
-                            set.AllDataArray=array_createEvent;
-        [self.navigationController pushViewController:set animated:YES];
+
                      [defaults setObject:@"yes" forKey:@"tapindex"];
                         [defaults setObject:@"yes" forKey:@"letsmeet"];
                                 [defaults synchronize];
@@ -1060,10 +1100,19 @@ FriendCahtingViewControlleroneViewController * set=[self.storyboard instantiateV
     }
     if (self.selectedNames.count==0)
     {
-        Send_Button.enabled=NO;
-         [Send_Button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        Send_Button.alpha=0.8;
-        [Table_ContactView reloadData];
+        if ([Str_eventcreate isEqualToString:@"yes"])
+        {
+            Send_Button.enabled=YES;
+            [Send_Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            Send_Button.alpha=1;
+        }
+        else
+        {
+            Send_Button.enabled=NO;
+            [Send_Button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            Send_Button.alpha=0.8;
+            [Table_ContactView reloadData];
+        }
     }
     else
     {
