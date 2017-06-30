@@ -548,7 +548,7 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
                             {
                                 if (selectedNames.count==0)
                                 {
-                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"Since you have not invited any in-app friends, you can share this meet-up with your othr friends by going into settings." preferredStyle:UIAlertControllerStyleAlert];
+                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Share it!" message:@"Since you have not invited any in-app friends, you can share this meet-up with your other friends by going into settings." preferredStyle:UIAlertControllerStyleAlert];
                                     
                                     UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                                                        style:UIAlertActionStyleDefault

@@ -212,7 +212,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
     
     
-    hh=textOne.frame.size.height;
+    hh=textOne.frame.size.height+5;
     ww=textOne.frame.size.width;
     xx=textOne.frame.origin.x;
     yy=textOne.frame.origin.y;
@@ -1913,8 +1913,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             self.BlackViewOne.frame = CGRectMake(0, bty - textView.contentSize.height+36, btw,bth+textView.contentSize.height);
             ViewTextViewOne.frame = CGRectMake(xx, yy, ww,textOne.frame.size.height+2);
             // tableView_Pay.frame = CGRectMake(0, yt - textView.contentSize.height+38, tw, th);
-            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+182));
-            flag1=@"no";
+            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+(keyboradHeight-hh)));            flag1=@"no";
         }
         else
         {
@@ -1936,7 +1935,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         self.textOne.frame = CGRectMake(xx, yy, ww,textView.contentSize.height+10);
         ViewTextViewOne.frame = CGRectMake(xx, yy, ww,textView.contentSize.height);
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+184));
+        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+(keyboradHeight-hh)));
         
         [self.textOne layoutIfNeeded];
         NSLog(@"BlueView==%f",_textOneBlue.frame.size.height);

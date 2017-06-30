@@ -48,8 +48,8 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
 
     NSArray *previousArray;
     
-    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone,keyboradHeight;
-    NSString * flag1,*flag2,*flag3;
+    CGFloat hh,ww,xx,yy,th,tw,xt,yt,bty,btw,bth,btx,Bluesch,Bluescw,Bluescy,Bluescx,textBluex,textBluey,textBluew,textBlueh,hhone,wwone,xxone,yyone,keyboradHeight,textViewHeigh;
+    NSString * flag1,*flag2,*flag3,*Str_TextfieldflagText;
     BOOL statusTextView;
     CGRect previousRect;
     
@@ -198,7 +198,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     
     
     
-    hh=textOne.frame.size.height;
+    hh=textOne.frame.size.height+5;
     ww=textOne.frame.size.width;
     xx=textOne.frame.origin.x;
     yy=textOne.frame.origin.y;
@@ -1090,7 +1090,42 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
         }
         else  if (buttonIndex== 1)
         {
-            [self FlagVedioCommunication];
+            //[self FlagVedioCommunication];
+            
+            
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Flag Reason?" message:@"Please mention the reason of flagging this user:" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField)
+             {
+                 //         textField.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+                 textField.placeholder = @"Remarks";
+                 
+                 //        textField.secureTextEntry = YES;
+             }];
+            UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Flag" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                                            {
+                                                NSLog(@"Current password %@", [[alertController textFields][0] text]);
+                                                Str_TextfieldflagText=[[alertController textFields][0] text];
+                                                if (Str_TextfieldflagText.length !=0)
+                                                {
+                                                    
+                                                  //  FlagStatus=@"Flagyes";
+                                                    
+                                                    [self FlagVedioCommunication];
+                                                }
+                                                
+                                                
+                                                
+                                                
+                                            }];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                NSLog(@"Canelled");
+            }];
+            [alertController addAction:confirmAction];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+
         }
     }
     else
@@ -1714,7 +1749,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             self.BlackViewOne.frame = CGRectMake(0, bty - textView.contentSize.height+36, btw,bth+textView.contentSize.height);
             ViewTextViewOne.frame = CGRectMake(xx, yy, ww,textOne.frame.size.height+2);
             // tableView_Pay.frame = CGRectMake(0, yt - textView.contentSize.height+38, tw, th);
-            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+182));
+            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+(keyboradHeight-hh)));
             flag1=@"no";
         }
         else
@@ -1737,7 +1772,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         self.textOne.frame = CGRectMake(xx, yy, ww,textView.contentSize.height+10);
         ViewTextViewOne.frame = CGRectMake(xx, yy, ww,textView.contentSize.height);
-        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+184));
+        Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textView.contentSize.height+(keyboradHeight-hh)));
         
         [self.textOne layoutIfNeeded];
         NSLog(@"BlueView==%f",_textOneBlue.frame.size.height);
@@ -2143,7 +2178,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
            
         }
         
-        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@",fbid1,fbid1Val,fbid2,fbid2val];
+        NSString *flagreason= @"flagreason";
+        NSString *flagfrom= @"flagfrom";
+        NSString *flagfromval= @"chat";
+        
+        
+        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,fbid2,fbid2val,flagreason,Str_TextfieldflagText,flagfrom,flagfromval];
         
         
         
