@@ -49,7 +49,7 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     UIView *headerView2,*headerView1,*PopUpImageVIew;
     UIButton *headerLabel1,* headerLabel2;
     NSArray * images_Array;
-    NSString *   ImageNSdata,*Str_StatusAChecked;
+    NSString *   ImageNSdata,*Str_StatusAChecked,*Str_TextfieldflagText;
     CGFloat HeightText0;
     CGRect TextViewCord,BackTextViewCord;
     UIButton * tapHederImage_Button;
@@ -1324,6 +1324,35 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     popup.tag = 3;
     [popup showInView:self.view];
     
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  
+        if (buttonIndex== 0)
+        {
+            
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            //picker.allowsEditing = NO;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:picker animated:YES completion:nil];
+            //  [self.navigationController pushViewController:picker animated:YES];
+            // [self.navigationController presentModalViewController:picker animated:YES];
+        }
+        if (buttonIndex== 1)
+        {
+            
+            
+            UIImagePickerController * picker = [[UIImagePickerController alloc]init];
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.delegate = self;
+            [self presentViewController:picker animated:YES completion:nil];
+            
+            
+            
+        }
     
 }
 
