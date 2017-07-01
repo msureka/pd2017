@@ -561,13 +561,369 @@
 }
 -(void)ContactCommunication
 {
- 
+    
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable)
     {
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Play-Date." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Care2dare." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                   {
+                                       exit(0);
+                                   }];
+        
+        [alertController addAction:actionOk];
+        
+        UIWindow *alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        alertWindow.rootViewController = [[UIViewController alloc] init];
+        alertWindow.windowLevel = UIWindowLevelAlert + 1;
+        [alertWindow makeKeyAndVisible];
+        [alertWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+        
+        
+    }
+    else
+    {
+        
+        NSString *userid= @"fbid";
+        NSString *useridVal =[defaults valueForKey:@"fid"];
+        NSString *namestr= @"name";
+        NSString *emailstr= @"email";
+        NSString *mobilenumber= @"mobileno";
+        NSString *namestrval,*emailstrval,*mobilenumberval,*escapedMobileNoString,*escapedEmailString,*escapedNameString;
+        
+        NSCharacterSet *notAllowedCharsMobile = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890,"] invertedSet];
+        
+        NSCharacterSet *notAllowedCharsEmail = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,-@._"] invertedSet];
+        
+        NSCharacterSet *notAllowedCharsName = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890, "] invertedSet];
+        
+        if (Array_name.count !=0)
+        {
+            if (Array_name.count<=500)
+            {
+                namestrval =[[Array_name subarrayWithRange:NSMakeRange(0,[Array_name count])] componentsJoinedByString:@","];;
+                
+                emailstrval=[[Array_Email subarrayWithRange:NSMakeRange(0,[Array_Email count])] componentsJoinedByString:@","];;
+                
+                mobilenumberval=[[Array_Phone subarrayWithRange:NSMakeRange(0,[Array_Phone count])] componentsJoinedByString:@","];
+                
+                //               namestrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_name subarrayWithRange:NSMakeRange(0,[Array_name count])] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+                
+                
+                //             NSString *unfilteredString = @"!@#$%^&*()_+|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                
+                escapedMobileNoString = [[mobilenumberval  componentsSeparatedByCharactersInSet:notAllowedCharsMobile] componentsJoinedByString:@""];
+                
+                escapedEmailString = [[emailstrval  componentsSeparatedByCharactersInSet:notAllowedCharsEmail] componentsJoinedByString:@""];
+                
+                escapedNameString = [[namestrval  componentsSeparatedByCharactersInSet:notAllowedCharsName] componentsJoinedByString:@""];
+                
+                
+                //          NSLog (@"Result: %@", resultString);
+                
+                //              emailstrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Email subarrayWithRange:NSMakeRange(0,[Array_Email count])] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+                
+                
+                //            mobilenumberval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Phone subarrayWithRange:NSMakeRange(0,[Array_Phone count])] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+            }
+            else
+            {
+                
+                
+                namestrval =[[Array_name subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];;
+                
+                emailstrval=[[Array_Email subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];;
+                
+                mobilenumberval=[[Array_Phone subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];
+                
+                
+                //                namestrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_name subarrayWithRange:NSMakeRange(0,100)] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+                
+                escapedMobileNoString = [[mobilenumberval  componentsSeparatedByCharactersInSet:notAllowedCharsMobile] componentsJoinedByString:@""];
+                
+                escapedEmailString = [[emailstrval  componentsSeparatedByCharactersInSet:notAllowedCharsEmail] componentsJoinedByString:@""];
+                
+                escapedNameString = [[namestrval  componentsSeparatedByCharactersInSet:notAllowedCharsName] componentsJoinedByString:@""];
+                
+                
+                
+                //               emailstrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Email subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+                
+                
+                //                mobilenumberval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Phone subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+                
+                
+            }
+        }
+        
+        
+        
+        
+        
+        NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[urlplist valueForKey:@"invite_contacts"]]];
+        [req setHTTPMethod:@"POST"];
+        
+        NSString *str=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@",userid,useridVal,namestr,escapedNameString,emailstr,escapedEmailString,mobilenumber,escapedMobileNoString];
+        
+        NSData *postData = [str dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
+        [req addValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [req setHTTPBody:postData];
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:req
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if(data)
+                                                    {
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                        NSInteger statusCode = httpResponse.statusCode;
+                                                        if(statusCode == 200)
+                                                        {
+                                                            Array_AllData=[[NSMutableArray alloc]init];
+                                                            SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
+                                                            Array_AllData=[objSBJsonParser objectWithData:data];
+                                                            
+                                                            NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                            
+                                                            
+                                                            
+                                                            ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                                                            
+                                                            ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                                                            
+                                                            NSLog(@"ResultString %@",ResultString);
+                                                            
+                                                            
+                                                            if ([ResultString isEqualToString:@"done"])
+                                                            {
+                                                                if (Array_name.count>=500)
+                                                                {
+                                                                    [Array_name removeObjectsInRange:NSMakeRange(0, 500)];
+                                                                    [Array_Email removeObjectsInRange:NSMakeRange(0, 500)];
+                                                                    [Array_Phone removeObjectsInRange:NSMakeRange(0, 500)];
+                                                                    
+                                                                }
+                                                                else
+                                                                {
+                                                                    [Array_name removeObjectsInRange:NSMakeRange(0, [Array_name count])];
+                                                                    [Array_Email removeObjectsInRange:NSMakeRange(0,[Array_Email count])];
+                                                                    [Array_Phone removeObjectsInRange:NSMakeRange(0, [Array_Phone count])];
+                                                                    
+                                                                }
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                if (Array_name.count !=0)
+                                                                {
+                                                                    [self ContactCommunication];
+                                                                }
+                                                                else
+                                                                {
+                                                                    
+                                                                    
+                                                                    //
+                                                                    //                                                                    ArryMerge_twitterlistSection0=[[NSMutableArray alloc]init];
+                                                                    //                                                                    ArryMerge_twitterlistSection1=[[NSMutableArray alloc]init];
+                                                                    //                                                                    Array_Add=[[NSArray alloc]init];
+                                                                    //                                                                    array_invite=[[NSArray alloc]init];
+                                                                    //
+                                                                    //
+                                                                    //                                                                    for (int i=0; i<Array_AllData.count; i++)
+                                                                    //                                                                    {
+                                                                    //                                                                        if ([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"INVITE"])
+                                                                    //                                                                        {
+                                                                    //                                                                            [ArryMerge_twitterlistSection1 addObject:[Array_AllData objectAtIndex:i]];
+                                                                    //
+                                                                    //                                                                        }
+                                                                    //                                                                        else if([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"ADD"])
+                                                                    //                                                                        {
+                                                                    //                                                                            [ArryMerge_twitterlistSection0 addObject:[Array_AllData objectAtIndex:i]];
+                                                                    //                                                                        }
+                                                                    //
+                                                                    //                                                                    }
+                                                                    //                                                                    array_invite=[ArryMerge_twitterlistSection1 mutableCopy];
+                                                                    //                                                                    Array_Add=[ArryMerge_twitterlistSection0 mutableCopy];
+                                                                    
+                                                                    [self showAllContacts];
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    //                                                                   indcator.hidden=YES;
+                                                                    //                                                [_tableview_contact setHidden:NO];
+                                                                    //
+                                                                    //                                            [indcator stopAnimating];
+                                                                    //            NSIndexPath *myIP = [NSIndexPath indexPathForRow:[ArryMerge_twitterlistSection1 count]-1 inSection:1] ;
+                                                                    //
+                                                                    //            [_tableview_contact scrollToRowAtIndexPath:myIP atScrollPosition:NULL animated:NO];
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                }
+                                                                
+                                                                
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            //[self ContactCommunication];
+                                                            if (Array_name.count !=0)
+                                                            {
+                                                                [self ContactCommunication];
+                                                            }
+                                                            NSLog(@" error login1 ---%ld",(long)statusCode);
+                                                            
+                                                        }
+                                                        
+                                                    }
+                                                }];
+        
+        
+        [task resume];
+        
+    }
+    
+    
+    //
+    //            NSString *userid= @"userid";
+    //            NSString *useridVal =[defaults valueForKey:@"userid"];
+    //            NSString *namestr= @"name";
+    //            NSString *namestrval =[Array_name componentsJoinedByString:@","];;
+    //            NSString *emailstr= @"email";
+    //            NSString *emailstrval =[Array_Email componentsJoinedByString:@","];;
+    //            NSString *mobilenumber= @"mobileno";
+    //            NSString *mobilenumberval =[Array_Phone componentsJoinedByString:@","];;
+    //
+    //        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@",userid,useridVal,namestr,namestrval,emailstr,emailstrval,mobilenumber,mobilenumberval];
+    //
+    //    #pragma mark - swipe sesion
+    //
+    //            NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    //
+    //            NSURL *url;
+    //            NSString *  urlStrLivecount=[urlplist valueForKey:@"invite_contacts"];;
+    //            url =[NSURL URLWithString:urlStrLivecount];
+    //
+    //            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    //
+    //            [request setHTTPMethod:@"POST"];//Web API Method
+    //
+    //            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    //
+    //            request.HTTPBody = [reqStringFUll dataUsingEncoding:NSUTF8StringEncoding];
+    //
+    //
+    //
+    //            NSURLSessionDataTask *dataTask =[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+    //                                             {
+    //                                                 if(data)
+    //                                                 {
+    //                                                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    //                                                     NSInteger statusCode = httpResponse.statusCode;
+    //                                                     if(statusCode == 200)
+    //                                                     {
+    //
+    //                                    Array_AllData=[[NSMutableArray alloc]init];
+    //                                SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
+    //                                Array_AllData=[objSBJsonParser objectWithData:data];
+    //
+    //                                NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    //
+    //                                                         //Array_LodingPro=[NSJSONSerialization JSONObjectWithData:webData_Swipe options:kNilOptions error:nil];
+    //
+    //                            ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    //
+    //                                    ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+    //
+    //                                                         NSLog(@"Array_AllData %@",Array_AllData);
+    //
+    //
+    //                                                         NSLog(@"Array_AllData ResultString %@",ResultString);
+    //
+    //
+    //                                    if (Array_AllData.count !=0)
+    //                                        {
+    //                                        ArryMerge_twitterlistSection0=[[NSMutableArray alloc]init];
+    //                                        ArryMerge_twitterlistSection1=[[NSMutableArray alloc]init];
+    //                                Array_Add=[[NSArray alloc]init];
+    //                                array_invite=[[NSArray alloc]init];
+    //    
+    //    //                                                             [tableview_twitter setHidden:YES];
+    //    //                                                             indicator.hidden=YES;
+    //    //                                                             [indicator stopAnimating];
+    //    //                                                             Lable_JSONResult.hidden=NO;
+    //    //
+    //                                             for (int i=0; i<Array_AllData.count; i++)
+    //                                                {
+    //                                        if ([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"INVITE"])
+    //                                                    {
+    //                                        [ArryMerge_twitterlistSection1 addObject:[Array_AllData objectAtIndex:i]];
+    //    
+    //                                                }
+    //                            else if([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"ADD"])
+    //                                    {
+    //                                    [ArryMerge_twitterlistSection0 addObject:[Array_AllData objectAtIndex:i]];
+    //                                    }
+    //    
+    //                                            }
+    //                                            array_invite=[ArryMerge_twitterlistSection1 mutableCopy];
+    //                                            Array_Add=[ArryMerge_twitterlistSection0 mutableCopy];
+    //                                            [indcator stopAnimating];
+    //                                        [_tableview_contact reloadData];
+    //    
+    //                                        }
+    //    
+    //    
+    //                                    if ([ResultString isEqualToString:@"phoneNumber"])
+    //                                        {
+    //    
+    //                                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Your account does not exist or seems to have been suspended. Please contact admin." preferredStyle:UIAlertControllerStyleAlert];
+    //    
+    //                                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+    //                                        style:UIAlertActionStyleDefault handler:nil];
+    //                                        [alertController addAction:actionOk];
+    //                                    [self presentViewController:alertController animated:YES completion:nil];
+    //    
+    //    
+    //                                                         }
+    //                                                     }
+    //    
+    //                                                     else
+    //                                                     {
+    //                                                         NSLog(@" error login1 ---%ld",(long)statusCode);
+    //    
+    //                                                     }
+    //    
+    //                                                 }
+    //                                                 else if(error)
+    //                                                 {
+    //    
+    //                                                     NSLog(@"error login2.......%@",error.description);
+    //    
+    //                                                 }
+    //                                             }];
+    //            [dataTask resume];
+    //        }
+    //    
+}
+
+-(void)showAllContacts
+{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Internet" message:@"Please make sure you have internet connectivity in order to access Care2dare." preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                            style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
@@ -589,23 +945,18 @@
     {
         
         
+        
         NSString *userid= @"fbid";
         NSString *useridVal =[defaults valueForKey:@"fid"];
-        NSString *namestr= @"name";
-        NSString *namestrval =[Array_name componentsJoinedByString:@","];;
-        NSString *emailstr= @"email";
-        NSString *emailstrval =[Array_Email componentsJoinedByString:@","];;
-        NSString *mobilenumber= @"mobileno";
-        NSString *mobilenumberval =[Array_Phone componentsJoinedByString:@","];;
         
-    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@",userid,useridVal,namestr,namestrval,emailstr,emailstrval,mobilenumber,mobilenumberval];
+        NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@",userid,useridVal];
         
 #pragma mark - swipe sesion
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
         
         NSURL *url;
-        NSString *  urlStrLivecount=[urlplist valueForKey:@"invite_contacts"];;
+        NSString *  urlStrLivecount=[urlplist valueForKey:@"show_contacts"];;
         url =[NSURL URLWithString:urlStrLivecount];
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -627,17 +978,17 @@
                                                  if(statusCode == 200)
                                                  {
                                                      
-                                Array_AllData=[[NSMutableArray alloc]init];
-                            SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
-                            Array_AllData=[objSBJsonParser objectWithData:data];
+                                                     Array_AllData=[[NSMutableArray alloc]init];
+                                                     SBJsonParser *objSBJsonParser = [[SBJsonParser alloc]init];
+                                                     Array_AllData=[objSBJsonParser objectWithData:data];
                                                      
-                            NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                                     NSString * ResultString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
                                                      
                                                      //Array_LodingPro=[NSJSONSerialization JSONObjectWithData:webData_Swipe options:kNilOptions error:nil];
                                                      
-                        ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                                                     ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                                                      
-                                ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+                                                     ResultString = [ResultString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
                                                      
                                                      NSLog(@"Array_AllData %@",Array_AllData);
                                                      
@@ -645,59 +996,53 @@
                                                      NSLog(@"Array_AllData ResultString %@",ResultString);
                                                      
                                                      
-                                if (Array_AllData.count !=0)
-                                    {
-                                    ArryMerge_twitterlistSection0=[[NSMutableArray alloc]init];
-                                    ArryMerge_twitterlistSection1=[[NSMutableArray alloc]init];
-                            Array_Add=[[NSArray alloc]init];
-                            array_invite=[[NSArray alloc]init];
-                                        
-//                                                             [tableview_twitter setHidden:YES];
-//                                                             indicator.hidden=YES;
-//                                                             [indicator stopAnimating];
-//                                                             Lable_JSONResult.hidden=NO;
-//
-                                         for (int i=0; i<Array_AllData.count; i++)
-                                            {
-                                    if ([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"INVITE"])
-                                                {
-                                    [ArryMerge_twitterlistSection1 addObject:[Array_AllData objectAtIndex:i]];
-                                        
-                                            }
-                        else if([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"ADD"])
-                                {
-                                [ArryMerge_twitterlistSection0 addObject:[Array_AllData objectAtIndex:i]];
-                                }
-                                                
-                                        }
-                                        array_invite=[ArryMerge_twitterlistSection1 mutableCopy];
-                                        Array_Add=[ArryMerge_twitterlistSection0 mutableCopy];
-                                    [tableview_contact reloadData];
-                                        
-                                    }
-                                                     
-                                                     
-                                if ([ResultString isEqualToString:@"phoneNumber"])
-                                    {
-                                                      
-                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"Your account does not exist or seems to have been suspended. Please contact admin." preferredStyle:UIAlertControllerStyleAlert];
+                                                     if (Array_AllData.count !=0)
+                                                     {
+                                                         ArryMerge_twitterlistSection0=[[NSMutableArray alloc]init];
+                                                         ArryMerge_twitterlistSection1=[[NSMutableArray alloc]init];
+                                                         Array_Add=[[NSArray alloc]init];
+                                                         array_invite=[[NSArray alloc]init];
                                                          
-                                UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                    style:UIAlertActionStyleDefault handler:nil];
-                                    [alertController addAction:actionOk];
-                                [self presentViewController:alertController animated:YES completion:nil];
-                                                         
+                                                         for (int i=0; i<Array_AllData.count; i++)
+                                                         {
+                                                             NSLog(@"SHOW PHP ERROR==%@",[Array_AllData objectAtIndex:i]);
+                                                             
+                                                             if ([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"INVITE"])
+                                                             {
+                                                                 [ArryMerge_twitterlistSection1 addObject:[Array_AllData objectAtIndex:i]];
+                                                                 
+                                                             }
+                                                             else if([[[Array_AllData objectAtIndex:i]valueForKey:@"status"] isEqualToString:@"ADD"])
+                                                             {
+                                                                 [ArryMerge_twitterlistSection0 addObject:[Array_AllData objectAtIndex:i]];
+                                                             }
+                                                             
+                                                         }
+                                                         array_invite=[ArryMerge_twitterlistSection1 mutableCopy];
+                                                         Array_Add=[ArryMerge_twitterlistSection0 mutableCopy];
+                                                         [indicator stopAnimating];
+                                                         [tableview_contact setHidden:NO];
+                                                         [tableview_contact reloadData];
                                                          
                                                      }
                                                      
-                                                     [indicator stopAnimating];
-                                                     indicator.hidden=YES;
+                                                     
+                                                     if ([ResultString isEqualToString:@"nocontacts"])
+                                                     {
+                                                         
+                                                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops" message:@"no friends" preferredStyle:UIAlertControllerStyleAlert];
+                                                         
+                                                         UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                                                            style:UIAlertActionStyleDefault handler:nil];
+                                                         [alertController addAction:actionOk];
+                                                         [self presentViewController:alertController animated:YES completion:nil];
+                                                         
+                                                         
+                                                     }
                                                  }
                                                  
                                                  else
                                                  {
-                                                     [indicator stopAnimating];
-                                                     indicator.hidden=YES;
                                                      NSLog(@" error login1 ---%ld",(long)statusCode);
                                                      
                                                  }
@@ -705,8 +1050,7 @@
                                              }
                                              else if(error)
                                              {
-                                                 [indicator stopAnimating];
-                                                 indicator.hidden=YES;
+                                                 
                                                  NSLog(@"error login2.......%@",error.description);
                                                  
                                              }
@@ -715,6 +1059,7 @@
     }
     
 }
+
 -(void)InviteUser:(UIButton *)sender
 {
     

@@ -40,6 +40,8 @@
 	<string>http://play-date.ae/app/invite_addfriend.php</string>
 	<key>invite_contacts</key>
 	<string>http://play-date.ae/app/invite_contacts.php</string>
+	<key>show_contacts</key>
+	<string>http://play-date.ae/app/show_contacts.php</string>
 	<key>invite_fb</key>
 	<string>http://play-date.ae/app/invite_fb.php</string>
 	<key>createevent_addfriends</key>
