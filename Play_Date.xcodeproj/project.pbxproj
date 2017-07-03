@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		086C47531F0A47DC007C064E /* HelpPopup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 086C47521F0A47DC007C064E /* HelpPopup.plist */; };
 		088C763A1F00DD17002C7C79 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 088C76391F00DD17002C7C79 /* Social.framework */; };
 		610F62131E7BACF30081A7E7 /* FRHyperLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 610F62121E7BACF30081A7E7 /* FRHyperLabel.m */; };
 		612A0E8A1E700B8E009867AF /* TutorialPagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 612A0E891E700B8E009867AF /* TutorialPagesViewController.m */; };
@@ -330,6 +331,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		086C47521F0A47DC007C064E /* HelpPopup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelpPopup.plist; sourceTree = "<group>"; };
 		088C76391F00DD17002C7C79 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0ECD972F5E84A9DE2C49EDED /* libPods-Play_DateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Play_DateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		137198C876F4F898D30004ED /* Pods-Play_DateUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play_DateUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Play_DateUITests/Pods-Play_DateUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1108,6 +1110,7 @@
 				9A9CF00E1E2F37F4007885BE /* ChatText.plist */,
 				9AF4EF441E335A5900F87794 /* ChatText1.plist */,
 				9AFD624A1EF4F856000D5A20 /* ChatTextPlayDate.plist */,
+				086C47521F0A47DC007C064E /* HelpPopup.plist */,
 				9A40A1CD1E138656007E7C37 /* Supporting Files */,
 				9A0339AB1E1521780024C30A /* NameView1ViewController.h */,
 				9A0339AC1E1521780024C30A /* NameView1ViewController.m */,
@@ -2045,6 +2048,7 @@
 				9A40A2611E13A2D3007E7C37 /* UrlName.plist in Resources */,
 				9A31A2A91E3237B700974261 /* Teddy.png in Resources */,
 				9A160C6D1E2629BC00300BE7 /* grayframe.png in Resources */,
+				086C47531F0A47DC007C064E /* HelpPopup.plist in Resources */,
 				9A5F33301E30E5D500C29894 /* SpeechBubble2.png in Resources */,
 				9AAF10941E1B72D20065CA75 /* FacebookSDKStrings.bundle in Resources */,
 				9A5F332E1E30E5D400C29894 /* Message2.png in Resources */,

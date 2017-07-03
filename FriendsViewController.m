@@ -389,15 +389,35 @@
 //     HomechatTimer =  [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(NewMatchServerComm) userInfo:nil  repeats:YES];
   
    //  [self homeTimer];
+    
+    
+    NSString * documnetPath1=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    NSLog(@"%@",NSHomeDirectory());
+    
+    NSString * pathhelp = [documnetPath1 stringByAppendingPathComponent:@"HelpPopup.plist"];
+    
+    NSString * bundlePath = [[NSBundle mainBundle]pathForResource:@"HelpPopup" ofType:@"plist"];
+    
+    if([[NSFileManager defaultManager]fileExistsAtPath:pathhelp])
+    {
+        NSLog(@"File alredy exists");
+    }
+    else
+    {
+        [[NSFileManager defaultManager]copyItemAtPath:bundlePath toPath:pathhelp error:nil];
+        controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
+        [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
+        [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+        //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.view  addSubview:controllerpop.view];
+    }
+    
 
      NSLog(@"dictionary1_Array_Comment1:=%@",Array_Comment1 );
     
-        controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
-    [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
-    [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
-//        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self.view  addSubview:controllerpop.view];
+    
     
 }
 - (void)Refresh_UpdatedBudge
@@ -1375,6 +1395,12 @@ static NSString * Cellid111=@"Cellmeet";
                 {
                     Cell_One.Label_Noresult.hidden=YES;
                 }
+                
+                
+                
+                
+                
+                
                 return Cell_One;
                 
                 
