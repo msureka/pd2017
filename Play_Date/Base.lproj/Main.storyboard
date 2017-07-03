@@ -4513,6 +4513,13 @@ World of Play:Date!</string>
                                     <constraint firstAttribute="height" constant="70" id="LPy-rH-m84"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Since you have not invited any in-app friends, you can share this meet-up with your other friends by going into settings." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="16" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6hp-I9-gzd">
+                                <frame key="frameInset" minX="4.27%" minY="11.69%" width="91.47%" height="14.69%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -4523,12 +4530,14 @@ World of Play:Date!</string>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="HeadTopView" destination="ncN-Sc-yyC" id="M45-8h-3UG"/>
                         <outlet property="Send_Button" destination="PQd-SL-xJs" id="mK5-g5-aOE"/>
+                        <outlet property="label_Result" destination="6hp-I9-gzd" id="cMb-ip-RcD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewe-0R-Wno" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2826" y="-353"/>
+            <point key="canvasLocation" x="2889.5" y="-355.5"/>
         </scene>
         <!--Navigation New Play Date View Controller-->
         <scene sceneID="Cu9-2g-uhh">
@@ -4740,7 +4749,7 @@ World of Play:Date!</string>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MQ1-YM-bOq"/>
+        <segue reference="SLt-mj-XSg"/>
         <segue reference="Z5h-ha-emd"/>
     </inferredMetricsTieBreakers>
 </document>

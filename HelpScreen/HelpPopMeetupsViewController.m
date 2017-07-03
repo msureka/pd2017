@@ -16,9 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
     
-    [_View_Frame setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4]];
+     _View_Frame.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.85f];
+  
     _Button_Next.clipsToBounds=YES;
     _Button_Next.layer.cornerRadius=_Button_Next.frame.size.height/2;
     _Button_Next.layer.borderWidth=1.0f;

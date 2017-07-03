@@ -18,14 +18,14 @@
     [super viewDidLoad];
     
     _View_Frame.clipsToBounds=YES;
-    _View_Frame.layer.cornerRadius=9.0f;
-    _Label_title.text = @"Welcome to the new\n Play:Date!";
-    _Label_title.lineBreakMode = UILineBreakModeWordWrap;
-    _Label_title.numberOfLines = 0;
-    
-    _Label_Description.text = @"Hellow friends! we have added a few fun features for you.\n You can now create Meet-ups and invite your friends to your Play:Date!";
-    _Label_Description.lineBreakMode = UILineBreakModeWordWrap;
-    _Label_Description.numberOfLines = 0;
+    _View_Frame.layer.cornerRadius=15.0f;
+//    _Label_title.text = @"Welcome to the new\nPlay:Date!";
+//    _Label_title.lineBreakMode = UILineBreakModeWordWrap;
+//    _Label_title.numberOfLines = 0;
+//    
+//    _Label_Description.text = @"Hellow friends! we have added a few fun features for you.\n You can now create Meet-ups and invite your friends to your Play:Date!";
+//    _Label_Description.lineBreakMode = UILineBreakModeWordWrap;
+//    _Label_Description.numberOfLines = 0;
     
     _Button_tour.clipsToBounds=YES;
     _Button_tour.layer.cornerRadius=_Button_tour.frame.size.height/2;

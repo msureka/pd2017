@@ -406,14 +406,20 @@
     else
     {
         [[NSFileManager defaultManager]copyItemAtPath:bundlePath toPath:pathhelp error:nil];
-        controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
-        [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
-        [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
-        //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self.view  addSubview:controllerpop.view];
+//        controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
+//        [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//        [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
+//        [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+//        //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        [self.view  addSubview:controllerpop.view];
     }
-    
+    controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
+    [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
+    [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+    //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view  addSubview:controllerpop.view];
+
 
      NSLog(@"dictionary1_Array_Comment1:=%@",Array_Comment1 );
     

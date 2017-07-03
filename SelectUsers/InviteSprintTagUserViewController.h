@@ -17,9 +17,9 @@
 @property (strong, nonatomic)NSMutableArray *Array_InviteUserTags;
 //@property (strong, nonatomic) IBOutlet UITableView * Table_ContactView;
 -(IBAction)BackButton:(id)sender;
-
+@property(nonatomic,strong)IBOutlet UIView * HeadTopView;
 -(IBAction)SendButtons:(id)sender;
-
+@property(nonatomic,strong)IBOutlet UILabel * label_Result;
 //@property (strong, nonatomic) NSMutableArray *selectedNames;
 
 @property(nonatomic,strong)NSString * Str_eventcreate;

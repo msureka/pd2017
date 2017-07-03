@@ -21,17 +21,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z2R-Fe-JjD">
-                    <frame key="frameInset" minX="15.73%" minY="29.09%" width="68.80%" height="42.58%"/>
+                    <frame key="frameInset" minX="15.47%" minY="29.09%" width="68.80%" height="42.58%"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to the new Play:Date!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiZ-pO-Woy">
-                            <frame key="frameInset" minX="12.02%" minY="9.86%" width="75.58%" height="19.37%"/>
+                            <frame key="frameInset" minX="12.40%" minY="9.86%" width="75.19%" height="19.37%"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoD-g9-LEd">
-                            <frame key="frameInset" minX="12.02%" minY="32.39%" width="75.58%" height="44.72%"/>
+                            <frame key="frameInset" minX="12.40%" minY="32.39%" width="75.19%" height="44.72%"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <string key="text">Hello friends! we have added a few fun features for you. \nYou can now create Meet-ups and invite your friends to your Play:Date.</string>
                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydp-Zu-Kgn">
-                            <frame key="frameInset" minX="12.02%" minY="81.69%" width="75.97%" height="13.38%"/>
+                            <frame key="frameInset" minX="12.40%" minY="81.69%" width="75.97%" height="13.38%"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                             <state key="normal" title="TAKE THE TOUR">

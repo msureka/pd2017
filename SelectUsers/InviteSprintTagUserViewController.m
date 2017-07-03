@@ -42,9 +42,19 @@
 @end
 
 @implementation InviteSprintTagUserViewController
-@synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,Str_eventcreate,textfield_location1,textview_disc1,textfield_meetup1,str_checkmorefriends;
+@synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,Str_eventcreate,textfield_location1,textview_disc1,textfield_meetup1,str_checkmorefriends,HeadTopView;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    CALayer *borderBottom = [CALayer layer];
+    borderBottom.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
+    
+    borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
+    [HeadTopView.layer addSublayer:borderBottom];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
@@ -67,7 +77,7 @@
      [[self navigationController] setNavigationBarHidden:YES animated:NO];
     selectedNames = [NSMutableArray arrayWithCapacity:Search_Array_Recoom.count];
     selectedUserid= [NSMutableArray arrayWithCapacity:Search_Array_Recoom.count];
-    Table_ContactView.hidden = NO;
+    Table_ContactView.hidden = YES;
     if ([Str_eventcreate isEqualToString:@"yes"])
     {
         Send_Button.enabled=YES;
@@ -107,6 +117,8 @@ string_Keyboardload=@"no";
     self.contactPickerView.delegate = self;
 Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.contactPickerView];
+    self.contactPickerView.hidden=YES;
+    [self.view endEditing:YES];
  
     for (int i=0; i<_Names.count; i++)
     {
@@ -119,13 +131,23 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
     }
      Table_ContactView.hidden=YES;
-    
+    _label_Result.hidden=YES;
+   
      String_suggested=@"no";
     
     
     
     
     }
+-(void)viewDidLayoutSubviews
+{
+    CALayer *borderBottom = [CALayer layer];
+    borderBottom.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
+    
+    borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
+    [HeadTopView.layer addSublayer:borderBottom];
+    
+}
 - (void)keyboardDidShow: (NSNotification *) notif
 {
     if ([string_Keyboardload isEqualToString:@"no"])
@@ -919,7 +941,9 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
         NSLog(@"ResultString_Recomm_getUser %@",ResultString_Recomm_getUser);
         
         
-      
+        
+            [self checkResult];
+       
         
     }
     
@@ -936,16 +960,37 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         NSLog(@"Array_suggested== %@",Array_suggested);
         NSLog(@"ResultString_suggested %@",ResultString_suggested);
+       
+            [self checkResult];
         
         
-    [Table_ContactView reloadData];
+        
+   
     }
 
     
-     Table_ContactView.hidden = NO;
+   
     
     
   
+}
+-(void)checkResult
+{
+    if (Array_Reomm_GetUser.count==0 && Array_suggested.count==0)
+    {
+        _label_Result.hidden=NO;
+        Table_ContactView.hidden=YES;
+           self.contactPickerView.hidden=YES;
+        [self.view endEditing:YES];
+    }
+    else
+    {
+           self.contactPickerView.hidden=NO;
+        Table_ContactView.hidden=NO;
+        _label_Result.hidden=YES;
+        [self.view endEditing:NO];
+         [Table_ContactView reloadData];
+    }
 }
 -(IBAction)BackButton:(id)sender
 {
