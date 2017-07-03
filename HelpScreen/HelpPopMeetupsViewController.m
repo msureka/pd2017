@@ -22,7 +22,7 @@
     _Button_Next.clipsToBounds=YES;
     _Button_Next.layer.cornerRadius=_Button_Next.frame.size.height/2;
     _Button_Next.layer.borderWidth=1.0f;
-    _Button_Next.layer.borderColor=[UIColor blackColor].CGColor;
+    _Button_Next.layer.borderColor=[UIColor whiteColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {

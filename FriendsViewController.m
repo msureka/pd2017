@@ -44,6 +44,9 @@
      CALayer *borderBottom_chat,*borderBottom_playdate;
     NSString * Str_ChangeScreen,*Str_TextfieldJoinText;
     NSInteger senderTagPlus;
+    HelpPopViewController * controllerpop;
+    HelpPopChatViewController * controllerpopchat;
+    HelpPopMeetupsViewController * controllerpopmeetups;
 }
 @end
 
@@ -389,12 +392,12 @@
 
      NSLog(@"dictionary1_Array_Comment1:=%@",Array_Comment1 );
     
-        HelpPopViewController * controller = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
-    [controller.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [controller.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
-    [controller.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+        controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
+    [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
+    [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
 //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self.view  addSubview:controller.view];
+        [self.view  addSubview:controllerpop.view];
     
 }
 - (void)Refresh_UpdatedBudge
@@ -3111,30 +3114,35 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     
     
 }
-- (void)buttonTapped:(id)sender
+- (void)buttonTappedpop:(id)sender
 {
- 
-    HelpPopChatViewController * controller = [[HelpPopChatViewController alloc] initWithNibName:@"HelpPopChatViewController"  bundle:nil];
-    [controller.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [controller.Button_Next addTarget:self action:@selector(buttonTappedpopnext:) forControlEvents:UIControlEventTouchUpInside];
-    [controller.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+    //[self.view removeFromSuperview];
+    controllerpop.view.hidden=YES;
+    controllerpopchat = [[HelpPopChatViewController alloc] initWithNibName:@"HelpPopChatViewController"  bundle:nil];
+    [controllerpopchat.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [controllerpopchat.Button_Next addTarget:self action:@selector(buttonTappedpopnext:) forControlEvents:UIControlEventTouchUpInside];
+    [controllerpopchat.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
     //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view  addSubview:controller.view];
+    [self.view  addSubview:controllerpopchat.view];
     
 
 
 }
 - (void)buttonTappedpopnext:(id)sender
 {
-    HelpPopMeetupsViewController * controller = [[HelpPopMeetupsViewController alloc] initWithNibName:@"HelpPopMeetupsViewController"  bundle:nil];
-    [controller.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [controller.Button_Next addTarget:self action:@selector(buttonTappedpopGotit:) forControlEvents:UIControlEventTouchUpInside];
-    [controller.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+    controllerpopchat.view.hidden=YES;
+   controllerpopmeetups = [[HelpPopMeetupsViewController alloc] initWithNibName:@"HelpPopMeetupsViewController"  bundle:nil];
+    [controllerpopmeetups.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [controllerpopmeetups.Button_Next addTarget:self action:@selector(buttonTappedpopGotit:) forControlEvents:UIControlEventTouchUpInside];
+    [controllerpopmeetups.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
     //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view  addSubview:controller.view];
+    [self.view  addSubview:controllerpopmeetups.view];
+    [self Button_PlayDatescreen:nil];
+
 }
 - (void)buttonTappedpopGotit:(id)sender
 {
-    [self Button_Chatscreen:nil];
+     // [self.view removeFromSuperview];
+    controllerpopmeetups.view.hidden=YES;
 }
 @end
