@@ -18,6 +18,9 @@
 #import "FriendCahtingViewControlleroneViewController.h"
 #import "UIView+RNActivityView.h"
 #import <Social/Social.h>
+#import "HelpPopViewController.h"
+#import "HelpPopChatViewController.h"
+#import "HelpPopMeetupsViewController.h"
 @interface FriendsViewController ()<UISearchBarDelegate>
 {
      NSTimer *HomechatTimer,*HomechatTimerplaydate;
@@ -52,6 +55,19 @@
 {
     
     [super viewDidLoad];
+    
+//    HelpPopViewController * controller = [[HelpPopViewController alloc] initWithNibName:@"AlertSetViewController"  bundle:nil];
+//    
+//    [controller.Button_tour addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//    controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    [self.view  addSubview:controller.view];
+    
+//    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"HelpPopView" owner:self options:nil];
+//    
+//    UIView *mainView = [subviewArray objectAtIndex:0];
+//    [self.view addSubview:mainView];
+   
+//    [helpview.Button_tour addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     defaults=[[NSUserDefaults alloc]init];
     
@@ -373,6 +389,12 @@
 
      NSLog(@"dictionary1_Array_Comment1:=%@",Array_Comment1 );
     
+        HelpPopViewController * controller = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
+    [controller.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [controller.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
+    [controller.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+//        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self.view  addSubview:controller.view];
     
 }
 - (void)Refresh_UpdatedBudge
@@ -3089,5 +3111,30 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     
     
 }
+- (void)buttonTapped:(id)sender
+{
+ 
+    HelpPopChatViewController * controller = [[HelpPopChatViewController alloc] initWithNibName:@"HelpPopChatViewController"  bundle:nil];
+    [controller.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [controller.Button_Next addTarget:self action:@selector(buttonTappedpopnext:) forControlEvents:UIControlEventTouchUpInside];
+    [controller.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+    //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view  addSubview:controller.view];
+    
 
+
+}
+- (void)buttonTappedpopnext:(id)sender
+{
+    HelpPopMeetupsViewController * controller = [[HelpPopMeetupsViewController alloc] initWithNibName:@"HelpPopMeetupsViewController"  bundle:nil];
+    [controller.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [controller.Button_Next addTarget:self action:@selector(buttonTappedpopGotit:) forControlEvents:UIControlEventTouchUpInside];
+    [controller.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+    //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view  addSubview:controller.view];
+}
+- (void)buttonTappedpopGotit:(id)sender
+{
+    [self Button_Chatscreen:nil];
+}
 @end

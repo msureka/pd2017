@@ -145,6 +145,18 @@
 		9A4ACB351E24C26900CD6D17 /* boypictureframe 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4ACB331E24C26900CD6D17 /* boypictureframe 1.png */; };
 		9A4ACB361E24C26900CD6D17 /* boypictureframe 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4ACB341E24C26900CD6D17 /* boypictureframe 2.png */; };
 		9A4ACB381E24C5C900CD6D17 /* girlpictureframe 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4ACB371E24C5C900CD6D17 /* girlpictureframe 1.png */; };
+		9A4AE8B31F0A15E80013AC50 /* HelpPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4AE8B11F0A15E80013AC50 /* HelpPopViewController.m */; };
+		9A4AE8B41F0A15E80013AC50 /* HelpPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8B21F0A15E80013AC50 /* HelpPopViewController.xib */; };
+		9A4AE8B81F0A1D530013AC50 /* HelpPopChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4AE8B61F0A1D530013AC50 /* HelpPopChatViewController.m */; };
+		9A4AE8B91F0A1D530013AC50 /* HelpPopChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8B71F0A1D530013AC50 /* HelpPopChatViewController.xib */; };
+		9A4AE8BD1F0A1D800013AC50 /* HelpPopMeetupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4AE8BB1F0A1D800013AC50 /* HelpPopMeetupsViewController.m */; };
+		9A4AE8BE1F0A1D800013AC50 /* HelpPopMeetupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8BC1F0A1D800013AC50 /* HelpPopMeetupsViewController.xib */; };
+		9A4AE8C51F0A24420013AC50 /* joinyellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8BF1F0A24420013AC50 /* joinyellow.png */; };
+		9A4AE8C61F0A24420013AC50 /* joinyellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8C01F0A24420013AC50 /* joinyellow@2x.png */; };
+		9A4AE8C71F0A24420013AC50 /* joinyellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8C11F0A24420013AC50 /* joinyellow@3x.png */; };
+		9A4AE8C81F0A24420013AC50 /* plusyellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8C21F0A24420013AC50 /* plusyellow.png */; };
+		9A4AE8C91F0A24420013AC50 /* plusyellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8C31F0A24420013AC50 /* plusyellow@2x.png */; };
+		9A4AE8CA1F0A24420013AC50 /* plusyellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A4AE8C41F0A24420013AC50 /* plusyellow@3x.png */; };
 		9A54038E1ECB06D90026BDAE /* 3dotsgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */; };
 		9A54038F1ECB06D90026BDAE /* 3dotsgrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */; };
 		9A5403901ECB06D90026BDAE /* 3dotsgrey@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */; };
@@ -539,6 +551,21 @@
 		9A4ACB331E24C26900CD6D17 /* boypictureframe 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boypictureframe 1.png"; path = "Play_Date/boypictureframe 1.png"; sourceTree = "<group>"; };
 		9A4ACB341E24C26900CD6D17 /* boypictureframe 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "boypictureframe 2.png"; path = "Play_Date/boypictureframe 2.png"; sourceTree = "<group>"; };
 		9A4ACB371E24C5C900CD6D17 /* girlpictureframe 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "girlpictureframe 1.png"; path = "Play_Date/girlpictureframe 1.png"; sourceTree = "<group>"; };
+		9A4AE8B01F0A15E80013AC50 /* HelpPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpPopViewController.h; sourceTree = "<group>"; };
+		9A4AE8B11F0A15E80013AC50 /* HelpPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpPopViewController.m; sourceTree = "<group>"; };
+		9A4AE8B21F0A15E80013AC50 /* HelpPopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpPopViewController.xib; sourceTree = "<group>"; };
+		9A4AE8B51F0A1D530013AC50 /* HelpPopChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpPopChatViewController.h; sourceTree = "<group>"; };
+		9A4AE8B61F0A1D530013AC50 /* HelpPopChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpPopChatViewController.m; sourceTree = "<group>"; };
+		9A4AE8B71F0A1D530013AC50 /* HelpPopChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpPopChatViewController.xib; sourceTree = "<group>"; };
+		9A4AE8BA1F0A1D800013AC50 /* HelpPopMeetupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpPopMeetupsViewController.h; sourceTree = "<group>"; };
+		9A4AE8BB1F0A1D800013AC50 /* HelpPopMeetupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpPopMeetupsViewController.m; sourceTree = "<group>"; };
+		9A4AE8BC1F0A1D800013AC50 /* HelpPopMeetupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpPopMeetupsViewController.xib; sourceTree = "<group>"; };
+		9A4AE8BF1F0A24420013AC50 /* joinyellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joinyellow.png; sourceTree = "<group>"; };
+		9A4AE8C01F0A24420013AC50 /* joinyellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joinyellow@2x.png"; sourceTree = "<group>"; };
+		9A4AE8C11F0A24420013AC50 /* joinyellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joinyellow@3x.png"; sourceTree = "<group>"; };
+		9A4AE8C21F0A24420013AC50 /* plusyellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusyellow.png; sourceTree = "<group>"; };
+		9A4AE8C31F0A24420013AC50 /* plusyellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plusyellow@2x.png"; sourceTree = "<group>"; };
+		9A4AE8C41F0A24420013AC50 /* plusyellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plusyellow@3x.png"; sourceTree = "<group>"; };
 		9A54038B1ECB06D90026BDAE /* 3dotsgrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3dotsgrey.png; path = Play_Date/3dotsgrey.png; sourceTree = "<group>"; };
 		9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3dotsgrey@2x.png"; path = "Play_Date/3dotsgrey@2x.png"; sourceTree = "<group>"; };
 		9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "3dotsgrey@3x.png"; path = "Play_Date/3dotsgrey@3x.png"; sourceTree = "<group>"; };
@@ -1119,7 +1146,7 @@
 				9A40A1E91E138657007E7C37 /* Info.plist */,
 			);
 			path = Play_DateTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		9A40A1F11E138657007E7C37 /* Play_DateUITests */ = {
 			isa = PBXGroup;
@@ -1213,6 +1240,22 @@
 				9A40A2531E13958E007E7C37 /* SBJsonWriter.m */,
 			);
 			name = JSON;
+			sourceTree = "<group>";
+		};
+		9A4AE8A91F0A09580013AC50 /* HelpScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9A4AE8B01F0A15E80013AC50 /* HelpPopViewController.h */,
+				9A4AE8B11F0A15E80013AC50 /* HelpPopViewController.m */,
+				9A4AE8B21F0A15E80013AC50 /* HelpPopViewController.xib */,
+				9A4AE8B51F0A1D530013AC50 /* HelpPopChatViewController.h */,
+				9A4AE8B61F0A1D530013AC50 /* HelpPopChatViewController.m */,
+				9A4AE8B71F0A1D530013AC50 /* HelpPopChatViewController.xib */,
+				9A4AE8BA1F0A1D800013AC50 /* HelpPopMeetupsViewController.h */,
+				9A4AE8BB1F0A1D800013AC50 /* HelpPopMeetupsViewController.m */,
+				9A4AE8BC1F0A1D800013AC50 /* HelpPopMeetupsViewController.xib */,
+			);
+			path = HelpScreen;
 			sourceTree = "<group>";
 		};
 		9A5AA38F1EE929BF00274F3C /* ContactList */ = {
@@ -1370,6 +1413,7 @@
 				9A1FFF231EF3B06C00CA9677 /* SelectUsers */,
 				9A5AA38F1EE929BF00274F3C /* ContactList */,
 				9A5AA3961EE929BF00274F3C /* FacebookList */,
+				9A4AE8A91F0A09580013AC50 /* HelpScreen */,
 				9AB37B271E2DFAB400CBD599 /* FriendCahtingViewController.h */,
 				9AB37B281E2DFAB500CBD599 /* FriendCahtingViewController.m */,
 				9A1FFF4D1EF3E14200CA9677 /* FriendCahtingViewControlleroneViewController.h */,
@@ -1410,6 +1454,12 @@
 				9A3E9D0F1EE94F1D008BDA3B /* plusandbackpd */,
 				9A54038C1ECB06D90026BDAE /* 3dotsgrey@2x.png */,
 				9A54038D1ECB06D90026BDAE /* 3dotsgrey@3x.png */,
+				9A4AE8BF1F0A24420013AC50 /* joinyellow.png */,
+				9A4AE8C01F0A24420013AC50 /* joinyellow@2x.png */,
+				9A4AE8C11F0A24420013AC50 /* joinyellow@3x.png */,
+				9A4AE8C21F0A24420013AC50 /* plusyellow.png */,
+				9A4AE8C31F0A24420013AC50 /* plusyellow@2x.png */,
+				9A4AE8C41F0A24420013AC50 /* plusyellow@3x.png */,
 				9AC30BD81E54333E00920D8D /* ribbon.png */,
 				9AC30BD91E54333E00920D8D /* ribbon@2x.png */,
 				9AC30BDA1E54333E00920D8D /* ribbon@3x.png */,
@@ -1898,6 +1948,7 @@
 				9A93E87C1E48859A0032B63A /* Beep.wav in Resources */,
 				9A3E9D1A1EE94F1D008BDA3B /* plus@2x.png in Resources */,
 				9A1C59051E1A4A33009EA17C /* Cancel.png in Resources */,
+				9A4AE8C61F0A24420013AC50 /* joinyellow@2x.png in Resources */,
 				9AF0ECB41E24FB5D001A6B47 /* friends@2x.png in Resources */,
 				9A160C681E26292F00300BE7 /* profile@3x.png in Resources */,
 				9A6C53011EFA3ECF002AF652 /* share.png in Resources */,
@@ -1906,12 +1957,14 @@
 				61B761931E72818F0017E215 /* MyView2.xib in Resources */,
 				9AE19E2A1E278BB2006143E5 /* arrow@3x.png in Resources */,
 				9A3E9D181EE94F1D008BDA3B /* back@3x.png in Resources */,
+				9A4AE8B91F0A1D530013AC50 /* HelpPopChatViewController.xib in Resources */,
 				9A5F332F1E30E5D400C29894 /* SpeechBubble1.png in Resources */,
 				9A08A0BF1E49C67100013278 /* Done.png in Resources */,
 				9A160C691E26292F00300BE7 /* profile1@2x.png in Resources */,
 				9A3D2D021E55CDB5002E19A1 /* Help.png in Resources */,
 				9AFEF4091E4DEBAB00292760 /* downarrow@2x.png in Resources */,
 				9A4ACB271E24A51C00CD6D17 /* mornings.png in Resources */,
+				9A4AE8C71F0A24420013AC50 /* joinyellow@3x.png in Resources */,
 				9AE13F591E44B3AA00C747E6 /* Info.plist in Resources */,
 				9A54038F1ECB06D90026BDAE /* 3dotsgrey@2x.png in Resources */,
 				9A40A2721E13E913007E7C37 /* Forward-50.png in Resources */,
@@ -1926,6 +1979,7 @@
 				9AC30BDC1E54333E00920D8D /* ribbon@2x.png in Resources */,
 				9AA91B491E28E2090071500A /* nope.png in Resources */,
 				9AE13DDE1E44ACC500C747E6 /* AirshipConfig.plist in Resources */,
+				9A4AE8B41F0A15E80013AC50 /* HelpPopViewController.xib in Resources */,
 				9AB37B2F1E2E199400CBD599 /* heart.png in Resources */,
 				9A160C6E1E2629BC00300BE7 /* graypictureframe 1.png in Resources */,
 				9A3D2D031E55CDB5002E19A1 /* Help@2x.png in Resources */,
@@ -1935,6 +1989,8 @@
 				9A4ACB261E24A51C00CD6D17 /* indoor.png in Resources */,
 				9A160C671E26292F00300BE7 /* profile@2x.png in Resources */,
 				9AF0ECB21E24FB5D001A6B47 /* friends1@2x.png in Resources */,
+				9A4AE8C91F0A24420013AC50 /* plusyellow@2x.png in Resources */,
+				9A4AE8C81F0A24420013AC50 /* plusyellow.png in Resources */,
 				9A4ACB1F1E24A51C00CD6D17 /* discover.png in Resources */,
 				9A3E9D171EE94F1D008BDA3B /* back@2x.png in Resources */,
 				9AE13F5A1E44B3AA00C747E6 /* copy_header_imports.sh in Resources */,
@@ -1967,6 +2023,7 @@
 				9A40A1DA1E138657007E7C37 /* Assets.xcassets in Resources */,
 				9A40A1D81E138656007E7C37 /* Main.storyboard in Resources */,
 				61B761951E72818F0017E215 /* MyView3.xib in Resources */,
+				9A4AE8BE1F0A1D800013AC50 /* HelpPopMeetupsViewController.xib in Resources */,
 				9A4ACB231E24A51C00CD6D17 /* friends.png in Resources */,
 				9A4ACB281E24A51C00CD6D17 /* outdoor.png in Resources */,
 				9A5403901ECB06D90026BDAE /* 3dotsgrey@3x.png in Resources */,
@@ -1974,6 +2031,7 @@
 				9A4ACB1E1E24A51C00CD6D17 /* circle2.png in Resources */,
 				9A40A22F1E1393D8007E7C37 /* Images in Resources */,
 				9AB37B311E2E199400CBD599 /* Screenshot-50 (1).png in Resources */,
+				9A4AE8CA1F0A24420013AC50 /* plusyellow@3x.png in Resources */,
 				9A05230F1EFCE8D3006176F4 /* join@2x.png in Resources */,
 				9A05230E1EFCE8D3006176F4 /* join.png in Resources */,
 				9A3D2CFA1E5569F3002E19A1 /* tutorial@2x.png in Resources */,
@@ -1983,6 +2041,7 @@
 				9AC30BDD1E54333E00920D8D /* ribbon@3x.png in Resources */,
 				9A9CF00F1E2F37F4007885BE /* ChatText.plist in Resources */,
 				9A4ACB321E24BA5C00CD6D17 /* kg-feeling-22.regular.ttf in Resources */,
+				9A4AE8C51F0A24420013AC50 /* joinyellow.png in Resources */,
 				9A40A2611E13A2D3007E7C37 /* UrlName.plist in Resources */,
 				9A31A2A91E3237B700974261 /* Teddy.png in Resources */,
 				9A160C6D1E2629BC00300BE7 /* grayframe.png in Resources */,
@@ -2169,6 +2228,7 @@
 				9AAF10D41E1B85D60065CA75 /* UIImageView+HighlightedWebCache.m in Sources */,
 				9A0523071EFCDCF4006176F4 /* MeetupDetailCellTableViewCell.m in Sources */,
 				9A40A2591E13958E007E7C37 /* SBJsonStreamParserState.m in Sources */,
+				9A4AE8BD1F0A1D800013AC50 /* HelpPopMeetupsViewController.m in Sources */,
 				9A40A2191E139098007E7C37 /* LoginSignupViewController.m in Sources */,
 				9A1C590F1E1A7B0F009EA17C /* MainProfileViewController.m in Sources */,
 				9A40A2581E13958E007E7C37 /* SBJsonStreamParserAdapter.m in Sources */,
@@ -2178,6 +2238,7 @@
 				9AAF10D51E1B85D60065CA75 /* UIImageView+WebCache.m in Sources */,
 				9A5AA39F1EE929BF00274F3C /* FacebookoneTableViewCell.m in Sources */,
 				9AAF10FC1E1BCC550065CA75 /* AccThreeTableViewCell.m in Sources */,
+				9A4AE8B31F0A15E80013AC50 /* HelpPopViewController.m in Sources */,
 				9A08A0C31E49C67100013278 /* UIImageView+MHFacebookImageViewer.m in Sources */,
 				9AD3F1BA1EF2B98F005A215D /* NewPlayDateCreateViewController.m in Sources */,
 				9A1FFF421EF3B06C00CA9677 /* InviteSprintTagUserViewController.m in Sources */,
@@ -2191,6 +2252,7 @@
 				9A08A0BC1E49C67100013278 /* AFPropertyListRequestOperation.m in Sources */,
 				9AE26AEC1E2C9B7A00F1B133 /* FriendsSecTwoTableViewCell.m in Sources */,
 				61B7618E1E72818F0017E215 /* MyView.m in Sources */,
+				9A4AE8B81F0A1D530013AC50 /* HelpPopChatViewController.m in Sources */,
 				9A0339B61E1521C50024C30A /* LocationView4ViewController.m in Sources */,
 				9A1FFF461EF3B06C00CA9677 /* LCNContactViewStyle.m in Sources */,
 				9A1FFF431EF3B06C00CA9677 /* InviteSprintUserTableViewCell.m in Sources */,
