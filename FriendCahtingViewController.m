@@ -1246,7 +1246,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     NSString *chatcountVal=@"";
     
 //    NSString *message=@"message";
-    NSString *messageVal=textOne.text;
+    NSString *messageVal=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textOne.text,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
    
 //    NSString *Chattypee=@"chattype";
     NSString *ChattypeeVal=chattype;

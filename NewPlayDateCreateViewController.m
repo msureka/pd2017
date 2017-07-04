@@ -156,11 +156,13 @@
 {
     if([  [defaults valueForKey:@"checkview"] isEqualToString:@"edit"])
     {
+        [self.view endEditing:YES];
         [self Communication_Editevent];
        
     }
     else
     {
+        [self.view endEditing:YES];
         InviteSprintTagUserViewController * set=[self.storyboard instantiateViewControllerWithIdentifier:@"InviteSprintTagUserViewController"];
         set.label_time1=label_time.text;
         set.label_day1=label_day.text;
@@ -307,7 +309,11 @@
     NSString *fbid1Val=[defaults valueForKey:@"fid"];
     
     NSString *meetupstitle= @"title";
+    
+    NSString *meetupstitleval=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textfield_meetup.text,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
     NSString *location= @"location";
+    
+    NSString *locationVal=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textfield_location.text,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
     NSString *eventdate= @"eventdate";
     
     
@@ -317,11 +323,13 @@
     NSString *eventdateval=[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:Picker_date.date]];
     
     NSString *description= @"description";
+    NSString * descriptionval=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textview_disc.text,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
+
     NSString *eventid= @"eventid";
     
     NSString *eventival= [defaults valueForKey:@"neweventid"];;
 
-    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,meetupstitle,textfield_meetup.text,location,textfield_location.text,eventdate,eventdateval,description,textview_disc.text,eventid,eventival];
+    NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,meetupstitle,meetupstitleval,location,locationVal,eventdate,eventdateval,description,descriptionval,eventid,eventival];
     
     
 #pragma mark - swipe sesion

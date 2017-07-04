@@ -45,16 +45,16 @@
 @synthesize selectedUserid,selectedNames,Array_InviteUserTags,Send_Button,label_day1,label_date1,label_time1,Str_eventcreate,textfield_location1,textview_disc1,textfield_meetup1,str_checkmorefriends,HeadTopView;
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    
-    
-    CALayer *borderBottom = [CALayer layer];
-    borderBottom.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
-    
-    borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
-    [HeadTopView.layer addSublayer:borderBottom];
+  
+//    CALayer *borderBottom = [CALayer layer];
+//    borderBottom.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.10f].CGColor;
+//    
+//    borderBottom.frame = CGRectMake(0, HeadTopView.frame.size.height - 2, HeadTopView.frame.size.width, 2);
+//    [HeadTopView.layer addSublayer:borderBottom];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
@@ -118,7 +118,7 @@ string_Keyboardload=@"no";
 Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.contactPickerView];
     self.contactPickerView.hidden=YES;
-    [self.view endEditing:YES];
+   
  
     for (int i=0; i<_Names.count; i++)
     {
@@ -134,6 +134,7 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _label_Result.hidden=YES;
    
      String_suggested=@"no";
+    
     
     
     
@@ -515,7 +516,16 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
  
      NSString *description= @"description";
     
-     NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,meetupstitle,textfield_meetup1,location,textfield_location1,friendlist,friendlistVal,eventdate,label_date1,description,textview_disc1];
+    
+    NSString *meetupstitleval=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textfield_meetup1,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
+    
+    NSString *locationVal=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textfield_location1,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
+    
+    
+    NSString * descriptionval=(NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)textview_disc1,NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));;
+    
+    
+     NSString *reqStringFUll=[NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",fbid1,fbid1Val,meetupstitle,meetupstitleval,location,locationVal,friendlist,friendlistVal,eventdate,label_date1,description,descriptionval];
     
     
     
@@ -982,13 +992,13 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
         Table_ContactView.hidden=YES;
            self.contactPickerView.hidden=YES;
         [self.view endEditing:YES];
+
     }
     else
     {
            self.contactPickerView.hidden=NO;
         Table_ContactView.hidden=NO;
         _label_Result.hidden=YES;
-        [self.view endEditing:NO];
          [Table_ContactView reloadData];
     }
 }
@@ -1011,6 +1021,7 @@ Table_ContactView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
 -(IBAction)SendButtons:(id)sender
 {
+    [self.view endEditing:YES];
     [self.view showActivityViewWithLabel:@"Loading"];
 //    strInvite_users= [selectedNames componentsJoinedByString:@","];
 ////      [[NSNotificationCenter defaultCenter] postNotificationName:@"PassDataArray" object:[NSDictionary dictionaryWithObject:strInvite_users forKey:@"desc"]];

@@ -96,214 +96,138 @@
 }
 - (void)getContactsWithAddressBook:(ABAddressBookRef )addressBook
 {
+   // ABAddressBookRef addressBook = ABAddressBookCreate();
+    CFArrayRef allSources = ABAddressBookCopyArrayOfAllPeople( addressBook );
     
-    contactlists = [[NSMutableArray alloc] init];
-    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    CFIndex nPeople = ABAddressBookGetPersonCount(addressBook);
     
-    for (int i=0;i < nPeople;i++) {
-        NSMutableDictionary *dOfPerson=[NSMutableDictionary dictionary];
+    
+   NSArray * allContacts=[[NSArray alloc]init];
+    
+    allContacts = (__bridge_transfer NSArray
+                   *)ABAddressBookCopyArrayOfAllPeople(addressBook);
+    
+    ABRecordRef *person;
+    
+    
+    NSLog(@"Address Count==%ld",ABAddressBookGetPersonCount( addressBook ));
+    for (CFIndex k = 0; k < ABAddressBookGetPersonCount( addressBook ); k++)
+    {
         
-        ABRecordRef ref = CFArrayGetValueAtIndex(allPeople,i);
         
-        //For username and surname
-        ABMultiValueRef phones =(__bridge ABMultiValueRef)((__bridge NSString*)ABRecordCopyValue(ref, kABPersonPhoneProperty));
+        ABRecordRef contactPerson = (__bridge ABRecordRef)allContacts[k];
+                NSString * email;
         
-        CFStringRef firstName, lastName;
-        firstName = ABRecordCopyValue(ref, kABPersonFirstNameProperty);
-        lastName  = ABRecordCopyValue(ref, kABPersonLastNameProperty);
-       // [dOfPerson setObject:[NSString stringWithFormat:@"%@ %@", firstName, lastName] forKey:@"name"];
+        ABMutableMultiValueRef eMail  = ABRecordCopyValue(contactPerson, kABPersonEmailProperty);
+       if(ABMultiValueGetCount(eMail) > 0)
+        {
+            email=(__bridge NSString *)ABMultiValueCopyValueAtIndex(eMail, 0);
+            
+        }
+        NSLog(@"Email222===%@",email);
+        
+        NSString * fullName;
+        NSString *firstName = (__bridge_transfer NSString
+                               *)ABRecordCopyValue(contactPerson, kABPersonFirstNameProperty);
+        NSString *lastName =  (__bridge_transfer NSString
+                               *)ABRecordCopyValue(contactPerson, kABPersonLastNameProperty);
+        
+        NSLog(@"%lu first Name=%@",k,firstName);
+        NSLog(@"%lu last name=%@",k,lastName);
+        
+        ABRecordRef aSource = CFArrayGetValueAtIndex(allSources,k);
+        ABMultiValueRef phones =(__bridge ABMultiValueRef)((__bridge NSString*)ABRecordCopyValue(aSource, kABPersonPhoneProperty));
+
         if (firstName !=nil && lastName==nil)
         {
-            [dOfPerson setObject:[NSString stringWithFormat:@"%@", firstName] forKey:@"name"];
+        fullName=[NSString stringWithFormat:@"%@", firstName] ;
         }
         else if (firstName ==nil && lastName !=nil)
         {
-            [dOfPerson setObject:[NSString stringWithFormat:@"%@", lastName] forKey:@"name"];
+            fullName=[NSString stringWithFormat:@"%@", lastName];
         }
         else if (firstName !=nil && lastName !=nil)
         {
-            [dOfPerson setObject:[NSString stringWithFormat:@"%@%@%@", firstName,@" ", lastName] forKey:@"name"];
+            fullName=[NSString stringWithFormat:@"%@%@%@", firstName,@" ", lastName];
         }
-        // For getting the user image.
-        UIImage *contactImage;
-        if(ABPersonHasImageData(ref)){
-            contactImage = [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(ref)];
-        }
+   
+     //
         
-        //For Email ids
-        ABMutableMultiValueRef eMail  = ABRecordCopyValue(ref, kABPersonEmailProperty);
-        if(ABMultiValueGetCount(eMail) > 0) {
-            [dOfPerson setObject:(__bridge NSString *)ABMultiValueCopyValueAtIndex(eMail, 0) forKey:@"email"];
-            
-        }
-        
-        //For Phone number
         NSString* mobileLabel;
+        NSString* basic_mobile;
+        NSString* work_mobile;
+        NSString* home_mobile;
+        NSString* strOtherMobile;
+        NSString* phonelabels;
+        NSString* mobileLabel33;
         
-        for(CFIndex i = 0; i < ABMultiValueGetCount(phones); i++) {
-            mobileLabel = (__bridge NSString*)ABMultiValueCopyLabelAtIndex(phones, i);
-            if([mobileLabel isEqualToString:(NSString *)kABPersonPhoneMobileLabel])
-            {
-                [dOfPerson setObject:(__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, i) forKey:@"Phone"];
-            }
-            
-            else if ([mobileLabel isEqualToString:(NSString*)kABPersonPhoneIPhoneLabel])
-            {
-                [dOfPerson setObject:(__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, i) forKey:@"Phone"];
-                break ;
-            }
-            
-        }
-        if (dOfPerson.count>=2)
+        
+        
+        for(CFIndex i = 0; i < ABMultiValueGetCount(phones); i++)
         {
-            if ([dOfPerson objectForKey:@"name"] &&  [dOfPerson valueForKey:@"name"] !=nil)
+            
+            
+             phonelabels = (__bridge NSString*)ABMultiValueCopyValueAtIndex(phones, i);
+            
+            CFStringRef locLabel1 = ABMultiValueCopyLabelAtIndex(phones, i);
+            
+            NSString *phoneLabel1 =(__bridge NSString*) ABAddressBookCopyLocalizedLabel(locLabel1);
+            
+            NSLog(@"%@  -sachin- %@ )", phonelabels, phoneLabel1);
+            if (fullName !=nil)
             {
-                [Array_name addObject:[dOfPerson valueForKey:@"name"]];
-                if ([dOfPerson valueForKey:@"email"]==nil)
-              {
-                    [Array_Email addObject:@""];
+            if (phonelabels !=nil)
+            {
+                if ([Array_Phone containsObject:phonelabels])
+                {
+                    
                 }
                 else
                 {
-                 [Array_Email addObject:[dOfPerson valueForKey:@"email"]];
+                [Array_name addObject:fullName];
+                [Array_Phone addObject:phonelabels];
+                [Array_Email addObject:@""];
                 }
-                if ([dOfPerson valueForKey:@"Phone"]==nil)
-                {
-                 [Array_Phone addObject:@""];
-                }
-                else
-                {
-                    [Array_Phone addObject:[dOfPerson valueForKey:@"Phone"]];
-                }
-                [contactlists addObject:dOfPerson];
             }
+            }
+        }
+        if (fullName !=nil)
+        {
+        
+        if (email !=nil)
+        {
+            if ([Array_Email containsObject:email])
+            {
+                
+            }
+            else
+            {
+                [Array_name addObject:fullName];
+                [Array_Email addObject:email];
+                [Array_Phone addObject:@""];
+
+            }
+        }
+
             
         }
         
     }
-    if (Array_name.count!=0)
-                        {
-                            [self ContactCommunication];
-                        }
-                        else
-                        {
-                             [self contactListData];
-                        }
-       NSLog(@"Contacts = %@",contactlists);
-     NSLog(@"Array_Phone = %@",Array_Phone);
-     NSLog(@"Array_Email = %@",Array_Email);
-     NSLog(@"Array_name = %@",Array_name);
+    
+    
+         NSLog(@"Array_Phone = %@",Array_Phone);
+         NSLog(@"Array_Email = %@",Array_Email);
+         NSLog(@"Array_name = %@",Array_name);
+    if (Array_name.count !=0)
+    {
+        [self ContactCommunication];
+    }
+    else
+    {
+        [self contactListData];
+  
+    }
+    
 }
-
-                 //       NSArray * con=[store enumerateContactsWithFetchRequest:request
-                  //                                                       error:nil
-                       //                                             usingBlock:^(CNContact* __nonnull contact, BOOL* __nonnull stop)
-
-//{
-//    [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error)
-//     {
-//        if (granted == YES)
-//        {
-//            //keys with fetching properties
-//            NSArray *keys = @[CNContactFamilyNameKey,CNContactEmailAddressesKey, CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey];
-//            NSString *containerId = store.defaultContainerIdentifier;
-//            NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId];
-//            NSError *error;
-//            NSArray *cnContacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:keys error:&error];
-//            if (error)
-//            {
-//                NSLog(@"error fetching contacts %@", error);
-//                [self contactListData];
-//            } else
-//            {
-//                for (CNContact *contact in cnContacts)
-//                {
-//                    NSLog(@"Contacts123== %@",contact);
-//                    NSLog(@"Name== %@%@%@", contact.givenName,@" ",contact.familyName);
-//                    name=[NSString stringWithFormat:@"%@%@%@", contact.givenName,@" ",contact.familyName];
-//                    
-//                    for (CNLabeledValue * label in contact.emailAddresses)
-//                    {
-//                        NSString *Email = label.value;
-//                        if ([Email length] > 0)
-//                        {
-//                            emailAddress=[NSString stringWithFormat:@"%@",Email];
-//                            
-//                            
-//                            NSLog(@"Email==%@", Email);
-//                        }
-//                    }
-//                    
-//                    for (CNLabeledValue *label in contact.phoneNumbers)
-//                    {
-//                        NSString *phone = [label.value stringValue];
-//                        if ([phone length] > 0)
-//                        {
-//                            phoneNumber=[NSString stringWithFormat:@"%@",phone];
-//                            NSLog(@"phone=== %@", phone);
-//                        }
-//                    }
-//                    
-//                   // NSMutableDictionary *Contact_dict = [[NSMutableDictionary alloc] init];
-//                    if ((name !=nil && ![name isEqualToString:@" "]) && ((emailAddress !=nil && ![emailAddress isEqualToString:@""])||(phoneNumber !=nil && ![phoneNumber isEqualToString:@""])))
-//                    {
-//                   // [Contact_dict setObject:name forKey:@"name"];
-//                        [Array_name addObject:name];
-//                    
-//                    if (phoneNumber !=nil && ![phoneNumber isEqualToString:@""])
-//                    {
-//                       // [Contact_dict setObject:phoneNumber forKey:@"phone"];
-//                        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
-//                        
-//                        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-//                         [Array_Phone addObject:phoneNumber];
-//                    }
-//                    else
-//                    {
-//                        //[Contact_dict setObject:@"" forKey:@"phone"];
-//                         [Array_Phone addObject:@""];
-//                    }
-//                    if (emailAddress !=nil && ![emailAddress isEqualToString:@""])
-//                    {
-//                        //[Contact_dict setObject:emailAddress forKey:@"email"];
-//                        [Array_Email addObject:emailAddress];
-//                    }
-//                    else
-//                    {
-//                     //[Contact_dict setObject:@"" forKey:@"email"];
-//                        [Array_Email addObject:@""];
-//                    }
-//                    
-//                    
-////                    if ((emailAddress !=nil && ![emailAddress isEqualToString:@""]) || (phoneNumber !=nil && ![phoneNumber isEqualToString:@""]) )
-////                    {
-////                         [Array_contatList addObject:Contact_dict];
-////                    }
-//                   
-//                        
-//                    }
-//                    name=nil;
-//                    emailAddress=nil;
-//                    phoneNumber=nil;
-//                }
-//                
-//                NSLog(@"Array_Email==%@", Array_Email);
-//                NSLog(@"Array_Phone==%@", Array_Phone);
-//                NSLog(@"Array_name==%@", Array_name);
-//                if (Array_name.count!=0)
-//                {
-//                    [self ContactCommunication];
-//                }
-//                else
-//                {
-//                     [self contactListData];
-//                }
-//            }
-//        }        
-//    }];
-//    
-//   }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
@@ -601,26 +525,34 @@
         
         NSCharacterSet *notAllowedCharsName = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890, "] invertedSet];
         
-        if (Array_name.count !=0)
-        {
-            if (Array_name.count<=500)
-            {
-                namestrval =[[Array_name subarrayWithRange:NSMakeRange(0,[Array_name count])] componentsJoinedByString:@","];;
-                
-                emailstrval=[[Array_Email subarrayWithRange:NSMakeRange(0,[Array_Email count])] componentsJoinedByString:@","];;
-                
-                mobilenumberval=[[Array_Phone subarrayWithRange:NSMakeRange(0,[Array_Phone count])] componentsJoinedByString:@","];
-                
+//        if (Array_name.count !=0)
+//        {
+//            if (Array_name.count<=500)
+//            {
+//                namestrval =[[Array_name subarrayWithRange:NSMakeRange(0,[Array_name count])] componentsJoinedByString:@","];;
+//                
+//                emailstrval=[[Array_Email subarrayWithRange:NSMakeRange(0,[Array_Email count])] componentsJoinedByString:@","];;
+//                
+//                mobilenumberval=[[Array_Phone subarrayWithRange:NSMakeRange(0,[Array_Phone count])] componentsJoinedByString:@","];
+        
                 //               namestrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_name subarrayWithRange:NSMakeRange(0,[Array_name count])] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
                 
                 
                 //             NSString *unfilteredString = @"!@#$%^&*()_+|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-                
+        
+        
+        
+        namestrval =[Array_name componentsJoinedByString:@","];;
+        
+        emailstrval=[Array_Email componentsJoinedByString:@","];;
+        
+        mobilenumberval=[Array_Phone componentsJoinedByString:@","];
+        
                 escapedMobileNoString = [[mobilenumberval  componentsSeparatedByCharactersInSet:notAllowedCharsMobile] componentsJoinedByString:@""];
                 
                 escapedEmailString = [[emailstrval  componentsSeparatedByCharactersInSet:notAllowedCharsEmail] componentsJoinedByString:@""];
                 
-                escapedNameString = [[namestrval  componentsSeparatedByCharactersInSet:notAllowedCharsName] componentsJoinedByString:@""];
+     //           escapedNameString = [[namestrval  componentsSeparatedByCharactersInSet:notAllowedCharsName] componentsJoinedByString:@""];
                 
                 
                 //          NSLog (@"Result: %@", resultString);
@@ -629,38 +561,41 @@
                 
                 
                 //            mobilenumberval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Phone subarrayWithRange:NSMakeRange(0,[Array_Phone count])] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
-            }
-            else
-            {
-                
-                
-                namestrval =[[Array_name subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];;
-                
-                emailstrval=[[Array_Email subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];;
-                
-                mobilenumberval=[[Array_Phone subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];
-                
-                
-                //                namestrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_name subarrayWithRange:NSMakeRange(0,100)] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
-                
-                escapedMobileNoString = [[mobilenumberval  componentsSeparatedByCharactersInSet:notAllowedCharsMobile] componentsJoinedByString:@""];
-                
-                escapedEmailString = [[emailstrval  componentsSeparatedByCharactersInSet:notAllowedCharsEmail] componentsJoinedByString:@""];
-                
-                escapedNameString = [[namestrval  componentsSeparatedByCharactersInSet:notAllowedCharsName] componentsJoinedByString:@""];
-                
-                
+//            }
+//            else
+//            {
+//                
+//                
+//                namestrval =[[Array_name subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];;
+//                
+//                emailstrval=[[Array_Email subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];;
+//                
+//                mobilenumberval=[[Array_Phone subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","];
+//        escapedNameString=[Array_name componentsJoinedByString:@","];;
+//        escapedNameString = [escapedNameString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
+        
+//    escapedNameString = [[Array_name  componentsJoinedByString:@","] encodeString:NSUTF8StringEncoding];
+                 escapedNameString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)[Array_name  componentsJoinedByString:@","],NULL,(CFStringRef)@"!*\"();:@&=+$,/?%#[]% ",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+//                                escapedNameString= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[Array_name  componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
+        
+//                escapedMobileNoString = [[mobilenumberval  componentsSeparatedByCharactersInSet:notAllowedCharsMobile] componentsJoinedByString:@""];
+//                
+//                escapedEmailString = [[emailstrval  componentsSeparatedByCharactersInSet:notAllowedCharsEmail] componentsJoinedByString:@""];
+//                
+//                escapedNameString = [[namestrval  componentsSeparatedByCharactersInSet:notAllowedCharsName] componentsJoinedByString:@""];
+//                
+        
                 
                 //               emailstrval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Email subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
                 
                 
                 //                mobilenumberval= (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[[Array_Phone subarrayWithRange:NSMakeRange(0,500)] componentsJoinedByString:@","], NULL, (CFStringRef)@"!*'\();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
-                
-                
-            }
-        }
-        
-        
+//                
+//                
+//            }
+//        }
+//        
+//        
         
         
         
@@ -701,32 +636,32 @@
                                                             
                                                             if ([ResultString isEqualToString:@"done"])
                                                             {
-                                                                if (Array_name.count>=500)
-                                                                {
-                                                                    [Array_name removeObjectsInRange:NSMakeRange(0, 500)];
-                                                                    [Array_Email removeObjectsInRange:NSMakeRange(0, 500)];
-                                                                    [Array_Phone removeObjectsInRange:NSMakeRange(0, 500)];
-                                                                    
-                                                                }
-                                                                else
-                                                                {
-                                                                    [Array_name removeObjectsInRange:NSMakeRange(0, [Array_name count])];
-                                                                    [Array_Email removeObjectsInRange:NSMakeRange(0,[Array_Email count])];
-                                                                    [Array_Phone removeObjectsInRange:NSMakeRange(0, [Array_Phone count])];
-                                                                    
-                                                                }
+//                                                                if (Array_name.count>=500)
+//                                                                {
+//                                                                    [Array_name removeObjectsInRange:NSMakeRange(0, 500)];
+//                                                                    [Array_Email removeObjectsInRange:NSMakeRange(0, 500)];
+//                                                                    [Array_Phone removeObjectsInRange:NSMakeRange(0, 500)];
+//                                                                    
+//                                                                }
+//                                                                else
+//                                                                {
+//                                                                    [Array_name removeObjectsInRange:NSMakeRange(0, [Array_name count])];
+//                                                                    [Array_Email removeObjectsInRange:NSMakeRange(0,[Array_Email count])];
+//                                                                    [Array_Phone removeObjectsInRange:NSMakeRange(0, [Array_Phone count])];
+//                                                                    
+//                                                                }
+//                                                                
                                                                 
                                                                 
                                                                 
+//                                                                
+//                                                                if (Array_name.count !=0)
+//                                                                {
+//                                                                    [self ContactCommunication];
+//                                                                }
+//                                                                else
+//                                                                {
                                                                 
-                                                                
-                                                                if (Array_name.count !=0)
-                                                                {
-                                                                    [self ContactCommunication];
-                                                                }
-                                                                else
-                                                                {
-                                                                    
                                                                     
                                                                     //
                                                                     //                                                                    ArryMerge_twitterlistSection0=[[NSMutableArray alloc]init];
@@ -765,12 +700,12 @@
                                                                     //            [_tableview_contact scrollToRowAtIndexPath:myIP atScrollPosition:NULL animated:NO];
                                                                     
                                                                     
-                                                                    
-                                                                    
-                                                                }
-                                                                
-                                                                
-                                                            }
+//                                                                    
+//                                                                    
+//                                                                }
+//                                                                
+//                                                                
+                                                           }
                                                         }
                                                         else
                                                         {
