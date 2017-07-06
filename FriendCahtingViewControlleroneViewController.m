@@ -454,13 +454,16 @@ static const CGFloat kButtonSpaceHided = 24.0f;
 
 
 - (void)subscribeToKeyboard {
-    [self an_subscribeKeyboardWithAnimations:^(CGRect keyboardRect, NSTimeInterval duration, BOOL isShowing) {
+    [self an_subscribeKeyboardWithAnimations:^(CGRect keyboardRect, NSTimeInterval duration, BOOL isShowing)
+     {
+         
+         
         if (isShowing) {
             
             self.tabBarBottomSpace.constant = CGRectGetHeight(keyboardRect);
             Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-(textBlueh+CGRectGetHeight(keyboardRect)));
+            //keyboradHeight=(textBlueh+CGRectGetHeight(keyboardRect));
             keyboradHeight=(textBlueh+CGRectGetHeight(keyboardRect));
-            
             if(Array_Comment1.count>=1)
             {
                 if([subImgname isEqualToString:@"defaultimg.jpg"])
@@ -481,6 +484,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
             
             self.tabBarBottomSpace.constant = 0.0f;
             Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
+              keyboradHeight=0.0f;
             
         }
         [self.view layoutIfNeeded];
@@ -1315,7 +1319,7 @@ static const CGFloat kButtonSpaceHided = 24.0f;
     self.sendButton.enabled=NO;
     self.sendButton.backgroundColor=[UIColor lightGrayColor];
     Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-keyboradHeight);
-    self.ImageGalButton.userInteractionEnabled = YES;  // uday
+    self.ImageGalButton.userInteractionEnabled = YES;  
     
 }
 -(IBAction)CameraButtonAct:(id)sender

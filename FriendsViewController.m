@@ -301,7 +301,7 @@
                             action:@selector(PulltoRefershtable)
                   forControlEvents:UIControlEventValueChanged];
     
-   // [Table_Friend addSubview:self.refreshControl]; //uday
+   // [Table_Friend addSubview:self.refreshControl];
     
     if ( [[defaults valueForKey:@"tapindex"] isEqualToString:@"yes"])
     {
@@ -803,7 +803,7 @@ static NSString * Cellid111=@"Cellmeet";
                     
                 {
                     
-                    //commented by uday
+                   
                     
                     
                     NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];
@@ -982,7 +982,7 @@ static NSString * Cellid111=@"Cellmeet";
                     
                 {
                     
-                    //commented by uday
+                   
                     
                     
                     NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];
@@ -1115,7 +1115,7 @@ static NSString * Cellid111=@"Cellmeet";
             else
             {
                 
-                //commented by uday
+               
                 
                 NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:text];
                 NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];
@@ -1306,7 +1306,7 @@ static NSString * Cellid111=@"Cellmeet";
                         
                     {
                         
-                        //commented by uday
+                       
                         
                         
                         NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];
@@ -1476,7 +1476,7 @@ static NSString * Cellid111=@"Cellmeet";
                 else
                 {
                     
-                    //commented by uday
+                    
                     
                     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:text];
                     NSMutableAttributedString *mutableAttributedStringfname = [[NSMutableAttributedString alloc] initWithString:textfname];

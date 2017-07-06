@@ -172,7 +172,7 @@
             [self PlanningButtonAct:nil];
         }
         
-  //uday
+ 
         
         if ([[defaults valueForKey:@"activity1"] isEqualToString:@"Crawling"] || [[defaults valueForKey:@"activity2"] isEqualToString:@"Crawling"] ||[[defaults valueForKey:@"activity3"] isEqualToString:@"Crawling"])
         {
@@ -300,7 +300,7 @@
             [self PlanningButtonAct:nil];
         }
         
-//uday
+
         
         if ([[defaults valueForKey:@"tag10"]isEqualToString:@"10"])
         {
@@ -603,7 +603,7 @@
   [self SelectItems];
 }
 
-#pragma mark - Uday buttons
+#pragma mark - buttons
 
 -(IBAction)CrawlingButtonAct:(id)sender;
 {
@@ -783,7 +783,7 @@
         {
             PlanningButton.enabled=NO;
         }
-        // uday
+        
         if (CrawlingButton.tag==10)
         {
             CrawlingButton.enabled=YES;

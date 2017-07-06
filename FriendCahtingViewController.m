@@ -442,7 +442,10 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
 
 
 - (void)subscribeToKeyboard {
-    [self an_subscribeKeyboardWithAnimations:^(CGRect keyboardRect, NSTimeInterval duration, BOOL isShowing) {
+    [self an_subscribeKeyboardWithAnimations:^(CGRect keyboardRect, NSTimeInterval duration, BOOL isShowing)
+     
+    {
+        
         if (isShowing) {
            
             self.tabBarBottomSpace.constant = CGRectGetHeight(keyboardRect);
@@ -477,7 +480,7 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
   
             self.tabBarBottomSpace.constant = 0.0f;
            Table_Friend_chat.frame = CGRectMake(0,yt, tw, th);
-            
+             keyboradHeight=0.0f;
         }
         
         
@@ -1041,7 +1044,7 @@ if ([[[AllDataArray objectAtIndex:0]valueForKey:@"matchedfbid"] isEqualToString:
     self.sendButton.enabled=NO;
     self.sendButton.backgroundColor=[UIColor lightGrayColor];
     Table_Friend_chat.frame = CGRectMake(0,yt, tw, th-keyboradHeight);
-            self.ImageGalButton.userInteractionEnabled = YES;  // uday
+            self.ImageGalButton.userInteractionEnabled = YES;
  
 }
 -(IBAction)CameraButtonAct:(id)sender
