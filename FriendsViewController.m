@@ -51,7 +51,7 @@
 @end
 
 @implementation FriendsViewController
-@synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two,Button_chats,Button_playdates,Label_HeadTop,Button_Plustap,Cell_Two2,Button_Join,Button_Create,Button_JoinImage;
+@synthesize HeadTopView,Table_Friend,Cell_One,Cell_Two,Button_chats,Button_playdates,Label_HeadTop,Button_Plustap,Cell_Two2,Button_Join,Button_Create,Button_JoinImage,Button_Help;
 
 
 - (void)viewDidLoad
@@ -398,6 +398,7 @@
     NSString * pathhelp = [documnetPath1 stringByAppendingPathComponent:@"HelpPopup.plist"];
     
     NSString * bundlePath = [[NSBundle mainBundle]pathForResource:@"HelpPopup" ofType:@"plist"];
+
     
     if([[NSFileManager defaultManager]fileExistsAtPath:pathhelp])
     {
@@ -405,11 +406,11 @@
     }
     else
     {
-        [[NSFileManager defaultManager]copyItemAtPath:bundlePath toPath:pathhelp error:nil];
+//        [[NSFileManager defaultManager]copyItemAtPath:bundlePath toPath:pathhelp error:nil]; //mohitcomment
         controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
         [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
-        [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1]];
+        [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]];
         //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.view  addSubview:controllerpop.view];
     }
@@ -2829,6 +2830,7 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     
     Button_Join.hidden=YES;
     Button_JoinImage.hidden=YES;
+     Button_Help.hidden = NO;
     
     
     [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
@@ -2867,6 +2869,8 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
     HomechatTimer=nil;
     Button_Join.hidden=NO;
     Button_JoinImage.hidden=NO;
+    Button_Help.hidden = YES;
+    
       Button_Plustap.tag=2;
     Button_Create.tag=2;
        Str_ChangeScreen=@"playdate";
@@ -2915,6 +2919,19 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
 {
     senderTagPlus=[sender tag];
     [self Plus_Action];
+}
+
+- (IBAction)Button_Help_Action:(id)sender
+{
+    
+    controllerpop = [[HelpPopViewController alloc] initWithNibName:@"HelpPopViewController"  bundle:nil];
+    [controllerpop.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [controllerpop.Button_tour addTarget:self action:@selector(buttonTappedpop:) forControlEvents:UIControlEventTouchUpInside];
+    [controllerpop.view setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]];
+    //        controller.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view  addSubview:controllerpop.view];
+    
+    
 }
 -(void)JoinAction
 {
@@ -3175,6 +3192,21 @@ if ([Str_ChangeScreen isEqualToString:@"playdate"])
 - (void)buttonTappedpopGotit:(id)sender
 {
      // [self.view removeFromSuperview];
+    
+    
+    NSString * documnetPath1=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    NSLog(@"%@",NSHomeDirectory());
+    
+    NSString * pathhelp = [documnetPath1 stringByAppendingPathComponent:@"HelpPopup.plist"];
+    
+    NSString * bundlePath = [[NSBundle mainBundle]pathForResource:@"HelpPopup" ofType:@"plist"];
+    
+    
+    [[NSFileManager defaultManager]copyItemAtPath:bundlePath toPath:pathhelp error:nil]; //mohitcomment
+
+
+    
     controllerpopmeetups.view.hidden=YES;
 }
 @end

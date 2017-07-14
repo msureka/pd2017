@@ -865,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16e-8Y-xAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2748" y="-1823"/>
+            <point key="canvasLocation" x="2747.5" y="-1823.5"/>
         </scene>
         <!--Discover View Controller-->
         <scene sceneID="CTP-Jo-4f1">
@@ -1297,6 +1297,16 @@
                                             <action selector="Button_JoinImage_action:" destination="KCh-aC-313" eventType="touchUpInside" id="6ta-Kn-AZJ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUg-ZI-h7X">
+                                        <rect key="frame" x="13" y="23" width="28" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="Help.png"/>
+                                        <connections>
+                                            <action selector="Button_Help:" destination="Xu1-Eq-wH7" eventType="touchUpInside" id="YZ7-PS-wts"/>
+                                            <action selector="Button_Help_Action:" destination="KCh-aC-313" eventType="touchUpInside" id="gm4-x5-A9K"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1479,6 +1489,7 @@
                     <navigationItem key="navigationItem" id="tTz-uu-rlr"/>
                     <connections>
                         <outlet property="Button_Create" destination="tdw-7h-XKW" id="Ktt-Vh-4r5"/>
+                        <outlet property="Button_Help" destination="NUg-ZI-h7X" id="YTR-2g-xV8"/>
                         <outlet property="Button_Join" destination="FQb-hW-f3n" id="L87-Tm-uBB"/>
                         <outlet property="Button_JoinImage" destination="6Tp-yo-cIa" id="Ufo-zg-eeO"/>
                         <outlet property="Button_Plustap" destination="AEU-WY-eTb" id="8oJ-w6-MJm"/>

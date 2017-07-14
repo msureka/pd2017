@@ -34,10 +34,12 @@
 @property(nonatomic,strong)IBOutlet UIButton * Button_JoinImage;
 @property(nonatomic,strong)IBOutlet UIButton * Button_Join;
 @property(nonatomic,strong)IBOutlet UIButton * Button_Create;
+@property (weak, nonatomic) IBOutlet UIButton *Button_Help;
 
 - (IBAction)Button_JoinImage_action:(id)sender;
 - (IBAction)Button_Join_action:(id)sender;
 - (IBAction)Button_Create_action:(id)sender;
+- (IBAction)Button_Help_Action:(id)sender;
 
 
 -(void)calculate;
