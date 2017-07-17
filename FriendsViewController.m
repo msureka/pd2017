@@ -309,6 +309,9 @@
         [defaults synchronize];
         Button_Join.hidden=NO;
         Button_JoinImage.hidden=NO;
+        
+        Button_Help.hidden = YES;
+        
         [Button_Create setTitle:@"CREATE" forState:UIControlStateNormal];
         Button_Plustap.tag=2;
         Button_Create.tag=2;
@@ -350,6 +353,8 @@
         Label_HeadTop.text=@"Friends";
          Button_Join.hidden=YES;
         Button_JoinImage.hidden=YES;
+        
+        Button_Help.hidden = NO;
          [Button_Create setTitle:@"ADD" forState:UIControlStateNormal];
         [Button_chats setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] forState:UIControlStateNormal];
         [Button_playdates setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
